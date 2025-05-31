@@ -1,0 +1,244 @@
+
+.navbar-list{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    color:white;
+    flex-direction: row;
+    width:80%;
+    max-width: 80%;
+  }
+  
+  /* remove default list styling  */
+  .navbar-list li {
+    list-style: none;
+  }
+
+  .logo {  
+    width: 6.3svw;  
+    height: auto;  
+    margin:auto 0;
+  }
+  
+  .logo img {
+    width: 100%;  
+    height: auto;   
+  }
+  
+
+.navbar-list-item{
+  /* position:relative; */
+  overflow: visible;
+}
+
+.navbar-list-item a{
+  color:white ;
+}
+
+.navbar-list-item:hover a{
+  color:#FF5B00 ;
+}
+
+.navbar-list-item img{
+  position:absolute;
+  bottom:-90%;
+  right:-20%; 
+}
+
+.navbar-text {
+  font-family: Armstrong;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.navbar-active {
+  color:#FF5B00 !important;
+}
+
+
+/* MOBILE */
+.navbar-list-mobile{
+  display:flex;
+  flex-direction: column;
+  color:white;
+  max-width: 90%;
+  margin-top:14rem;
+}
+
+.navbar-list-mobile li{
+  list-style: none;
+}
+
+.navbar-burger-icon{
+  /* border:100px solid white; */
+}
+
+/* Base styles */
+.navbar {
+  /* position: relative; */
+}
+
+/* Mobile menu button */
+/* Remove this line */
+.navbar-mobile-container {
+  /* position: absolute; */ /* ❌ REMOVE THIS */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  width:fit-content;
+}
+
+/* Ensure the whole mobile nav is isolated in its own overlay */
+.mobile-sidebar {
+  position: absolute; /* ✅ fix */
+  top: 10%;
+  border:3px solid red;
+  right: -100%;
+  width: 70%;
+  max-width: 300px;
+  height: 600px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 200000;
+  transition: right 0.5s ease;
+  padding: 4rem 1.5rem; /* Ensure space from top */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow:scroll;
+}
+
+.open{
+  right:0;
+}
+
+/* MOBILE */
+.navbar-list-mobile{
+  display:flex;
+  flex-direction: column;
+  color:white;
+  max-width: 90%;
+  margin-top:14rem;
+}
+
+.navbar-list-mobile li{
+  list-style: none;
+}
+
+.navbar-burger-icon{
+  /* border:100px solid white; */
+}
+
+/* Base styles */
+.navbar {
+  /* position: relative; */
+}
+
+/* Mobile menu button */
+/* Remove this line */
+.navbar-mobile-container {
+  /* position: absolute; */ /* ❌ REMOVE THIS */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  width:fit-content;
+}
+
+/* Ensure the whole mobile nav is isolated in its own overlay */
+.mobile-sidebar {
+  position: fixed; /* ✅ fix */
+  top: 0;
+  right: -100%;
+  width: 70%;
+  max-width: 300px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 200000;
+  transition: right 0.5s ease;
+  padding: 4rem 1.5rem; /* Ensure space from top */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust mobile nav list to remove margin-top:14rem */
+.navbar-list-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.navbar-burger-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.navbar-burger-icon {
+  width: 24px;
+  height: 24px;
+}
+
+ 
+
+.mobile-sidebar.open {
+  right: 0;
+  z-index: 200000;
+}
+
+/* Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200000;
+}
+
+/* Mobile nav list */
+.navbar-list-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 200000;
+}
+
+.navbar-list-mobile .navbar-list-item {
+  padding: 0.5rem 1rem;
+}
+
+.navbar-list-mobile a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.navbar-list-mobile .navbar-active {
+  color: #ff4900;
+  font-weight: bold;
+}
+
+.navbar { 
+  z-index: 200000;
+  min-width:500px;
+}
+
+@media(max-width:1024px){
+  .navbar{
+    min-width: none;
+  }
+} 

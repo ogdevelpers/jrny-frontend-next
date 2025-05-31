@@ -1,0 +1,211 @@
+:root {
+  --button-width: 220px;
+  --button-bg-color: #FF5B00;
+  --button-fg-color: white;
+  --border-color: #FFFFFF;
+  --animation-duration: 0.1s;
+  --animation-duration-active: 0.05s;
+}
+
+.button-base {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  width: var(--button-width);
+  height: 50px;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: var(--button-bg-color);
+  color: var(--button-fg-color);
+  padding: 0.25rem 2rem;
+  border: none;
+  cursor: pointer; 
+  border-radius: 0 0 16px 0; /* Circular bottom right corner */ 
+  z-index:3;
+}
+
+@media(max-width:768px){
+  .button-base{
+    width:40svw;
+  }
+}
+
+.button-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+.plusButton{
+    position:absolute;
+    top:1px;
+    left:0;
+    transform: translateX(-40%) translateY(-50%);
+    color: var(--button-fg-color);
+}
+
+.button-base:hover .plusButton{
+    /* color:red; */
+}
+
+.plusButton {
+  position: absolute;
+  top: px;
+  left: 0;
+  transform: translateX(-40%) translateY(-50%);
+  color: var(--button-fg-color);
+  font-size: 20px;
+  z-index: 5;
+}
+
+.projectile {
+  position: absolute; 
+  width: 4px;
+  height: 4px;
+  background-color: var(--button-fg-color);
+  opacity: 0;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+  pointer-events: none;
+}
+
+/* Left projectile */
+.projectile.left { 
+  width: 4px;
+  height: 4px;
+  top: -10%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  animation-name: projectile-left;
+}
+
+.projectile.top {
+  width: 4px;
+  height: 4px;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-name: projectile-top;
+}
+
+
+@keyframes projectile-left {
+  0% {
+    transform: translateX(-50%) scale(10);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes projectile-top {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -100%) scale(0.5);
+    opacity: 0;
+  }
+}
+
+
+/* Using ::before for the top-right border path */
+.button-base::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 2px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+    border-radius: 0 0 20px 0; /* Circular bottom right corner */
+
+  transition: all 0s;
+  opacity: 0;
+  z-index: 1; /* Lower z-index for borders */
+}   
+
+/* Using ::after for the left-bottom border path */
+.button-base::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 2px solid var(--border-color);
+  border-left: 2px solid var(--border-color);
+  transition: all 0s;
+  border-radius: 0 0 20px 0; /* Circular bottom right corner */
+  opacity: 0;
+  z-index: 1; /* Lower z-index for borders */
+}
+
+/* Hover animations */
+.button-base:hover::before {
+  width: 50%; 
+  opacity: 1;
+  transition: 
+    height var(--animation-duration) ease,
+    width var(--animation-duration) ease var(--animation-duration);
+}
+
+.button-base:hover::after { 
+  height: 50%;
+  opacity: 1;
+  transition: 
+    width var(--animation-duration) ease,
+    height var(--animation-duration) ease var(--animation-duration);
+}
+
+
+/* Active state animations (smooth transition ONLY when activating) */
+.button-base.active::before {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: 
+    width var(--animation-duration-active) ease,
+    height var(--animation-duration-active) ease calc(var(--animation-duration-active)*2);
+}
+
+.button-base.active::after { 
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: 
+    height var(--animation-duration-active) ease,
+    width var(--animation-duration-active) ease calc(var(--animation-duration-active)*2);
+}
+ 
+.button-base.active{
+    z-index:3;
+}
+
+
+.button-white-theme{
+  color:#FF5B00;
+  background-color: white;
+}
+
+.button-white-theme .plusButton{
+  color:#FF5B00;
+}
+
+.button-white-theme .projectile,
+.button-white-theme .projectile-left,
+.button-white-theme .projectile-right{
+  background-color:#FF5B00;
+}
+
+.button-white-theme::after, .button-white-theme::before{
+  border-color: #FF5B00 !important;
+}

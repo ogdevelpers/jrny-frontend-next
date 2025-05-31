@@ -1,0 +1,167 @@
+.portfolio-item-container {
+  width: 100%;
+  min-height: 100vh;
+  max-width: 100svw; 
+  gap: 8rem;
+  background-image: url("/bg/portfolio.png");
+  background-position: top left; /* Positions image at the top-left */
+  background-repeat: no-repeat; /* Prevents tiling */
+  background-size: auto; /* Keeps original image size */
+
+}
+
+.project-header{ 
+    min-width:96%;
+
+}
+
+/* Portfolio Container */
+.portfolio-item-header-container{
+    min-width:90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.portfolio-item-hero-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 90svw;
+  min-width: 90svw;
+  padding-left: 6rem;
+  /* position: relative;
+  top: 190px;
+} */
+}
+
+.project-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin-bottom: 3rem;
+}
+
+.project-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 30svw;
+}
+
+.project-name{
+  font-family: Armstrong;
+font-weight: 400;
+font-size: 72px;
+line-height: 100%;
+letter-spacing: 0%;
+color: white;
+
+}
+
+.project-name,
+.project-second-header {
+  font-size: 48px;
+  font-family: "Armstrong";
+  color: white;
+
+}
+
+.project-second-box{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project-description,
+.project-second-description {
+  text-align: left;
+  max-width: 32svw;
+  font-size: 14px;
+}
+
+.project-second-description {
+  max-width: 43svw;
+}
+
+.portfolio-item-middle-list {
+    display:flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.portfolio-item-middle-list{
+  padding-left:6rem;
+}
+
+.might-like {
+  font-family: "Armstrong";
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color:white;
+  display: inline-block; 
+}
+
+.item-date-company{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item-date{
+  font-family: Armstrong;
+font-weight: 400;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 0%;
+color: #808186;
+}
+
+.item-company{
+  font-family: Helvetica Neue;
+font-weight: 500;
+font-size: 32px;
+line-height: 40px;
+color: #808186
+/* letter-spacing: 0%;
+background-color: linear-gradient(92.49deg, #7C7C7C 0%, #FFFFFF 47.41%, #7C7C7C 94.82%); */
+;
+}
+
+.portfolio-item-footer{
+  padding-left:6rem;
+}
+
+@media(max-width:1000px){
+  .portfolio-item-hero-container{
+    padding:0;
+    margin:0 auto;
+  }
+
+  .portfolio-item-middle-list{
+    padding:0;
+    margin:0 auto;
+    width:90%;
+  }
+
+  .portfolio-item-footer{
+    padding:0;
+    margin:0 auto;
+  }
+
+  .might-like{
+    display:inline-block;  
+  }
+
+  .project-description{
+    width:90%;
+    max-width: 92svw;
+  }
+
+  .project-second-description{
+    max-width: 92svw;
+    width:92svw;
+  }
+}

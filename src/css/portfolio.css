@@ -1,0 +1,236 @@
+.portfolio-container {
+  /* width: 100%; */
+  min-height: 100vh;
+  max-width: 100svw;
+  gap: 8rem;
+  background-image: url("/bg/portfolio.png");
+  background-position: top left; /* Positions image at the top-left */
+  background-repeat: no-repeat; /* Prevents tiling */
+  background-size: auto; /* Keeps original image size */
+  padding-left: 6rem;
+}
+
+.portfolio-landing-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 90%;
+  min-width: 90%;
+}
+
+.portfolio-top-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.portfolio-our-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  top: 75px;
+}
+
+.our-projects-heading span {
+font-weight: 400;
+font-size: 72px;
+line-height: 100%;
+letter-spacing: 0%;
+font-family: "Armstrong";
+}
+
+.our-projects-p {
+  font-size: 14px;
+  max-width: 25svw;
+  text-align: left;
+}
+
+.portfolio-partner-show {
+  height: 300px;
+  max-width: 740px;
+}
+
+.portfolio-middle-list {
+  display: flex; 
+  align-items: center;
+  flex-wrap: wrap;
+  max-height: 90%;
+  min-height: 50vh;
+  width:100%;
+  max-width: 100%;   
+
+}
+
+.portfolio-tile-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; 
+  row-gap: 2rem;
+  column-gap: 1rem;
+  min-height: 70%;
+  max-width: 85svw; 
+  flex: 1;
+  padding: 0.4rem 0 ;
+}
+
+.portfolio-tile {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.portfolio-tile-box {
+  display: flex; 
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%; /* Take full height of parent tile */
+  width: 100%; /* Take full width of parent tile */
+  text-align: left;
+  gap: 15px;
+}
+
+.portfolio-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.tile-thumbnail {
+  min-width: 100%;
+  max-width: 100%;
+  height:82%; 
+  max-height: 89%; 
+  overflow: hidden; /* Hide any overflow */
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  border-bottom-right-radius: 32px;
+}
+
+.tile-thumbnail img {
+  width: 100%;
+  min-width: 100%;
+  height: auto; /* Fill container height */
+  object-position: center; /* Center the image */
+  object-fit: cover; /* Cover the entire area */
+  aspect-ratio: 2/1;
+  max-width: 100%; /* Prevent overflow */
+  /* max-height: 95%; */
+}
+
+.tile-title {
+  font-family: "Armstrong";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: white;
+}
+
+.portfolio-tags {
+  margin-top: 9rem;
+}
+
+/* Generic class for Footer */
+.portfolio-contact {
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* see m ore */
+.see-more-btn {
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  background-color: #222;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.see-more-btn:hover {
+  background-color: #444;
+}
+
+.our-projects-span{
+  font-family: Armstrong;
+font-weight: 400;
+font-size:72px;
+line-height: 100%;
+letter-spacing: 0%;
+color: white;
+}
+
+.jrny-span-text {
+  font-family: Armstrong;
+font-weight: 400;
+font-size:72px;
+line-height: 100%;
+letter-spacing: 0%;
+color: #FF5B00;
+}
+
+@media(max-width: 1024px){
+
+  .portfolio-landing-container{
+    max-width: 100%;
+    min-width: 100%;
+    width:100%;
+  }
+
+  .portfolio-top-section{
+    width:100%;
+    max-width: 100%;
+    flex-direction: column;
+  }
+
+  .our-projects-heading{
+    text-align: center;
+  }
+
+  .our-projects-heading span{
+    font-size: 2.5rem;
+    text-align: center;
+    width:100%;
+  }
+
+  .our-projects-p{
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .portfolio-our-projects{
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .portfolio-tile-container {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0.2rem;
+    margin:0 auto;
+    max-height: 500px !important;
+  }
+
+  .portfolio-middle-list {
+    padding:0;
+    margin:0 auto ;
+    max-height: 90%;
+    display:block;
+  }
+
+  .portfolio-tile{
+    height:80%;
+  }
+
+  .portfolio-container {
+    padding-left: 0; /* Remove left padding on mobile */
+  }
+}

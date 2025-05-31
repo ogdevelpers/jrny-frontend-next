@@ -1,0 +1,85 @@
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width:100%;
+  height:100%;
+}
+
+.custom-input {
+  /* flex: 1;
+  padding: 0.75rem 1rem;
+  padding-left: 2.2rem; 
+  border: 2px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s ease; */
+}
+
+.custom-input{
+    height:100%;
+    width:100%;
+}
+
+.input-wrapper.focused .custom-input {
+  /* border-color: #FF5B00; */
+}
+
+.plusIcon {
+  position: absolute; 
+  left: -1px;
+  top:-5%;
+  transform: translateY(-50%) translateX(-50%);
+  font-size: 15px;
+  color: white;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Reuse projectile styles */
+.projectile {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: white;
+  border-radius: 1px;
+  opacity: 0;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+  pointer-events: none;
+}
+
+.projectile.left {
+  top: 50%;
+  left: -20%;
+  transform: translate(-50%, -50%);
+  animation-name: projectile-left;
+}
+
+.projectile.top {
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-name: projectile-top;
+}
+
+@keyframes projectile-left {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-200%) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes projectile-top {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -100%) scale(0.5);
+    opacity: 0;
+  }
+}

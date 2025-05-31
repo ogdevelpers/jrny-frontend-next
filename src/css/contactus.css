@@ -1,0 +1,61 @@
+.contact-us-page-container {
+    min-height: 60svh; /* Ensures it occupies the full viewport height */
+    height: calc(100svh - 80px);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0; /* Important: allow shrinking */
+    background-image: url("/bg/contact-us.png"); /* Sets the background image */
+    background-size: cover; /* Ensures the image covers the entire container */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repetition */
+}
+
+.contact-heading {
+    color: #808186;
+    font-size:0.9rem;
+    display: flex;
+    align-items: center;  /* Centers items vertically */
+    justify-content: space-between;
+    max-width: 90svw;  /* Restrict width */
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden;  /* Avoids unwanted line breaks */
+    margin: 0 auto; /* Centers the container */
+  }
+  
+.line {
+    flex-grow: 1;  /* Makes the line take up available space */
+    height: 1px;  /* Thin horizontal line */
+    background-color: #808186;  /* Gray color */
+    margin: 0 10px; /* Space between text and line */
+}
+  
+.contact-us-page-box{
+    /* background-color: black; */
+    max-width: 90%;
+    margin:0 auto;
+    margin-top:3rem;
+    padding-left:2rem;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+ 
+
+
+/* MOBILE */
+.contact-us-page-container-mobile{
+    padding-top: 7rem;
+    min-height: 100vh; /* Ensures it occupies the full viewport height */
+    width: 100svw; /* Ensures it occupies the full viewport width */
+    background-image: url("/bg/contact-us-mobile.png"); /* Sets the background image */
+    background-size: cover; /* Ensures the image covers the entire container */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repetition */
+
+}
+
+.contact-us-page-box-mobile{
+    background: transparent !important;
+    max-width: 85%;
+    margin:0 auto;
+    margin-top:3rem;
+}

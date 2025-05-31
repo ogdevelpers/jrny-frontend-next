@@ -1,0 +1,313 @@
+.blog-container{
+    width: 100%;
+    min-height: 100vh;
+    max-width: 100svw;
+    padding: 0 6rem;
+    gap: 8rem;
+    background-image: url("/bg/about.png");
+    background-position: top right; /* Positions image at the top-left */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-size: auto; /* Keeps original image size */
+    position: relative;
+    top: 50px;
+    
+}
+
+.blog-hero-container{
+    display:flex;
+    flex-direction: column;
+    gap:2rem;
+    width:90%;
+}
+
+.blog-heading{
+    max-width: 43svw;
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+}
+
+.blog-heading-title{
+    font-family: 'Armstrong';
+    font-size: 72px; 
+font-weight: 400;
+line-height: 100%;
+letter-spacing: 0%;
+
+}
+
+.blog-heading-title-more{
+  font-family: Armstrong;
+font-weight: 400;
+font-size: 48px;
+line-height: 100%;
+letter-spacing: 0%;
+color: #FFFFFF;
+
+}
+
+.blog-heading-description{
+    text-align: left;
+}
+
+.blog-tile-container {
+    /* display: grid; */
+    gap: 1.5rem; 
+    width: 100%;
+    /* Mobile first: 2 columns (half viewport width) */
+    /* grid-template-columns: 1fr; */
+}
+
+.blog-tile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 2rem auto; 
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 2rem;
+}
+
+.blog-info {
+  max-width: 50svw;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.blog-tile-heading {
+  font-size: 1.4rem;
+  font-family: 'Armstrong';
+  color: white;
+  font-weight: 400;
+line-height: 24px;
+letter-spacing: 0%;
+
+}
+.blog-tile-title-content-container{
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.blog-tile-description {
+  /* font-size: 1.3rem;
+  color: #808186;
+  font-weight: 400;
+  line-height: 1.5; */
+
+  font-family: 'Helvetica Neue';
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+letter-spacing: 0%;
+color: #808186;
+
+}
+
+.go-to-blog {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.blog-image {
+  width: 500px;
+  height: 250px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.blog-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+  /* Desktop: 4 columns when viewport ≥ 1000px */
+  @media (min-width: 1000px) {
+    .blog-tile-container {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 2rem; 
+    }
+  
+ 
+  }
+  
+  /* Optional: Adjust for very small screens */
+  @media (max-width: 480px) {
+    .blog-tile-container {
+      grid-template-columns: 1fr;
+    }
+  }
+ 
+
+
+  /* MOBILE AND BLOG TILE MOBILE  */
+/* Blog Tile Mobile Container */
+.blog-tile-container-mobile {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 27rem), 1fr));
+  gap: 2rem; 
+  width: 95%;
+  max-width: 100svw;
+  margin:0 auto;
+}
+
+/* Blog Tile Mobile */
+.blog-tile-mobile {
+  width: 100%; 
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  aspect-ratio: 1/1; /* Adjust this ratio as needed */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.blog-tile-mobile:hover {
+  transform: translateY(-0.3125rem);
+}
+
+.moveUp{
+  transition: transform 0.3s ease;
+}
+
+.moveUp:hover{
+  transform: translateY(-0.3125rem)
+}
+
+.blog-image-mobile {
+  width: 100%;
+  height: 50%; /* Adjust based on your design needs */
+}
+
+.blog-image-mobile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-info-mobile {
+  padding: 0.5rem;
+  height: 30%; /* Complementing the image height */
+  display: flex;
+  font-size:2rem;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.minute-count-in-tile-m {
+  color: #808186;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-tile-heading {
+  font-size: 1.3rem;
+  font-weight: 600;  
+}
+
+.tag-container {
+  display: flex; 
+  flex-wrap: wrap;
+}
+
+/* Responsive Styles */
+/* Base (desktop-first) */
+.blog-tile-container-mobile {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 2rem;
+}
+
+/* Tablet view */
+@media (max-width: 1024px){
+
+  .blog-hero-container{
+    max-width: 100svw;
+    width:99%;
+  }
+
+  .blog-container{
+    padding:0;
+  }
+
+  .blog-heading{
+    max-width: 100%;
+    width: 100svw;
+    font-size:4rem;
+  }
+
+
+  .blog-tile-container-mobile {
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 1.2rem;
+  }
+
+  .blog-tile-mobile {
+    aspect-ratio: unset;
+    height: auto; 
+    width:90%;
+    max-width: 100%;
+  }
+
+  .blog-image-mobile {
+    height: 60%;
+    width:100%;
+  }
+
+  .blog-info-mobile {
+    height: 30%;
+    padding: 0.75rem;
+  }
+ 
+}
+
+/* Mobile view: still two columns */
+@media (max-width: 768px) {
+  .blog-tile-container-mobile {
+    grid-template-columns: repeat(2, 1fr); /* Ensure 2 columns */
+    gap: 1rem;
+  }
+
+  .blog-image-mobile {
+    height: 10rem;
+  }
+
+  .blog-tile-heading {
+    font-size: 0.7rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 500px) {
+  .blog-tile-container-mobile {
+    grid-template-columns: 1fr  1fr;
+  }
+
+  .blog-image-mobile {
+    height: 8rem;
+  }
+
+  .blog-tile-heading {
+    font-size: 0.6rem;
+  }
+
+  .minute-count-in-tile {
+    font-size: 0.75rem;
+  }
+}

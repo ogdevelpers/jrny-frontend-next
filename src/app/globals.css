@@ -1,42 +1,159 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("/fonts/helvetica/HelveticaNeueMedium.ttf") format("truetype");
+  font-weight: 500; /* Medium is typically 500 */
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: "Armstrong";
+  src: url("/fonts/armstrong/Armstrong.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-html,
+@font-face {
+  font-family: "Aldrich";
+  src: url("/fonts/Aldrich/Aldrich-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
+  margin: 0; 
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  color:white;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+*{
+  box-sizing: border-box;
+}
+  
+a{ 
+  all:unset;
+  cursor:pointer;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+body { 
+  min-width: 100svw;
+  max-width: 100svw;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  font-family: 'Helvetica Neue'; 
+  position: relative;
+  z-index: 2;
+}
+ 
+html, body {
+  scrollbar-gutter: stable;
+}
+
+.pinMe{
+  background-color: black;
+  position:relative; 
+}
+
+.header {
+  width: 100%;
+  max-width:100%;
+  position:sticky !important;
+  overflow:hidden;
+  display: flex;
+  flex-direction: row; /* Explicitly set to row */
+  align-items: center;
+  justify-content: space-between; /* This will space logo and navbar */
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 200000;
+  backdrop-filter: blur(5.6px);
+  -webkit-backdrop-filter: blur(5.6px);
+  padding: 50px 6rem; /* Combine padding */
+  height: 80px;
+  box-sizing: border-box; /* Include padding in height calculation */
+}
+
+.logo-div {
+  flex: 0 0 auto; /* Don't grow or shrink */
+  /* Add any specific logo sizing if needed */
+}
+
+.navbar-div {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; /* Align nav to the right */
+}
+
+/* Responsive adjustments */
+@container (max-width: 1024px) {
+  .header {
+    padding: 10px 3rem; /* Reduce padding on smaller screens */
   }
 }
+
+@container (max-width: 768px) {
+  .header {
+    padding: 10px 2rem;
+    height: 70px; /* Slightly smaller header */
+  }
+}
+ 
+body {
+  container-type: inline-size;
+  width: 100%;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0; /* Important: allow shrinking */
+}
+
+
+.container { 
+  width: 100%;
+  max-width: 100%;
+  min-width: 0; /* Important: allow shrinking */
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  overflow:hidden;
+}
+ 
+
+.testimonial-top, .testimonial-span, .caption-title, .our-projects-p,
+.project-second-description,.project-description,
+.about-landing-description, .blog-heading-description,
+.blog-content-area, .services-landing-paragraph,
+.about-us-landing-paragraph, .landing-portfolio-paragraph
+{
+  text-align: center;
+  font-family: 'Helvetica Neue', sans-serif;
+  background: linear-gradient(92.49deg, #7C7C7C 0%, #FFFFFF 47.41%, #7C7C7C 94.82%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.addPlus{ 
+  position:relative;
+
+}
+
+.addPlus::before{
+  content: '+';
+  position:absolute;
+  top:0;
+  left:0;
+  font-size:1.5rem;
+  color:white;
+  font-weight:600;
+  font-family: 'Helvetica Neue';
+  transform:translate(-50%, -50%);
+}
+

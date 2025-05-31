@@ -1,0 +1,1096 @@
+.landing-container {
+  width: 100svw;
+  max-width: 100svw;
+  min-width: 100svw;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+  background-image: url("/jrny_landing_bg.png");
+  background-size: contain;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+.landing-svg-container {
+  position: relative;
+  /* height: 4000px; */
+}
+
+.one-two-grid > div {
+  height: 100%;
+}
+
+.button {
+  width: 220px; /* ~185px in 1920px */
+  height: 50px; /* ~48px in 1080px */
+  padding: 0.3rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: 1rem;
+  background-color: #FF5B00;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 0 0 1rem 0; /* Circular bottom right corner */
+  /* text-transform: uppercase; */
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: 700;
+}
+
+.button::before,
+.button::after {
+  content: "";
+  position: absolute;
+  background-color: white;
+}
+
+.button::before {
+  width: 2px;
+  height: 10px;
+  top: -4px;
+  left: -3px;
+}
+
+.button::after {
+  width: 10px;
+  height: 2px;
+  top: 0px;
+  left: -7px;
+}
+
+.button-alt {
+  color: #FF5B00;
+  background-color: white;
+}
+
+.button-alt::before,
+.button-alt::after {
+  content: "";
+  position: absolute;
+  background-color: #FF5B00;
+}
+
+.button-alt::before {
+  width: 2px;
+  height: 10px;
+  top: -4px;
+  left: -3px;
+}
+
+.button-alt::after {
+  width: 10px;
+  height: 2px;
+  top: 0px;
+  left: -7px;
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100svw;
+  position: relative; 
+  position: relative;
+}
+
+.svg-content {
+  position: absolute;
+  left: 0; /* <- fixed */ 
+  top:-9%;
+  height: 100%;
+  width: 100%; /* <- fixed */
+  max-width: 100%;
+  max-width: none;
+  z-index: 100;
+  pointer-events: none;
+}
+
+
+ .svg-content-mobile{
+  position:absolute;
+  left:0;
+  top:-6%;
+  height: 100%;
+  width: 100%; /* <- fixed */
+  max-width: 100%;
+  max-width: none;
+  z-index:100;
+ }
+
+.line-outlier-mobile {
+  position: fixed;
+  top: 3000px;
+}
+
+.landing-show-reel {
+  max-width: 60svw;
+  width: 38svw;
+}
+
+.part-of-span {
+  font-family: "Helvetica Neue";
+  color: #808186;
+  height: 20px;
+}
+
+.landing-text-container {
+  display: flex;
+  gap:10px;
+  flex-direction: column;
+  margin-top:5px; 
+  max-height: 30%;
+  width: 95%;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-title {
+  font-family: "Aldrich";
+  font-size: 4.5rem;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0px;
+}
+
+
+.contact-btn {
+  color: #ff4900;
+  background-color: white;
+}
+
+.landing-page-matter-text {
+  color: #ff4900;
+}
+
+.landing-caption {
+  display: flex;
+  width: 60%;
+  margin-top: 1.3rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+  background: linear-gradient(
+    92.49deg,
+    #7c7c7c 0%,
+    #ffffff 47.41%,
+    #7c7c7c 94.82%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Makes the background visible through the text */
+  background-clip: text;
+  text-fill-color: transparent; /* Standard property, but -webkit- is more widely supported */
+}
+
+.landing-expanding-video { 
+  width: 100%;
+}
+
+.landing-video-mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #000; /* fallback bg for videos */
+  height: 350px;
+  max-height: 350px;
+  padding: 8px;
+  margin: 16px auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.landing-video-mobile-tag {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fill container nicely */
+  border-radius: 8px;
+}
+
+
+.about-us-landing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  gap: 8rem;
+  align-items: center;
+  height: 600px;
+  position: relative;
+  padding-left: 6rem;
+}
+
+.about-us-section {
+  display: flex;
+  align-items: center;
+  height: 500px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.showreel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.about-us-landing-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 39svw;
+  width: 35svw;
+  text-align: left;
+}
+
+.about-us-landing-title {
+  font-family: "Armstrong";
+  font-size: 3rem;
+  font-weight: 500;
+  color: white;
+  text-align: left;
+  margin-bottom: 0px;
+}
+
+.about-us-landing-paragraph,
+.services-landing-title,
+.services-landing-paragraph {
+  text-align: left;
+  max-width: 27svw;
+
+}
+
+.showreel-container {
+  height: 72%;
+  width: 48%;
+}
+
+.card-paragraph {
+  text-align: center;
+  font-family: "Helvetica Neue";
+  background: linear-gradient(
+    92.49deg,
+    #7c7c7c 0%,
+    #ffffff 47.41%,
+    #7c7c7c 94.82%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Makes the background visible through the text */
+  background-clip: text;
+  text-fill-color: transparent; /* Standard property, but -webkit- is more widely supported */
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+  height: 1400px;
+  max-height: 1400px;
+}
+
+.card-para-div {
+  position: relative;
+  min-height: max-content;
+  margin-top: 2rem;
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  width: 100%;
+  max-width: 100%;
+  font-size: 3rem;
+  line-height: 2.5rem; /* Scales naturally with font size */
+  letter-spacing: 1px;
+  text-align: center;
+  text-align: center;
+}
+
+.services-landing-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  padding-left: 6rem;
+}
+
+.services-landing-container,
+.about-us-section {
+  gap: 80px;
+}
+
+.about-us-landing-text,
+.services-landing-title {
+  width: 40svw;
+  max-width: 40svw;
+}
+
+.showreel-container,
+.services-landing-paragraph {
+  width: 40vw;
+  max-width: 40vw;
+}
+
+.services-landing-title {
+  font-family: "Armstrong";
+  font-size: 3rem;
+  font-weight: 500;
+  color: white;
+  text-align: left;
+  flex: 1;
+  /* max-width: calc(35%-6rem); */
+}
+
+.services-landing-paragraph {
+  font-size: 1.3rem;
+  line-height: 1.6rem;
+  flex: 1;
+  /* max-width: calc(35%-6rem); */
+}
+
+.profile-card {
+  width: 90%;
+  height: 500px;
+  border: 5px solid white;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Needed for caption positioning */
+}
+
+.card-paragraph-start {
+  color: #ff5b00;
+}
+
+/*  */
+.profile-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* filter: grayscale(100%); */
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.profile-card:hover img {
+  filter: grayscale(0%); /* Restores color */
+  transform: scale(1.05); /* Zooms in */
+  animation: bounceScale 0.5s ease-in-out;
+}
+
+/* @keyframes bounceScale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+} */
+
+/* Caption Styles */
+.profile-caption {
+  position: absolute;
+  bottom: -100%; /* Starts hidden below */
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  transition: bottom 0.4s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.profile-card .profile-caption {
+  bottom: 0;
+}
+
+/* Caption Content */
+.profile-caption .heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: Armstrong;
+}
+
+.profile-caption .description {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+.profile-card:hover {
+  cursor: grabbing;
+}
+
+.profile-card::before,
+.profile-card::after {
+  content: "";
+  position: absolute;
+  background-color: white;
+}
+
+.profile-card::before {
+  width: 2px;
+  height: 10px;
+  top: -4px;
+  left: -3px;
+}
+
+.profile-card::after {
+  width: 10px;
+  height: 2px;
+  top: 0px;
+  left: -7px;
+}
+
+/* Add these new styles to your app.css */
+.animated-underline {
+  position: relative;
+  overflow: hidden;
+}
+
+.journeys-div {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  /* margin-top: 50px; */
+  /* height: 1800px; */
+  max-width: 100svw;
+}
+
+/* Partner slide show css */
+.partners-slideshow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  width: 100%;
+  height: 280px;
+  max-height: 280px;
+  margin-top: -20px;
+}
+
+.partnered {
+
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+letter-spacing: 0%;
+
+  color: #ff5b00;
+  font-family: "Helvetica Neue";
+  width: fit-content;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.see-more-container{
+  display:flex;
+  justify-content: center;
+  width:100%;
+}
+
+.see-more { 
+  width: 80px;
+  font-family: "Helvetica Neue";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-align: center;
+
+  color: #808186;
+  background-color: black;
+  border: none;
+  padding: 5px 2px;
+  cursor: pointer;
+}
+
+.landing-portfolio {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 50px;
+  height: 1100px;
+}
+
+.portfolio-tiles-landing {
+  width: 100%;
+  max-width: 100%;
+  height: 700px;
+  max-height: 700px;
+  padding-left: 6rem;
+}
+
+.landing-portfolio-title-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* gap: 2rem; */
+  height: 260px;
+}
+
+.landing-portfolio-title {
+  font-family: "Armstrong";
+  font-size: 48px;
+  font-weight: 400;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.landing-portfolio-paragraph {
+  font-size: 16px;
+  /* width: 50%; */
+  line-height: 1.6rem;
+  text-align: center;
+  max-width: 35svw;
+}
+
+.testimonial-top {
+  font-family: 'Helvetica Neue';
+  max-width: 45svw;
+  margin: 0 auto;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 500;
+}
+
+.testimonial-span {
+  font-family: "Helvetica Neue";
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.testimonial-bottom {
+  font-size: 2rem;
+  max-width: 31svw;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.jrny-span {
+  color: #ff5b00;
+  background-color: none !important;
+}
+
+.carousol-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height:300px;
+}
+
+.carousol-logo {
+  position: relative;
+}
+
+.testimonial-logo-trusted {
+  font-family: "Helvetica Neue";
+  color: #ff5b00;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.penultimate-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 50px;
+}
+
+.right-choice-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.right-choice-h1 {
+
+  font-family: Armstrong;
+font-weight: 400;
+font-size: 48px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+margin-bottom: 0px;
+}
+
+.right-choice-p {
+
+  font-family: 'Helvetica Neue';
+font-weight: 400;
+font-size: 24px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+  max-width: 35svw;
+  color: #808186;
+  margin-top: 0px;
+  margin-bottom: 50px;
+}
+
+.about-us-home,
+.contact-us-button {
+  color: #ff4900;
+  background-color: white;
+}
+
+.about-us-home::before,
+.about-us-home::after,
+.contact-us-button::before,
+.contact-us-button::after {
+  background-color: #ff4900;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0.2rem;
+}
+
+.feature-container {
+  flex: 1 1 calc(50% - 3rem);
+  max-width: calc(50% - 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* padding: 5px 9px; */
+  padding: 16px;
+  margin: 0 auto;
+  /* backdrop-filter: blur(6px);
+  background-color: rgba(0, 0,0 , 0.1); */
+border-radius: 0px 0px var(--Corner-Radius-14---L, 16px) 0px;
+background: rgba(255, 255, 255, 0.10);
+backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+}
+
+.caption-title {
+  max-width: 44svw;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 2.5rem;
+}
+
+.feature-title {
+
+font-weight: 400;
+font-size: 32px;
+line-height: 100%;
+  color: #FF5B00  ;
+}
+
+.feature-caption {
+
+  font-family: 'Helvetica Neue';
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+  padding: 0.4rem 0.1rem;
+}
+
+.testimonial-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.footer-container {
+  min-width: 100%;
+  max-width: 100%;
+}
+
+/* Animation and lines */
+
+.text-span-red {
+  color: #ff4900;
+}
+
+.cards-section {
+  height: 700px; /* Still fixed */
+  padding-top: 20px;
+  padding-left: 6rem;
+  width:100%;
+}
+
+.cards-section-grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 1rem;
+  width: 90%;
+  max-height: 98%;
+}
+
+.profile-card {
+  width: 80%;
+  height: 430px;
+}
+
+.card-container {
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  margin-top: 90px;
+}
+
+.moving-light {
+  position: absolute;
+  top: -20%; /* start above */
+  left: 0;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.landing-line,
+.footer-line {
+  /* max-width: 100%; */
+  max-width: 70%;
+  width: 100%;
+}
+
+.landing-line {
+  margin-bottom: 50px;
+}
+
+.landing-line img,
+.footer-line img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.landing-footer {
+  padding-left: 6rem;
+}
+
+@media (max-width: 1000px) {
+  .hero-container {
+    height: 800px;
+  }
+
+  .landing-title {
+    font-size: 3rem;
+    padding-left: 1rem;
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .landing-text-container {
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 10%;
+  }
+
+  .about-us-landing {
+    flex-direction: column;
+    padding-left: 0rem;
+  }
+
+  .about-us-section {
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-top: 0rem;
+  }
+
+  .about-us-landing-text {
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+  }
+
+  .about-us-landing-title {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .about-us-landing-paragraph {
+    text-align: center;
+    max-width: 80%;
+    font-size: 0.7rem;
+    margin: 0 auto;
+  }
+
+  .showreel-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .services-landing-container {
+    flex-direction: column;
+    padding-left: 0rem;
+    gap: 2rem;
+  }
+
+  .services-landing-title {
+    width: 97%;
+    max-width: 100%;
+    text-align: center;
+    font-size: 1.7rem;
+    margin: 0 auto;
+  }
+
+  .services-landing-container {
+    flex-direction: column;
+    padding-left: 0rem;
+    gap: 2rem;
+    margin: 0 auto;
+  }
+
+  .services-landing-paragraph {
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.1rem;
+    width: 90%;
+    max-width: 90%;
+  }
+
+  .cards-section{
+    padding-left:0;
+    margin:0 auto;
+  }
+
+  .cards-section-grid-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 1rem;
+    row-gap: 0.4rem;
+    height:700px;
+    margin:0 auto;
+  }
+
+  .profile-card {
+    width: 98%;
+    max-width: 99%;
+    height: 85%;
+  }
+
+  .profile-caption{
+    height:40%;
+  }
+
+  .profile-caption .heading{
+    font-size:1rem;
+  }
+
+  .profile-caption .description{
+    font-size:0.8rem;
+    line-height: 1rem;
+  }
+
+  .landing-portfolio-title-box {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .landing-portfolio-title {
+    font-family: Armstrong;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+
+  .landing-portfolio-paragraph {
+    font-family: "Helvetica Neue";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    text-align: center;
+    width: 90%;
+    max-width: 100%;
+  }
+
+  .journeys-div{
+    height:2000px;
+  }
+
+  .landing-portfolio{
+    height:1000px;
+  }
+
+  .testimonial-bottom{
+    height:100px;
+  }
+
+  .carousol-container{
+    height:800px;
+    justify-content: space-evenly;
+    gap:2rem;
+    border:2px solid red;
+  }
+
+  .portfolio-tiles-landing {
+    padding-left: 0;
+    margin:0 auto;
+    height:800px;
+  }
+
+  .right-choice-container {
+    gap: 1rem;
+  }
+
+  .right-choice-h1 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+
+  .testimonial-top {
+    width: 90%;
+    max-width: 100%;
+    margin-top: 100px;
+    font-size: 1.4rem;
+    line-height: 1.45rem;
+  }
+
+  .testimonial-bottom {
+    width: 90%;
+    max-width: 100%;
+    font-size: 1.3rem;
+    line-height: 1.34rem;
+    text-align: center;
+  }
+
+  .right-choice-p {
+    max-width: 100%;
+    font-size: 1.5rem;
+    line-height: 1.36rem;
+  }
+
+  .features {
+    flex-direction: column;
+    width: 90%;
+    max-width: 90svw;
+    flex-wrap: nowrap;
+    margin: 0 auto;
+  }
+
+  .feature-container {
+    width: 80%;
+    min-width: 0%;
+    max-width: 90svw;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .feature-title {
+    font-size: 1.4rem;
+  }
+
+  .landing-footer {
+  padding-left: 0;
+  }
+}
+
+/* Mostly for LINESVGMOBILE */
+@media (max-width: 500px) {
+  .hero-container {
+    height: 700px;
+  }
+
+  .landing-svg-container {
+    height: 3800px;max-height:3800px;
+  }
+
+  /* Inside svg-container */
+  .about-us-landing{
+    height:600px;
+  }
+
+  .card-container{
+    height:1400px;
+  }
+  
+  .journeys-div{
+    height:1800px;
+  }
+
+  /* Inside journeys-div */
+
+  .landing-portfolio{
+    height:1000px;
+  }
+
+  .testimonial-bottom{
+    height:200px;
+  }
+
+  .carousol-container{
+    height: 600px;
+  }
+
+  .landing-title {
+    font-size: 2.3rem;
+    padding-left: 1rem;
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .landing-expanding-video {
+    height: 350px;
+  }
+
+  .wrapperH {
+    max-height: 250px;
+  }
+
+  .slider {
+    max-height: 250px;
+  }
+
+  .slide-image {
+    max-height: 250px;
+    width: auto;
+  }
+ 
+ 
+}
+ 

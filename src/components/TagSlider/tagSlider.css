@@ -1,0 +1,42 @@
+/* tagSlider.css */
+
+.tag-slider-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+  background: transparent;
+}
+
+.tag-slider-wrapper { 
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 40%,
+    black 80%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+}
+
+.tag-slider {
+  display: flex;
+  position: relative;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.tag-container {
+  display: flex;
+  flex-shrink: 0; /* Prevent container from shrinking */
+  flex-wrap: nowrap;
+  gap: 2px; /* Space between tags */
+}
