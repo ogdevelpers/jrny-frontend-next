@@ -15,6 +15,11 @@
 
 }
 
+.jrny-span {
+  color: #ff5b00;
+  background-color: none !important;
+}
+
 /* Portfolio Container */
 .portfolio-item-header-container{
     min-width:90%;

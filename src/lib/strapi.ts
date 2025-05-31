@@ -12,5 +12,5 @@ export const fetchFromStrapi = async (path: string) => {
   }
 
   const json = await res.json();
-  return json.data;
+  return json;
 };

@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useState } from 'react';
 import Tags from '../Tags/Tags';
 
