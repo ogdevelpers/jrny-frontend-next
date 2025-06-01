@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
@@ -6,7 +8,7 @@ import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
-const PathWithSlab: React.FC = () => {
+const LineSvg: React.FC = () => {
   const svgRef = useRef<SVGSVGElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
   const movingGroupRef = useRef<SVGGElement>(null);
@@ -171,4 +173,4 @@ const PathWithSlab: React.FC = () => {
   );
 };
 
-export default PathWithSlab;
+export default LineSvg;
