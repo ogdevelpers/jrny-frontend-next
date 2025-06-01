@@ -8,22 +8,21 @@ export default function ContactUs() {
 
   const isMobile = useIsMobile();
 
-  if(isMobile){
+  if (isMobile) {
     return (
       <div className="contact-us-page-container-mobile">
         <div className="contact-us-page-box-mobile">
+          <div className="contact-form-mobile">
+            <ContactHeading />
+            <ContactForm />
+          </div>
+          <div className="social-container-mobile">
+            <SocialDivs />
+            {/* <SocialIcons />  */}
+          </div>
 
-                <div className="contact-form-mobile">
-                  <ContactHeading />
-                  <ContactForm />
-                </div>
-                <div className="social-container-mobile">
-                <SocialDivs />
-                {/* <SocialIcons />  */}
-                </div> 
-
-                  </div>
-              </div>
+        </div>
+      </div>
 
     )
   }

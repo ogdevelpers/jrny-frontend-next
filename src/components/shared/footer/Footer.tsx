@@ -1,3 +1,5 @@
+'use client'
+
 import Contact from "../../Contact/Contact";
 import ScrollTopButton from "../../ScrollToTop/ScrollToTopButton";
 import FooterLine from "./FooterLine";

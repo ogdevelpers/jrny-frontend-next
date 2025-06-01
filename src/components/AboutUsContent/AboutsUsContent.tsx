@@ -16,8 +16,7 @@ interface AboutUsContentProps {
     teamData: any;
 }
 
-export const AboutUsContent = ({ contentData, tagData, teamData }: AboutUsContentProps) => {
-    const [loading, setLoading] = useState(true);
+export const AboutUsContent = ({ contentData, tagData, teamData }: AboutUsContentProps) => { 
     const isMobile = useIsMobile(1000);
 
     const content = contentData ;
@@ -106,8 +105,8 @@ export const AboutUsContent = ({ contentData, tagData, teamData }: AboutUsConten
             <div className="about-main-container">
                 <div className="about-motto">
                     {
-                        AboutUsMottoArray.map(Motto =>
-                            <div className="about-motto-box">
+                        AboutUsMottoArray.map((Motto, index:number) =>
+                            <div className="about-motto-box" key={index}>
                                 <div className="motto-title">{Motto.title}</div>
                                 <div className="motto-description">{Motto.description}</div>
                             </div>

@@ -4,52 +4,50 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";  
 import Card from "./Card";
 
-
-
-const cards = [
-  {
-    profilePic: "/carousol_john.png",
-    profileName: "John Doe",
-    profileDesignation: "Director, ABC",
-    compliment:
-      "1 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    profilePic: "/carousol_john.png",
-    profileName: "Jane Smith",
-    profileDesignation: "Manager, XYZ",
-    compliment:
-      "2 enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    profilePic: "carousol_john.png",
-    profileName: "Mike Johnson",
-    profileDesignation: "CEO, LMN",
-    compliment:
-      "3 aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-  },
-  {
-    profilePic: "carousol_john.png",
-    profileName: "Emily Brown",
-    profileDesignation: "CTO, DEF",
-    compliment:
-      "4 sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
-  {
-    profilePic: "carousol_john.png",
-    profileName: "Emily Brown",
-    profileDesignation: "CTO, DEF",
-    compliment:
-      "5 sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
-  {
-    profilePic: "carousol_john.png",
-    profileName: "Emily Brown",
-    profileDesignation: "CTO, DEF",
-    compliment:
-      "6 sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
-];
+// const cards = [
+//   {
+//     profilePic: "/carousol_john.png",
+//     profileName: "John Doe",
+//     profileDesignation: "Director, ABC",
+//     compliment:
+//       "1 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//   },
+//   {
+//     profilePic: "/carousol_john.png",
+//     profileName: "Jane Smith",
+//     profileDesignation: "Manager, XYZ",
+//     compliment:
+//       "2 enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//   },
+//   {
+//     profilePic: "carousol_john.png",
+//     profileName: "Mike Johnson",
+//     profileDesignation: "CEO, LMN",
+//     compliment:
+//       "3 aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+//   },
+//   {
+//     profilePic: "carousol_john.png",
+//     profileName: "Emily Brown",
+//     profileDesignation: "CTO, DEF",
+//     compliment:
+//       "4 sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+//   },
+//   {
+//     profilePic: "carousol_john.png",
+//     profileName: "Emily Brown",
+//     profileDesignation: "CTO, DEF",
+//     compliment:
+//       "5 sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+//   },
+//   {
+//     profilePic: "carousol_john.png",
+//     profileName: "Emily Brown",
+//     profileDesignation: "CTO, DEF",
+//     compliment:
+//       "6 sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+//   },
+// ];
 
 export default function Carasoul({testimonial}: any) {
     const [active,setActive] = useState(false);
@@ -86,8 +84,6 @@ export default function Carasoul({testimonial}: any) {
     }
 
     useGSAP(()=>{
-
-      
  
 
       playMarkee();

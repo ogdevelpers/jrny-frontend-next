@@ -26,9 +26,9 @@ export default function LandingPageContent({
    testimonial 
 }: LandingPageContentProps) {
   
-  const isMobile = useIsMobile(1010); 
-  const brandLogosData = brandLogos || []; 
+  const isMobile = useIsMobile(1010);  
 
+  console.log('content', content);
   const aboutTitle = extractContentByKey(content, 'about-us'),
     usText = extractContentByKey(content, 'us'),
     provideText = extractContentByKey(content, 'provide'),

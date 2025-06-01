@@ -44,8 +44,7 @@ const LineSvg: React.FC = () => {
     
     // Dynamic scroll distance calculation
     const baseScrollDistance = svgRect.height + viewportHeight;
-    const pathTravelBuffer = maxDimension * 0.5;
-    const totalScrollDistance = baseScrollDistance + pathTravelBuffer;
+    const pathTravelBuffer = maxDimension * 0.5; 
 
     const tl = gsap.timeline({
       scrollTrigger: {

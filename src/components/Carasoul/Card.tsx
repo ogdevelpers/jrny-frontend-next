@@ -1,4 +1,4 @@
- 
+import './Card.css' 
 
 interface CardProps {
     profileName: string;
@@ -7,14 +7,12 @@ interface CardProps {
     active?: boolean; 
   }
 
-  
   const Card = ({
     profileName,
     profileDesignation,
     compliment, 
   }: CardProps) => { 
-   
- 
+
   
     return (
       <div className="profile-card-container">
