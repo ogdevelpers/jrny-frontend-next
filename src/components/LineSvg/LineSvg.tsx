@@ -14,6 +14,11 @@ const LineSvg: React.FC = () => {
   const movingGroupRef = useRef<SVGGElement>(null);
   const [rightEdge, setRightEdge] = React.useState(1080);
 
+  useEffect(()=>{
+    const innerWidth = window.innerWidth;
+    setRightEdge(innerWidth);
+  })
+
   useEffect(() => {
     const handleResize = () => {
       setRightEdge(window.innerWidth);
