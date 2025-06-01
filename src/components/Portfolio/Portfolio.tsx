@@ -68,7 +68,7 @@ const PortfolioTile = ({videoLink, thumbnail, tileTitle, id }: PortfolioTileProp
 
 export const PortfolioMiddleList = ({ portfolio }: any) => {
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
   const [visibleCount, setVisibleCount] = useState(6); // Show 6 tiles initially
  
 

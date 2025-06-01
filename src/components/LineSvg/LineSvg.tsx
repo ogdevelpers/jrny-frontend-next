@@ -17,7 +17,7 @@ const LineSvg: React.FC = () => {
   useEffect(()=>{
     const innerWidth = window.innerWidth;
     setRightEdge(innerWidth);
-  })
+  }, [])
 
   useEffect(() => {
     const handleResize = () => {
