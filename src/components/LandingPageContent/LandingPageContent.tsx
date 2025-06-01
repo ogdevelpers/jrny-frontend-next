@@ -11,6 +11,7 @@ import { extractContentByKey } from "@/utils/common.util";
 import { PortfolioMiddleList } from "../Portfolio/Portfolio";
 import LineSvg from "../LineSvg/LineSvg";
 import '../../css/landingPage.css';
+import Link from "next/link";
 
 interface LandingPageContentProps {
     content: any;
@@ -27,8 +28,7 @@ export default function LandingPageContent({
 }: LandingPageContentProps) {
   
   const isMobile = useIsMobile(1010);  
-
-  console.log('content', content);
+ 
   const aboutTitle = extractContentByKey(content, 'about-us'),
     usText = extractContentByKey(content, 'us'),
     provideText = extractContentByKey(content, 'provide'),
@@ -192,7 +192,7 @@ export default function LandingPageContent({
                 <PortfolioMiddleList portfolio={portfolio}/>
                 <div className="see-more-container">
 
-                <a href="/portfolio"><button className="see-more">See More</button></a>
+                <Link href="/portfolio"><button className="see-more">See More</button></Link>
                 </div>
               </div>
             </section>

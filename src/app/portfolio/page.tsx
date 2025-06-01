@@ -20,8 +20,7 @@ export default async function Portfolio() {
         contentData = contentRes.data;
         portfolioData = portfolioRes.data;
         brandLogoData = brandLogoRes.data;
-
-        console.log('contentData', contentData)
+ 
 
     } catch (error) {
         console.error('Error fetching data:', error);

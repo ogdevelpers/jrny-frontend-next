@@ -4,8 +4,7 @@ import ShareOn from "../ShareOn/ShareOn";
 import '../../css/portfolio-item.css';
 import "../../css/portfolio.css";
 
-export const PortfolioItemContent = ({portfolioDetailData}: any) =>{ 
-    console.log('portfolioDetailData', portfolioDetailData);
+export const PortfolioItemContent = ({portfolioDetailData}: any) =>{  
     return (
         <div className="project-box">
             <div className="project-header">

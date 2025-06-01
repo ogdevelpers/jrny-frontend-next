@@ -4,9 +4,9 @@ import { PortfolioItemContent } from "@/components/PortfolioItemContent/Portfoli
 import Footer from "@/components/shared/footer/Footer";
 import { fetchFromStrapi } from "@/lib/strapi";
 
-export default async function PortfolioDetailPage({ params }: { params: { slug: string } }) {
+export default async function PortfolioDetailPage({ params }: {params: Promise<{ slug: string }> }) {
 
-    const { slug } = params;
+    const { slug } = await params;
 
         let portfolioDetailData = null,
         portfolioData = null;
