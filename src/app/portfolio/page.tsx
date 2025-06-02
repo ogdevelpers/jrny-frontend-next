@@ -13,7 +13,7 @@ export default async function Portfolio() {
             brandLogoRes,
         ] = await Promise.all([
             fetchFromStrapi('contents'),
-            fetchFromStrapi('portfolios'),
+            fetchFromStrapi('portfolios?populate=categories'),
             fetchFromStrapi('brand-logos')
         ]);
 

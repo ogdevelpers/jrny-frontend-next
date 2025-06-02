@@ -1,5 +1,5 @@
 'use client'
-import Contact, { ContactForm, ContactHeading, SocialDivs, SocialIcons } from '../../components/Contact/Contact';
+import Contact, { ContactForm, ContactHeading, SocialDivs } from '../../components/Contact/Contact';
 import useIsMobile from '../../hooks/useIsMobile';
 import '../../css/contactus.css';
 import '../../components/Contact/contact.css'
@@ -17,8 +17,7 @@ export default function ContactUs() {
             <ContactForm />
           </div>
           <div className="social-container-mobile">
-            <SocialDivs />
-            {/* <SocialIcons />  */}
+            <SocialDivs /> 
           </div>
 
         </div>

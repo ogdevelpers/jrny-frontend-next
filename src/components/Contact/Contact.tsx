@@ -123,12 +123,16 @@ export const ContactForm = () => {
 
 {status && <p style={{color: 'red'}}>{status}</p>}
 
+      <div className="contact-button-container">
+
+  
       <Button classList="button-white-theme" onClick={handleSubmit}>
         <div className="send-mail-container">
           <span className="send-mail-text">Send Mail</span>
           <img src="/arrow-right.png" alt="arrow" />
         </div>
       </Button>
+          </div>
     </div>
   );
 };

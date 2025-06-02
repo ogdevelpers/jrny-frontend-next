@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
@@ -56,6 +58,11 @@ const LineSvgMobile: React.FC = () => {
     });
 
     ScrollTrigger.normalizeScroll(true);
+    ScrollTrigger.config({
+      limitCallbacks: true,
+      ignoreMobileResize: true,
+      autoRefreshEvents: "visibilitychange,DOMContentLoaded,load"
+    })
 
     tl.fromTo(moving, 
       { 
