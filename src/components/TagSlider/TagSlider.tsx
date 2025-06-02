@@ -26,7 +26,7 @@ const TagSlider = ({tag}: any) => {
     // Create the animation
     const animation = gsap.to(slider, {
       x: `-${containerWidth}px`, // Use exact pixel value
-      duration: 28,
+      duration: 40,
       ease: 'linear',
       repeat: -1, 
     });
@@ -39,16 +39,6 @@ const TagSlider = ({tag}: any) => {
     scope: wrapperRef,
     dependencies: [] // Only run once on mount
   });
-
-  // const tagsArray = [
-  //   "Virtual Networking",
-  //   "Digital Tracking and Registration",
-  //   "Live Streaming",
-  //   "Event Branding and Digital Identity", 
-  //   "Event Analytics",
-  //   "Post-event Content",
-  //   "Planning and Execution"
-  // ];
 
   return (
     <div className="tag-slider-wrapper" ref={wrapperRef}>

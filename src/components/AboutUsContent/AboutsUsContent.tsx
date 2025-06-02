@@ -11,30 +11,14 @@ import '../../css/about.css';
 
  
 interface AboutUsContentProps {
-    contentData: any;
-    tagData: any;
-    teamData: any;
+    content: any;
+    tag: any;
+    team: any;
 }
 
-export const AboutUsContent = ({ contentData, tagData, teamData }: AboutUsContentProps) => { 
+export const AboutUsContent = ({ content, tag, team }: AboutUsContentProps) => { 
     const isMobile = useIsMobile(1000);
-
-    const content = contentData ;
-    const tag = tagData?.map((tag: any) => ({
-        title: tag.tagTitle,
-        description: tag.tagDescription,
-        image: tag.tagImage
-    })) || [];
-    const team = teamData?.map((person: any) => ({
-        name: person.name,
-        jobTitle: person.jobTitle,
-        userImage: person.userImage,
-        personSocials: {
-            linkedIn: person.personSocials?.linkedIn || '',
-            instagram: person.personSocials?.instagram || '',
-            facebook: person.personSocials?.facebook || ''
-        }
-    })) || [];
+    
 
 
     const AboutUsMottoArray = [
