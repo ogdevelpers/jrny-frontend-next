@@ -9,7 +9,7 @@ import Link from "next/link";
 export const PortfolioContent = ({ content, brandLogos, portfolio }: any) => {
   const ourText = extractContentByKey(content, 'our-portfolio'),
     portfolioText = extractContentByKey(content, 'portfolio');
-  console.log({portfolio});
+    
   const portfolioTabSet = new Set<string>();
   portfolioTabSet.add("All Categories");
 
@@ -60,7 +60,7 @@ const PortfolioList = ({ portfolio, sidebarTabs }: { portfolio: any, sidebarTabs
 
   const portfolioFiltered = selectedTab === 0 ? portfolio: 
   portfolio.filter((item:any) => {
-    if (item?.categories) {
+    if (item?.categories) { 
       return item.categories.some((category: any) => category.name === sidebarTabs[selectedTab]);
     }
     return false;
@@ -74,16 +74,17 @@ const PortfolioList = ({ portfolio, sidebarTabs }: { portfolio: any, sidebarTabs
           <ul className='portfolio-list-sidebar'>
             {sidebarTabs.map((tab: string, index: number) =>
               <li
-                key={tab}
-                onClick={
-                  () => {
-                    setSelectedTab(index);
-                  }
-                }
+                key={index} 
                 className={`portfolio-list-sidebar-element ${selectedTab === index ? 'portfolio-sidebar-element-active' : ''
                   }`}
               >                    
-              <button className="sidebar-list-tab">
+              <button className="sidebar-list-tab"                 
+              onClick={
+                  () => {
+                    console.log("Selected Tab: ", tab);
+                    setSelectedTab(index);
+                  }
+                }>
                   {" "}
                   {tab}
                 </button> 
