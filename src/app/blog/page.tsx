@@ -3,8 +3,6 @@ import Footer from "@/components/shared/footer/Footer";
 import { fetchFromStrapi } from "@/lib/strapi";
 import "../../css/blog.css";
 
- 
-
 export default async function Blogs( ) {
     let blogsData= null;
   
