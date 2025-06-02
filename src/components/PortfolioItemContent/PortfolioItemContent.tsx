@@ -3,6 +3,7 @@
 import ShareOn from "../ShareOn/ShareOn";
 import '../../css/portfolio-item.css';
 import "../../css/portfolio.css";
+
 import { useState } from "react";
 
 const PortfolioItemImage = ({itemImageSrc}:{itemImageSrc:string})=>{
@@ -12,6 +13,39 @@ const PortfolioItemImage = ({itemImageSrc}:{itemImageSrc:string})=>{
         </div>
     )
 }
+
+const VideoPlayer = ({videoUrl}: {videoUrl: string}) => {
+    // Function to extract YouTube video ID from various YouTube URL formats
+    const getYouTubeVideoId = (url: string): string | null => {
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[2].length === 11) ? match[2] : null;
+    };
+
+    const videoId = getYouTubeVideoId(videoUrl);
+    
+    if (!videoId) {
+        return (
+            <div className="video-error">
+                <p>Invalid YouTube URL</p>
+            </div>
+        );
+    }
+
+    const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+
+    return (
+        <div className="video-wrapper">
+            <iframe
+                src={embedUrl}
+                title="Portfolio Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="video-iframe"
+            />
+        </div>
+    );
+};
 
 export const PortfolioItemContent = ({portfolioDetailData}: any) =>{  
     const [showMore, setShowMore] = useState(false);
@@ -41,12 +75,11 @@ export const PortfolioItemContent = ({portfolioDetailData}: any) =>{
                 </div>
             </div>
             
-            {  
+            {portfolioDetailData?.[0]?.portfolioVideo && (
                 <div className="project-video-container">
-                    {/* <video src=""></video> */}
-                    <img style={{width: "100%"}} src='/video.png' />
+                    <VideoPlayer videoUrl={portfolioDetailData[0].portfolioVideo} />
                 </div>
-            }
+            )}
 
             <div className="project-second-box">
                 <div className="project-second-header">
@@ -69,12 +102,12 @@ export const PortfolioItemContent = ({portfolioDetailData}: any) =>{
             </div>
 
             {hasMoreImages && (
-                <div className="show-more-container" style={{ textAlign: 'center', marginTop: '10px' }}>
+                <div className="show-more-container">
                     <button 
                         onClick={toggleShowMore}
-                        className="portfolio-item-show-more-button" 
+                        className="portfolio-item-show-more-button"
                     >
-                        {showMore ? 'Show Less' : `Show more`}
+                        {showMore ? 'Show Less' : `Show More (${portfolioImages.length - 6} more)`}
                     </button>
                 </div>
             )}
