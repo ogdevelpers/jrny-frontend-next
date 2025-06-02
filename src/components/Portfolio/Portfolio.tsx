@@ -110,8 +110,6 @@ const PortfolioTile = ({ videoLink, thumbnail, tileTitle, id }: PortfolioTilePro
   if (!thumbnail) {
   }
 
-  console.log('key', id);
-
   return (
     <div className="portfolio-tile-box moveUp">
       <div className="tile-thumbnail">

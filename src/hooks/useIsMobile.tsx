@@ -1,4 +1,6 @@
+'use client';
 import { useSyncExternalStore } from "react"
+
 
 type MediaQueryStore = {
   /** Latest match result (true / false) */

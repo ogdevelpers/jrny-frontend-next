@@ -25,7 +25,7 @@ const ScrollTopButton = () => {
   return (
     visible && (
     <div style={{padding: "0 0 4rem 0", cursor: 'pointer'}} onClick={scrollToTop}>
-    <Tags iconSrc='up-arrow.png'  />
+    <Tags iconSrc='arrow-up.png'  />
     </div>
     )
   );

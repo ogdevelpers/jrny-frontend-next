@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useState } from "react";
 
 export default function MinuteCount({ textString }: { textString: string }) {
@@ -5,8 +6,8 @@ export default function MinuteCount({ textString }: { textString: string }) {
   const [estimatedTime, setEstimatedTime] = useState<number>(0); // in minutes
 
   useEffect(() => {
-    const words = textString.trim().split(/\s+/).filter(word => word.length > 0);
-    const count = words.length;
+    const words = textString?.trim()?.split(/\s+/)?.filter(word => word.length > 0);
+    const count = words?.length;
     setWordCount(count);
 
     const time = Math.ceil(count / 200); // average reading speed: 200 wpm
