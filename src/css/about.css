@@ -147,6 +147,8 @@
 .about-people-tile-container {
   display: grid;
   gap: 3rem; 
+  max-width:1600px;
+  margin: 0 auto; /* Center the grid */
   padding-left:6rem;
   padding-right:10rem;
   /* Mobile-first: 2 columns by default */
@@ -163,8 +165,7 @@
 
 /* Tile styling */
 .person-tile {   
-  transition: transform 0.3s ease;
-  background: none;
+  transition: transform 0.3s ease; 
   aspect-ratio: 288/304;  
 }
 
@@ -175,6 +176,7 @@
   max-width: 100%; /* Prevent overflow */
   border-bottom-right-radius: 1rem;
   object-fit: cover;
+  background:white;
 }
 
 .person-info {
