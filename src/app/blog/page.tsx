@@ -3,11 +3,9 @@ import Footer from "@/components/shared/footer/Footer";
 import { fetchFromStrapi } from "@/lib/strapi";
 import "../../css/blog.css";
 
-interface BlogsProps {
-  route?: "base" | "derived";
-}
+ 
 
-export default async function Blogs({ route = "base" }: BlogsProps) {
+export default async function Blogs( ) {
     let blogsData= null;
   
     try {
@@ -39,7 +37,7 @@ const data = transformBlogs(blogsData);
   return (
     <>
       <div className="blog-container">
-        <BlogHero route={route} blogsData={data} />
+        <BlogHero   blogsData={data} />
         <Footer />
       </div>
     </>
