@@ -5,6 +5,7 @@ import '../../css/portfolio-item.css';
 import "../../css/portfolio.css";
 
 import { useState } from "react";
+import Tags from "../Tags/Tags";
 
 const PortfolioItemImage = ({itemImageSrc}:{itemImageSrc:string})=>{
     return (
@@ -73,6 +74,15 @@ export const PortfolioItemContent = ({portfolioDetailData}: any) =>{
                 <div className="project-description">
                     {portfolioDetailData?.[0]?.portfolioDescription?.[0]?.children?.[0]?.text}
                 </div>
+                <div className="portfolio-item-tag-container">
+                    {
+                    [0,1,2].map((item:number ) => {
+                        return (
+                            <Tags key={item} tagTitle='Visual Marketing'/>
+                        )
+                    })
+                    }
+                </div>
             </div>
             
             {portfolioDetailData?.[0]?.portfolioVideo && (
@@ -90,7 +100,7 @@ export const PortfolioItemContent = ({portfolioDetailData}: any) =>{
                 </div>
             </div>
 
-            <div className={'portofolio-item-images-container'}>
+            <div className={'portfolio-item-images-container'}>
                 {visibleImages.map((item, index) => {
                     return (
                         <PortfolioItemImage 

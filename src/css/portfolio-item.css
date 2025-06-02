@@ -1,42 +1,39 @@
+/* Fixed Portfolio Item CSS */
+
 .portfolio-item-container {
   width: 100%;
   min-height: 100vh;
-  max-width: 100svw; 
+  max-width: 100vw; /* Fixed: svw might not be supported in all browsers */
   gap: 8rem;
   background-image: url("/bg/portfolio.png");
-  background-position: top left; /* Positions image at the top-left */
-  background-repeat: no-repeat; /* Prevents tiling */
-  background-size: auto; /* Keeps original image size */
-
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: auto;
 }
 
-.project-header{ 
-    min-width:96%;
-
+.project-header { 
+  min-width: 96%;
 }
 
 .jrny-span {
   color: #ff5b00;
-  background-color: none !important;
+  background-color: transparent !important; /* Fixed: 'none' is not valid */
 }
 
 /* Portfolio Container */
-.portfolio-item-header-container{
-    min-width:90%;
-    display: flex;
-    justify-content: space-between;
+.portfolio-item-header-container {
+  min-width: 90%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .portfolio-item-hero-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 90svw;
-  min-width: 90svw;
+  max-width: 90vw; /* Fixed: svw might not be supported */
+  min-width: 90vw;
   padding-left: 6rem;
-  /* position: relative;
-  top: 190px;
-} */
 }
 
 .project-box {
@@ -50,28 +47,26 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: 30svw;
+  max-width: 30vw; /* Fixed: svw consistency */
 }
 
-.project-name{
-  font-family: Armstrong;
-font-weight: 400;
-font-size: 72px;
-line-height: 100%;
-letter-spacing: 0%;
-color: white;
-
+.project-name {
+  font-family: Armstrong, sans-serif; /* Added fallback */
+  font-weight: 400;
+  font-size: 72px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: white;
 }
 
 .project-name,
 .project-second-header {
   font-size: 48px;
-  font-family: "Armstrong";
+  font-family: "Armstrong", sans-serif; /* Added fallback */
   color: white;
-
 }
 
-.project-second-box{
+.project-second-box {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -80,62 +75,64 @@ color: white;
 .project-description,
 .project-second-description {
   text-align: left;
-  max-width: 32svw;
+  max-width: 32vw; /* Fixed: svw consistency */
   font-size: 14px;
+  color: white; /* Added color for better readability */
 }
 
 .project-second-description {
-  max-width: 43svw;
+  max-width: 43vw;
+}
+
+.portfolio-item-tag-container{
+  display:flex;
+  width:60%;
+  gap:0.2rem;
 }
 
 .portfolio-item-middle-list {
-    display:flex;
-    flex-direction: column;
-    gap: 3rem;
-    align-items: flex-start;
-}
-
-.portfolio-item-middle-list{
-  padding-left:6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: flex-start;
+  padding-left: 6rem;
 }
 
 .might-like {
-  font-family: "Armstrong";
+  font-family: "Armstrong", sans-serif; /* Added fallback */
   font-weight: 400;
   font-size: 48px;
   line-height: 100%;
-  letter-spacing: 0%;
-  color:white;
+  letter-spacing: 0;
+  color: white;
   display: inline-block; 
 }
 
-.item-date-company{
+.item-date-company {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.item-date{
-  font-family: Armstrong;
-font-weight: 400;
-font-size: 14px;
-line-height: 100%;
-letter-spacing: 0%;
-color: #808186;
+.item-date {
+  font-family: Armstrong, sans-serif; /* Added fallback */
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #808186;
 }
 
-.item-company{
-  font-family: Helvetica Neue;
-font-weight: 500;
-font-size: 32px;
-line-height: 40px;
-color: #808186
-/* letter-spacing: 0%;
-background-color: linear-gradient(92.49deg, #7C7C7C 0%, #FFFFFF 47.41%, #7C7C7C 94.82%); */
-;
+.item-company {
+  font-family: "Helvetica Neue", Arial, sans-serif; /* Added fallbacks */
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+  color: #808186;
 }
 
-.portofolio-item-images-container {
+/* Fixed: Consistent class naming */
+.portfolio-item-images-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
   gap: 2rem; 
@@ -143,20 +140,44 @@ background-color: linear-gradient(92.49deg, #7C7C7C 0%, #FFFFFF 47.41%, #7C7C7C 
   box-sizing: border-box;
 }
 
-.portoflio-item-image-box{
-  max-width:400px;
+/* Fixed: Consistent class naming and removed duplicate/conflicting styles */
+.portfolio-item-image-box {
+  max-width: 400px;
   position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-.portfolio-item-image-box::before{
+.portfolio-item-image-box:hover {
+  transform: scale(1.02);
+}
+
+/* Fixed: Consistent class naming and proper overlay styling */
+.portfolio-item-image-box::before {
   content: '+';
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
-  top:0;
-  left:0;
-  border:23px solid red;
-  font-size:30rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #007bff;
+  font-size: 2rem;
+  font-weight: bold;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-item-image-box:hover::before {
+  opacity: 1;
 }
 
 .portfolio-item-images {
@@ -164,10 +185,14 @@ background-color: linear-gradient(92.49deg, #7C7C7C 0%, #FFFFFF 47.41%, #7C7C7C 
   height: auto;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  transition: transform 0.3s ease;
+  /* display: block; */
+  transition: filter 0.3s ease, transform 0.3s ease; /* Combined transitions */
+  /* cursor: pointer; */
 }
 
-/* portfolio-item-custom.css */
+.portfolio-item-image-box:hover .portfolio-item-images {
+  filter: brightness(0.8);
+}
 
 /* Video Player Styles */
 .video-wrapper {
@@ -231,112 +256,81 @@ background-color: linear-gradient(92.49deg, #7C7C7C 0%, #FFFFFF 47.41%, #7C7C7C 
   box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
 }
 
-/* Fixed Portfolio Item Image Box Styles */
-.portoflio-item-image-box {
-  max-width: 400px;
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.portoflio-item-image-box:hover {
-  transform: scale(1.02);
-}
-
-/* Fixed the CSS selector and positioning for the overlay */
-.portoflio-item-image-box::before {
-  content: '+';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #007bff;
-  font-size: 2rem;
-  font-weight: bold;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.portoflio-item-image-box:hover::before {
-  opacity: 1;
-}
-
-.portfolio-item-images {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: filter 0.3s ease;
-}
-
-.portoflio-item-image-box:hover .portfolio-item-images {
-  filter: brightness(0.8);
-}
-
-.portfolio-item-images:hover {
-  transform: scale(1.02);
-  cursor: pointer;
-}
-
-.portfolio-item-show-more-button{ 
+/* Custom Show More Button Style */
+.portfolio-item-show-more-button { 
   background-color: transparent;
-  color:#808186;
-  font-family: 'Helvetica Neue'; 
-  font-size:0.9rem;
+  color: #808186;
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* Added fallbacks */
+  font-size: 0.9rem;
   font-weight: 500;
-  border:none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.portfolio-item-show-more-button:hover {
+  color: #ff5b00;
+}
+
+.portfolio-item-footer {
+  padding-left: 6rem;
+}
+
+/* Media Queries */
+@media (max-width: 1000px) {
+  .portfolio-item-hero-container {
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .portfolio-item-middle-list {
+    padding: 0;
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .portfolio-item-footer {
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .might-like {
+    display: inline-block;  
+  }
+
+  .project-description {
+    width: 90%;
+    max-width: 92vw; /* Fixed: svw consistency */
+  }
+
+  .project-second-description {
+    max-width: 92vw;
+    width: 92vw;
+  }
+
+  .project-header {
+    max-width: 90vw;
+  }
 }
 
 /* Optional: Tweak layout for very small screens */
 @media (max-width: 360px) {
-  .portofolio-item-images-container {
+  .portfolio-item-images-container {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-}
-
-
-.portfolio-item-footer{
-  padding-left:6rem;
-}
-
-@media(max-width:1000px){
-  .portfolio-item-hero-container{
-    padding:0;
-    margin:0 auto;
+  
+  .portfolio-item-hero-container {
+    padding-left: 1rem;
+    min-width: 95vw;
+    max-width: 95vw;
   }
-
-  .portfolio-item-middle-list{
-    padding:0;
-    margin:0 auto;
-    width:90%;
+  
+  .project-name {
+    font-size: 48px;
   }
-
-  .portfolio-item-footer{
-    padding:0;
-    margin:0 auto;
-  }
-
-  .might-like{
-    display:inline-block;  
-  }
-
-  .project-description{
-    width:90%;
-    max-width: 92svw;
-  }
-
-  .project-second-description{
-    max-width: 92svw;
-    width:92svw;
+  
+  .project-second-header {
+    font-size: 36px;
   }
 }
