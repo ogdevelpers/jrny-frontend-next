@@ -210,6 +210,13 @@
     text-align: center; 
 }
 
+.contact-button-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}
+
 .send-mail-container {
   display: flex;
   align-items: center;

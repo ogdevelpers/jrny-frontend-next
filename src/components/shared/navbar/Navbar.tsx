@@ -50,8 +50,9 @@ export const NavBar = () => {
             />
           </div>
         </div>
-      ) : (
+      ) : ( 
         <NavBarUl active={active} setActive={setActive} />
+ 
       )}
     </nav>
   );

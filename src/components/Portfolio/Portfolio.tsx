@@ -6,9 +6,22 @@ import { extractContentByKey } from "../../utils/common.util";
 import { useState } from "react";
 import Link from "next/link";
 
-export const PortfolioContent = ({content, brandLogos, portfolio}: any) => {
+export const PortfolioContent = ({ content, brandLogos, portfolio }: any) => {
   const ourText = extractContentByKey(content, 'our-portfolio'),
     portfolioText = extractContentByKey(content, 'portfolio');
+  console.log({portfolio});
+  const portfolioTabSet = new Set<string>();
+  portfolioTabSet.add("All Categories");
+
+  portfolio.forEach((item: any) => {
+    item?.categories?.forEach((category: any) => {
+      if (category?.name) {
+        portfolioTabSet.add(category.name);
+      }
+    });
+  });
+
+  const portfolioTabArray = Array.from(portfolioTabSet);
 
   return (
     <>
@@ -29,10 +42,59 @@ export const PortfolioContent = ({content, brandLogos, portfolio}: any) => {
             <PartnerSlider brandLogos={brandLogos} />
           </div>
         </div>
-        <PortfolioMiddleList portfolio={portfolio}/>
+
+        <PortfolioList portfolio={portfolio} sidebarTabs={portfolioTabArray}/>
+
+
       </div>
 
       <Footer />
+    </>
+  )
+}
+
+
+const PortfolioList = ({ portfolio, sidebarTabs }: { portfolio: any, sidebarTabs: string[] }) => { 
+  const [selectedTab, setSelectedTab] = useState(0);
+
+
+  const portfolioFiltered = selectedTab === 0 ? portfolio: 
+  portfolio.filter((item:any) => {
+    if (item?.categories) {
+      return item.categories.some((category: any) => category.name === sidebarTabs[selectedTab]);
+    }
+    return false;
+  });
+
+  return (
+    <>
+
+      <>
+        <div className="portfolio-list-sidebar-elements">
+          <ul className='portfolio-list-sidebar'>
+            {sidebarTabs.map((tab: string, index: number) =>
+              <li
+                key={tab}
+                onClick={
+                  () => {
+                    setSelectedTab(index);
+                  }
+                }
+                className={`portfolio-list-sidebar-element ${selectedTab === index ? 'portfolio-sidebar-element-active' : ''
+                  }`}
+              >                    
+              <button className="sidebar-list-tab">
+                  {" "}
+                  {tab}
+                </button> 
+              </li>
+            )
+            }
+          </ul>
+        </div>
+      </>
+      <PortfolioMiddleList portfolio={portfolioFiltered} />
+
     </>
   )
 }
@@ -44,7 +106,7 @@ interface PortfolioTileProps {
   id: string
 }
 
-const PortfolioTile = ({videoLink, thumbnail, tileTitle, id }: PortfolioTileProps) => {
+const PortfolioTile = ({ videoLink, thumbnail, tileTitle, id }: PortfolioTileProps) => {
   if (!thumbnail) {
   }
 
@@ -68,9 +130,9 @@ const PortfolioTile = ({videoLink, thumbnail, tileTitle, id }: PortfolioTileProp
 
 export const PortfolioMiddleList = ({ portfolio }: any) => {
 
- 
+
   const [visibleCount, setVisibleCount] = useState(6); // Show 6 tiles initially
- 
+
 
   return (
     <div className="portfolio-middle-list">

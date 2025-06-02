@@ -50,6 +50,81 @@ font-family: "Armstrong";
   max-width: 740px;
 }
 
+.portfolio-list-sidebar-elements{
+  max-width:100%;
+  width:100%; 
+  border:3px solid red;
+}
+
+.portfolio-list-sidebar{
+  display:flex; 
+  overflow-x: scroll; 
+
+}
+
+.portfolio-list-sidebar li{
+  list-style: none; 
+}
+
+More actions
+.sidebar-list-tab {
+    border: none;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    background: none;
+    padding: 1rem 0.5rem;
+    border-bottom-right-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease-out;
+}
+
+.portfolio-sidebar-element-active{
+    background: rgba(225, 225, 225, 0.15);
+}
+
+.sidebar-list-tab::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%; /* Initially hidden */
+    width: 100%;
+    height: 100%;
+    background: rgba(225, 225, 225, 0.1);
+    transition: left 0.3s ease-out;
+}
+
+.sidebar-list-tab:not(.portfolio-sidebar-element-active):hover::before {
+    left: 0; /* Moves in from left to right */
+}
+
+.sidebar-list-tab:hover {
+    padding-left: 1.1rem;
+    cursor: pointer;
+}
+
+/* Adding the "+" sign */
+.sidebar-list-tab::after {
+    content: "+"; 
+    position: absolute;
+    top: -3px;   /* Adjust position */
+    left: -1px; /* Adjust position */
+    color: white;
+    font-size: 0.6rem;
+    font-weight: bold;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-out;
+}
+
+.sidebar-list-tab:not(.portfolio-sidebar-element-active):hover::after {
+    opacity: 1; /* Show on hover */
+}
+
+.portfolio-list-sidebar-element{
+
+}
+
 .portfolio-middle-list {
   display: flex; 
   align-items: center;
