@@ -103,7 +103,7 @@ const blogs = transformBlogs(blogsData);
             {/* <img src="" alt="" /> */}
             
           </section>
-            <div dangerouslySetInnerHTML={{ __html: data?.[0]?.description }}>
+            <div className="rich-content" dangerouslySetInnerHTML={{ __html: data?.[0]?.description }}>
                 {/* {Blog.content} */}
             </div>
         </div>

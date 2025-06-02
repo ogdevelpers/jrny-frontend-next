@@ -62,6 +62,27 @@
 
 }
 
+.rich-content p{
+    font-family: 'Helvetica Neue';
+    font-weight: 700;
+    margin-top: 35px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    line-height: 32px;
+    letter-spacing: 0%;
+    color: #FFFFFF;
+}
+
+.rich-content strong{
+    font-family: 'Helvetica Neue';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+    letter-spacing: 0%;
+    color: #FFFFFF;
+    margin-top: 5px;
+}
+
 .blog-item-caption {
     font-family: 'Helvetica Neue';
     font-weight: 400;
