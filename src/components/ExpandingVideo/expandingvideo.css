@@ -2,8 +2,7 @@
   width: 100%; 
   max-width: 100%;
   max-height: min(80vh, 1200px); /* Fixed height to ensure video stays on screen */
-  height: 80vh;
-  border:2px solid #e5e7eb; /* Light gray border */
+  height: 80vh; 
   display: flex;
   justify-content: center;
   overflow: hidden;

@@ -151,8 +151,7 @@
   max-height: 38vh;
   width: 95%;
   justify-content: flex-end;
-  align-items: center;
-  border:2px solid red;
+  align-items: center; 
 }
 
 .landing-title {

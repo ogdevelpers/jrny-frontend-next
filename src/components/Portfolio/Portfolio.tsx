@@ -55,21 +55,21 @@ export const PortfolioContent = ({ content, brandLogos, portfolio }: any) => {
 
 
 const PortfolioList = ({ portfolio, sidebarTabs }: { portfolio: any, sidebarTabs: string[] }) => { 
-  const [selectedTab, setSelectedTab] = useState(0);
+  // const [selectedTab, setSelectedTab] = useState(0);
 
 
-  const portfolioFiltered = selectedTab === 0 ? portfolio: 
-  portfolio.filter((item:any) => {
-    if (item?.categories) { 
-      return item.categories.some((category: any) => category.name === sidebarTabs[selectedTab]);
-    }
-    return false;
-  });
+  // const portfolioFiltered = selectedTab === 0 ? portfolio: 
+  // portfolio.filter((item:any) => {
+  //   if (item?.categories) { 
+  //     return item.categories.some((category: any) => category.name === sidebarTabs[selectedTab]);
+  //   }
+  //   return false;
+  // });
 
   return (
     <>
 
-      <>
+      {/* <>
         <div className="portfolio-list-sidebar-elements">
           <ul className='portfolio-list-sidebar'>
             {sidebarTabs.map((tab: string, index: number) =>
@@ -93,8 +93,8 @@ const PortfolioList = ({ portfolio, sidebarTabs }: { portfolio: any, sidebarTabs
             }
           </ul>
         </div>
-      </>
-      <PortfolioMiddleList portfolio={portfolioFiltered} />
+      </> */}
+      <PortfolioMiddleList portfolio={portfolio} />
 
     </>
   )

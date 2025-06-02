@@ -63,8 +63,7 @@ export default function ExpandingVideo() {
         trigger: container,
         start: `top 300px`, // Start when container is 60% from top of viewport
         end: "top top", // End when container bottom is 40% from top of viewport
-        scrub: 1.2,
-        markers: true,
+        scrub: 1.2, 
       }
     });
 

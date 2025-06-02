@@ -84,7 +84,7 @@ export default function LandingPageContent({
           }
 
           < Button classList='landing-showreel-button button-white-theme'>
-            Watch ShowReel
+            Watch Showreel
           </Button>
 
         </div>
