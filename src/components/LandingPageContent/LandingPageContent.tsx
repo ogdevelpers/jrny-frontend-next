@@ -80,7 +80,7 @@ export default function LandingPageContent({
             {isMobile ? (
               <section className="svg-content-mobile"> 
               <div className="content-svg-mobile">
-                {/* <LineSvgMobile/> */}
+                <LineSvgMobile/>
               </div>
                </section>
             ) : (

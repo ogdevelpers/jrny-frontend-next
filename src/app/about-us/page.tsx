@@ -22,7 +22,7 @@ export default async function AboutUs() {
  
   return (
     <div className="about-us-container">
-      <AboutUsContent contentData={contentData} tagData={tagData} teamData={teamData} />
+      <AboutUsContent content={contentData} tag={tagData} team={teamData} />
     </div>
   )
 }

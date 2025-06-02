@@ -9,32 +9,16 @@ import { extractContentByKey } from '@/utils/common.util';
 import Link from 'next/link';
 import '../../css/about.css';
 
- 
+
 interface AboutUsContentProps {
-    contentData: any;
-    tagData: any;
-    teamData: any;
+    content: any;
+    tag: any;
+    team: any;
 }
 
-export const AboutUsContent = ({ contentData, tagData, teamData }: AboutUsContentProps) => { 
+export const AboutUsContent = ({ content, tag, team }: AboutUsContentProps) => {
     const isMobile = useIsMobile(1000);
 
-    const content = contentData ;
-    const tag = tagData?.map((tag: any) => ({
-        title: tag.tagTitle,
-        description: tag.tagDescription,
-        image: tag.tagImage
-    })) || [];
-    const team = teamData?.map((person: any) => ({
-        name: person.name,
-        jobTitle: person.jobTitle,
-        userImage: person.userImage,
-        personSocials: {
-            linkedIn: person.personSocials?.linkedIn || '',
-            instagram: person.personSocials?.instagram || '',
-            facebook: person.personSocials?.facebook || ''
-        }
-    })) || [];
 
 
     const AboutUsMottoArray = [
@@ -55,7 +39,7 @@ export const AboutUsContent = ({ contentData, tagData, teamData }: AboutUsConten
     const aboutText = extractContentByKey(content, 'about-us'),
         usText = extractContentByKey(content, 'us');
 
- 
+
 
     return (
         <>
@@ -105,7 +89,7 @@ export const AboutUsContent = ({ contentData, tagData, teamData }: AboutUsConten
             <div className="about-main-container">
                 <div className="about-motto">
                     {
-                        AboutUsMottoArray.map((Motto, index:number) =>
+                        AboutUsMottoArray.map((Motto, index: number) =>
                             <div className="about-motto-box" key={index}>
                                 <div className="motto-title">{Motto.title}</div>
                                 <div className="motto-description">{Motto.description}</div>
@@ -121,25 +105,8 @@ export const AboutUsContent = ({ contentData, tagData, teamData }: AboutUsConten
                 </div>
 
                 <div className="about-people-tile-container">
-                    {team?.map((person: any, index:number) => (
-                        <div key={index} className="person-tile">
-                            <img
-                                src={person.userImage}
-                                alt={person.name}
-                                className="person-image"
-                            />
-                            <div className="person-info">
-                                <div className="person-credentails">
-                                    <div className="person-name">{person.name}</div>
-                                    <div className="person-designation">{person.jobTitle}</div>
-                                </div>
-                                <div className="social-links-favicon">
-                                    <a href={person?.personSocials?.linkedIn}><img src="/favicon/linkedin.svg" alt="" /></a>
-                                    {/* <a href={person.personSocials.instagram}><img src="/favicon/instagram.svg" alt="" /></a>
-                <a href={person.personSocials.facebook}><img src="/favicon/facebook.svg" alt="" /></a> */}
-                                </div>
-                            </div>
-                        </div>
+                    {team?.map((person: any, index: number) => (
+                        <PersonTile key={index} person={person} />
                     ))}
                 </div>
             </div>
@@ -147,6 +114,32 @@ export const AboutUsContent = ({ contentData, tagData, teamData }: AboutUsConten
                 <Footer />
             </div>
 
+        </>
+    )
+}
+
+const PersonTile = ({ person }: { person: any }) => {
+
+    return (
+        <>
+            <div  className="person-tile">
+                <img
+                    src={person.userImage}
+                    alt={person.name}
+                    className="person-image"
+                />
+                <div className="person-info">
+                    <div className="person-credentails">
+                        <div className="person-name">{person.name}</div>
+                        <div className="person-designation">{person.jobTitle}</div>
+                    </div>
+                    <div className="social-links-favicon">
+                        <a href={person?.personSocials?.linkedIn}><img src="/favicon/linkedin.svg" alt="" /></a>
+                        {/* <a href={person.personSocials.instagram}><img src="/favicon/instagram.svg" alt="" /></a>
+                <a href={person.personSocials.facebook}><img src="/favicon/facebook.svg" alt="" /></a> */}
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

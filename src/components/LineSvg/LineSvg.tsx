@@ -55,8 +55,8 @@ const LineSvg: React.FC = () => {
       scrollTrigger: {
         trigger: svg,
         start: "top bottom",
-        end: "bottom 40%", 
-        scrub: true, 
+        end: "bottom center", 
+        scrub: 1, 
       }
     });
 

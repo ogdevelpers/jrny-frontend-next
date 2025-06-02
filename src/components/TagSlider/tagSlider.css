@@ -11,6 +11,13 @@
 .tag-slider-wrapper { 
   overflow: hidden;
   width: 100%;
+    -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -18,13 +25,7 @@
     black 80%,
     transparent
   );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 20%,
-    black 80%,
-    transparent
-  );
+
 }
 
 .tag-slider {

@@ -55,6 +55,8 @@ const LineSvgMobile: React.FC = () => {
       }
     });
 
+    ScrollTrigger.normalizeScroll(true);
+
     tl.fromTo(moving, 
       { 
         x: -100, 
