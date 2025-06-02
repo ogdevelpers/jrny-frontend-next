@@ -22,7 +22,7 @@ export default function ExpandingVideo() {
 
     // Set initial states for video only
     gsap.set(video, {
-      scale: 0.4,
+      scale: 0.5,
       transformOrigin: "center top",
     });
 

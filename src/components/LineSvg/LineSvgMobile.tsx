@@ -59,9 +59,7 @@ const LineSvgMobile: React.FC = () => {
 
     ScrollTrigger.normalizeScroll(true);
     ScrollTrigger.config({
-      limitCallbacks: true,
-      ignoreMobileResize: true,
-      autoRefreshEvents: "visibilitychange,DOMContentLoaded,load"
+      limitCallbacks: true,  
     })
 
     tl.fromTo(moving, 
