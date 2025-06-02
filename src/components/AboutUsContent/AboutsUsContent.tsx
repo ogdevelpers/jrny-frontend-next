@@ -119,54 +119,27 @@ export const AboutUsContent = ({ content, tag, team }: AboutUsContentProps) => {
 }
 
 const PersonTile = ({ person }: { person: any }) => {
+
     return (
-        <div className="person-tile">
-            <div className="person-image-container">
+        <>
+            <div  className="person-tile">
                 <img
                     src={person.userImage}
                     alt={person.name}
                     className="person-image"
                 />
-            </div>
-            <div className="person-info">
-                <div className="person-credentials">
-                    <div className="person-name">{person.name}</div>
-                    <div className="person-designation">{person.jobTitle}</div>
-                </div>
-                <div className="social-links-favicon">
-                    {person?.personSocials?.linkedIn && (
-                        <a 
-                            href={person.personSocials.linkedIn} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            aria-label={`${person.name}'s LinkedIn profile`}
-                        >
-                            <img src="/favicon/linkedin.svg" alt="LinkedIn" />
-                        </a>
-                    )}
-                    {/* Uncomment these if you want to add other social links */}
-                    {/* {person?.personSocials?.instagram && (
-                        <a 
-                            href={person.personSocials.instagram} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            aria-label={`${person.name}'s Instagram profile`}
-                        >
-                            <img src="/favicon/instagram.svg" alt="Instagram" />
-                        </a>
-                    )}
-                    {person?.personSocials?.facebook && (
-                        <a 
-                            href={person.personSocials.facebook} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            aria-label={`${person.name}'s Facebook profile`}
-                        >
-                            <img src="/favicon/facebook.svg" alt="Facebook" />
-                        </a>
-                    )} */}
+                <div className="person-info">
+                    <div className="person-credentails">
+                        <div className="person-name">{person.name}</div>
+                        <div className="person-designation">{person.jobTitle}</div>
+                    </div>
+                    <div className="social-links-favicon">
+                        <a href={person?.personSocials?.linkedIn}><img src="/favicon/linkedin.svg" alt="" /></a>
+                        {/* <a href={person.personSocials.instagram}><img src="/favicon/instagram.svg" alt="" /></a>
+                <a href={person.personSocials.facebook}><img src="/favicon/facebook.svg" alt="" /></a> */}
+                    </div>
                 </div>
             </div>
-        </div>
-    );
-};
+        </>
+    )
+}
