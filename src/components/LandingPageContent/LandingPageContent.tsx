@@ -10,7 +10,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 import { extractContentByKey } from "@/utils/common.util"; 
 import { PortfolioMiddleList } from "../Portfolio/Portfolio";
 import LineSvg from "../LineSvg/LineSvg";
-import '../../css/landingPage.css';
+import '../../css/landingpage.css';
 import Link from "next/link";
 
 interface LandingPageContentProps {
