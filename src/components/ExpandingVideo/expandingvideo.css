@@ -1,9 +1,9 @@
 .expanding-video-wrapper { 
   width: 100%; 
   max-width: 100%;
-  height: 120vh; /* Fixed height to ensure video stays on screen */
-
-  min-height: 900px; /* Minimum height for standard viewports */
+  max-height: min(80vh, 1200px); /* Fixed height to ensure video stays on screen */
+  height: 80vh;
+  border:2px solid #e5e7eb; /* Light gray border */
   display: flex;
   justify-content: center;
   overflow: hidden;

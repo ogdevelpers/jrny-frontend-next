@@ -14,22 +14,12 @@ const LineSvg: React.FC = () => {
   const movingGroupRef = useRef<SVGGElement>(null);
   const [rightEdge, setRightEdge] = React.useState(1080);
 
-  useEffect(()=>{
-    const innerWidth = window.innerWidth;
-    setRightEdge(innerWidth);
-  }, [])
-
-  useEffect(() => {
-    const handleResize = () => {
-      setRightEdge(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   useGSAP(() => {
     if (!pathRef.current || !movingGroupRef.current || !svgRef.current) return;
+    const width = window.innerWidth;
+ 
+ 
+    setRightEdge(width);
 
     const path = pathRef.current;
     const moving = movingGroupRef.current;
@@ -82,7 +72,9 @@ const LineSvg: React.FC = () => {
 
     // Handle window resize to recalculate distances
     const handleResize = () => {
+      setRightEdge(window.innerWidth);
       ScrollTrigger.refresh();
+      
     };
 
     window.addEventListener('resize', handleResize);
