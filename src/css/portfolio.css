@@ -14,10 +14,13 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width:90%;
   max-width: 90%;
-  min-width: 90%;
+  min-width: 0%;
 }
 
+
+/* class that handles the hero container */
 .portfolio-top-section {
   display: flex;
   justify-content: space-between;
@@ -27,23 +30,15 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  position: relative;
-  top: 75px;
+  position: relative; 
   height:100%;
-}
-
-.our-projects-heading span {
-font-weight: 400;
-font-size: 72px;
-line-height: 100%;
-letter-spacing: 0%;
-font-family: "Armstrong";
 }
 
 .our-projects-p {
   font-size: 14px;
   max-width: 25svw;
   text-align: left;
+  height:100%; 
 }
 
 .portfolio-partner-show {
@@ -51,23 +46,32 @@ font-family: "Armstrong";
   max-width: 740px;
 }
 
-.portfolio-list-sidebar-elements{
+.portfolio-list-container{
+  display:flex; 
+  width:100%;
+  max-width: 100%;
+  flex-direction: column;
+  gap:2rem;
+}
+
+.portfolio-list-sidebar-container{
   max-width:100%;
   width:100%;  
 }
 
 .portfolio-list-sidebar {
+  all:unset;
   display: flex;
   overflow-x: auto;
   width: 100%;
   max-width: 100%;
-  scrollbar-width: thin;                 /* Firefox */
-  scrollbar-color: white transparent;   /* Firefox: thumb white, track transparent */
+  scrollbar-width: thin;                
+  scrollbar-color: white transparent;
 }
 
 /* Chrome, Edge, Safari */
 .portfolio-list-sidebar::-webkit-scrollbar {
-  height: 8px; /* Set height of scrollbar */
+  height: 8px;  
 }
 
 .portfolio-list-sidebar::-webkit-scrollbar-track {
@@ -84,27 +88,22 @@ font-family: "Armstrong";
   list-style: none; 
 }
 
- 
-/* .sidebar-list-tab {
-    border: none;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    background: none;
-    padding: 1rem 0.5rem;
-    border-bottom-right-radius: 8px;
-    position: relative; 
-    transition: all 0.2s ease-out;
-} */
+.sidebar-list-tab{ 
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: white;   
+  border-bottom-right-radius: 8px; 
+  padding: 0.5rem 1rem; 
+  background: none;
+}
 
-.portfolio-sidebar-element-active{
+.sidebar-list-tab-active{
     background: rgba(225, 225, 225, 0.15);
-}
+} 
   
-.portfolio-list-sidebar-element{
-
-}
-
+      
 .portfolio-middle-list {
   display: flex; 
   align-items: center;
@@ -216,23 +215,39 @@ font-family: "Armstrong";
 
 .our-projects-span{
   font-family: Armstrong;
-font-weight: 400;
-font-size:72px;
-line-height: 100%;
-letter-spacing: 0%;
-color: white;
+  font-weight: 400;
+  font-size:4rem;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: white;
 }
 
 .jrny-span-text {
   font-family: Armstrong;
-font-weight: 400;
-font-size:72px;
-line-height: 100%;
-letter-spacing: 0%;
-color: #FF5B00;
+  font-weight: 400;
+  font-size:4rem;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #FF5B00;
 }
 
-@media(max-width: 1024px){
+@media(max-width: 1400px){
+  .our-projects-span{
+    font-size:2.2rem;
+  }
+
+  .jrny-span-text {
+  font-family: Armstrong;
+  font-weight: 400;
+  font-size:2.2rem;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #FF5B00;
+}
+}
+
+ 
+@media(max-width: 1200px){
 
   .portfolio-landing-container{
     max-width: 100%;
@@ -244,6 +259,10 @@ color: #FF5B00;
     width:100%;
     max-width: 100%;
     flex-direction: column;
+    justify-content: flex-start;
+    gap:2rem;
+    align-items: center;
+    margin-top:1rem;
   }
 
   .our-projects-heading{
@@ -264,6 +283,11 @@ color: #FF5B00;
 
   .portfolio-our-projects{
     width: 100%;
+    max-width: 100%;
+  }
+
+  .portfolio-partner-show {
+    height: 250px;
     max-width: 100%;
   }
 
