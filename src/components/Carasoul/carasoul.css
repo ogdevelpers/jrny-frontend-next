@@ -4,10 +4,12 @@
     gap:1rem;
     width:22svw;
     height:200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-card-container:hover{
-
+    transform: scale(1.03);
+    z-index: 2;
 }
 
 .carousel-component{
