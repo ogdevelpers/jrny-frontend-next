@@ -1,26 +1,28 @@
+import PortfolioList from '@/components/Portfolio/PortfolioList';
 import '../../../css/portfolio-item.css';
-import { PortfolioMiddleList } from "@/components/Portfolio/Portfolio";
 import { PortfolioItemContent } from "@/components/PortfolioItemContent/PortfolioItemContent";
 import Footer from "@/components/shared/footer/Footer";
-import { fetchFromStrapi } from "@/lib/strapi";
-
+import { fetchFromStrapi } from "@/lib/strapi"; 
+import getPortfolioSidebarTabs from '@/utils/portfolioSidebarTabs.util';
 export default async function PortfolioDetailPage({ params }: {params: Promise<{ slug: string }> }) {
 
     const { slug } = await params;
 
         let portfolioDetailData = null,
-        portfolioData = null;
+        portfolioData = null,
+        sidebarTabs: string[] = [];
     
         try {
             const [
                 portfolioRes,
                 portfolioDetailRes
             ] = await Promise.all([
-                fetchFromStrapi('portfolios'),
+                fetchFromStrapi('portfolios?populate=categories'),
                 fetchFromStrapi(`portfolios?filters[key][$eq]=${slug}`),
             ]);
             portfolioData = portfolioRes.data;
             portfolioDetailData = portfolioDetailRes.data;
+            sidebarTabs = getPortfolioSidebarTabs(portfolioData);
     
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -35,7 +37,7 @@ export default async function PortfolioDetailPage({ params }: {params: Promise<{
 
         <div className="portfolio-item-middle-list">
             <span className="might-like">Project <span className="jrny-span"> you might Like!  </span></span>
-        <PortfolioMiddleList portfolio={portfolioData}/>
+        <PortfolioList portfolio={portfolioData} sidebarTabs={sidebarTabs}/>
         </div>
         <div className="portfolio-item-footer">
       <Footer/>
