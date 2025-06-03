@@ -68,7 +68,7 @@ useGSAP(() => {
         trigger: '.expanding-video-container',
         start: 'top 45%',
         end: 'bottom bottom',
-        scrub: 1,
+        scrub: true,
       }
     });
 
