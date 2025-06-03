@@ -46,10 +46,10 @@ export default function LandingPageContent({
         <div className="hero-container">
           <div className="landing-text-container">
             <h1 className="landing-title">
-              
+
               <span className="landing-title-main">
                 Making Moments
-                </span> 
+              </span>
               <br />
               <span className="landing-page-matter-text">
                 {
@@ -83,9 +83,14 @@ export default function LandingPageContent({
 
           }
 
-          < Button classList='landing-showreel-button button-white-theme'>
-            Watch Showreel
-          </Button>
+          <div style={{ marginTop: "30px" }}>
+            <Button classList='landing-showreel-button button-white-theme'>
+              <div className="button-content-animated">
+                Watch Showreel
+                {/* <img src="/arrow-right.png" alt="arrow" /> */}
+              </div>
+            </Button>
+          </div>
 
         </div>
 
@@ -106,17 +111,27 @@ export default function LandingPageContent({
           )}
 
           <div className="about-us-landing">
-            <div className="about-us-section  ">
+            <div className="about-us-section">
+              {/* Left Title Block */}
               <div className="about-us-landing-text">
-                <h1 className="about-us-landing-title">
-                  {aboutTitle?.contentTitle} <span className="jrny-span">{usText?.contentTitle}</span>
-                </h1>
-                <p className="about-us-landing-paragraph">
-                  {aboutTitle?.text}
-                </p>
+                <span className="about-us-landing-title">
+                  Where <span className="jrny-span">Experiences</span> Speak Louder Than Words.
+                </span>
               </div>
-              <div className="showreel-container">
-                <ShowReel />
+
+              {/* Right Paragraph + Button Block */}
+              <div className="showreel-container" style={{ flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-end', gap: '1.5rem' }}>
+                <div className="about-us-landing-paragraph">
+                  As your creative partners, we dive deep into your brand story to craft experiences that truly resonate with your audience.
+                  From concept to execution, every touchpoint is curated to captivate the senses, ignite curiosity, and leave a memorable impact.
+                </div>
+
+                <Button classList="button-white-theme">
+                  <div className="button-content-animated">
+                    <Link href="/about-us">About Us</Link>
+                    <img src="/arrow-right.png" alt="arrow" />
+                  </div>
+                </Button>
               </div>
             </div>
           </div>
@@ -136,38 +151,42 @@ export default function LandingPageContent({
                 <div className="cards-section-grid-container">
 
                   <div className="profile-card ">
-                    <img src="/jrny_example_profile_card.jpg" alt="" />
+                    <img src="services.jpg" alt="" />
                     <div className="profile-caption">
-                      <div className="heading">John Doe</div>
+                      <div className="heading">Category 1</div>
                       <div className="description">
-                        Event Specialist & Designer
+                       Content Creation
+                        Experience Design
                       </div>
                     </div>
                   </div>
                   <div className="profile-card generic">
-                    <img src="jrny_example_profile_card.jpg" alt="" />
+                    <img src="services.jpg" alt="" />
                     <div className="profile-caption">
-                      <div className="heading">John Doe</div>
+                      <div className="heading">Category 2</div>
                       <div className="description">
-                        Event Specialist & Designer
+                        Content Creation
+                        Experience Design
                       </div>
                     </div>
                   </div>
                   <div className="profile-card generic">
-                    <img src="jrny_example_profile_card.jpg" alt="" />
+                    <img src="services.jpg" alt="" />
                     <div className="profile-caption">
-                      <div className="heading">John Doe</div>
+                      <div className="heading">Category 3</div>
                       <div className="description">
-                        Event Specialist & Designer
+                        Content Creation
+                        Experience Design
                       </div>
                     </div>
                   </div>
                   <div className="profile-card generic">
-                    <img src="jrny_example_profile_card.jpg" alt="" />
+                    <img src="services.jpg" alt="" />
                     <div className="profile-caption">
-                      <div className="heading">John Doe</div>
+                      <div className="heading">Category 4</div>
                       <div className="description">
-                        Event Specialist & Designer
+                       Content Creation
+                        Experience Design
                       </div>
                     </div>
                   </div>

@@ -217,14 +217,14 @@
     width: 100%;
 }
 
-.send-mail-container {
+.button-content-animated {
   display: flex;
   align-items: center;
   gap: 0.5rem; /* initial gap */
   transition: gap 0.4s cubic-bezier(0.25, 0.1, 0.25, 1); /* smooth easing */
 }
 
-.button-base:hover .send-mail-container {
+.button-base:hover .button-content-animated {
   gap: 2rem;
 }
 

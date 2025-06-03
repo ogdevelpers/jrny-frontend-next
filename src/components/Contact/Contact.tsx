@@ -127,7 +127,7 @@ export const ContactForm = () => {
 
   
       <Button classList="button-white-theme" onClick={handleSubmit}>
-        <div className="send-mail-container">
+        <div className="button-content-animated">
           <span className="send-mail-text">Send Mail</span>
           <img src="/arrow-right.png" alt="arrow" />
         </div>

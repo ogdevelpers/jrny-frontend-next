@@ -57,8 +57,11 @@ export const AboutUsContent = ({ content, tag, team }: AboutUsContentProps) => {
                         !isMobile && (
 
                             <div className="about-landing-buttons">
-                                <Button classList={""}>
-                                    <Link href='/contact-us'>Contact Us</Link>
+                                <Button classList="button-white-theme">
+                                    <div className="button-content-animated">
+                                        <Link href='/contact-us'>Contact Us</Link>
+                                        <img src="/arrow-right.png" alt="arrow" />
+                                    </div>
                                 </Button>
                             </div>
                         )
@@ -122,7 +125,7 @@ const PersonTile = ({ person }: { person: any }) => {
 
     return (
         <>
-            <div  className="person-tile">
+            <div className="person-tile">
                 <img
                     src={person.userImage}
                     alt={person.name}

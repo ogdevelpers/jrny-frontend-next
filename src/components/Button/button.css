@@ -54,8 +54,8 @@
 
 .plusButton {
   position: absolute;
-  top: px;
-  left: 0;
+  top: -0.5px;
+  left: -0.5px;
   transform: translateX(-40%) translateY(-50%);
   color: var(--button-fg-color);
   font-size: 20px;
