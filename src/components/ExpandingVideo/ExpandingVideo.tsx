@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import './expandingvideo.css';
+import './expandingvideo.css'; 
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,80 +12,98 @@ export default function ExpandingVideo() {
   const leftCardsRef = useRef(null);
   const rightCardsRef = useRef(null);
 
-  useGSAP(() => {
+useGSAP(() => {
     const video = videoRef.current;
     const leftCards = gsap.utils.toArray('.left-card');
     const rightCards = gsap.utils.toArray('.right-card');
     const container = containerRef.current;
 
-    if (!video || !leftCards.length || !rightCards.length || !container ) return;
+    if (!video || !leftCards.length || !rightCards.length || !container) return;
 
-    // Set initial states for video only
-    gsap.set(video, {
-      scale: 0.5,
-      transformOrigin: "center top",
+    // Initial page load animation
+    const entranceTl = gsap.timeline();
+    
+    // Set initial positions (off-screen)
+    gsap.set('.expanding-video', {
+      y: window.innerHeight, // Start from bottom of screen
+      opacity: 0
+    });
+    
+    gsap.set(leftCards, {
+      x: -200, // Start further left (relative to their CSS transform)
+      opacity: 0
+    });
+    
+    gsap.set(rightCards, {
+      x: 200, // Start further right (relative to their CSS transform)  
+      opacity: 0
     });
 
-    // Page load animations for cards (opacity 0 to 1)
-    gsap.set(leftCards, { 
-      x: -50,
-      opacity: 0,
-    });
+    // Entrance animations
+    entranceTl
+      .to('.expanding-video', {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: 'power3.out'
+      })
+      .to(leftCards, {
+        x: 0, // Move to their CSS-defined position
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power2.out'
+      }, '-=0.6') // Start before video finishes
+      .to(rightCards, {
+        x: 0, // Move to their CSS-defined position
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power2.out'
+      }, '-=0.8'); // Start at same time as left cards
 
-    gsap.set(rightCards, { 
-      y: -50,
-      opacity: 0,
-    });
-
-    // Animate cards on page load
-    gsap.to(leftCards, {
-      x: 0,
-      opacity: 1,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: "power2.out",
-      delay: 0.3
-    });
-
-    gsap.to(rightCards, {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: "power2.out",
-      delay: 0.5
-    });
- 
-
-    // Create timeline for scroll-triggered animations
+    // Scroll-based expansion animation
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: container,
-        start: `top 300px`, // Start when container is 60% from top of viewport
-        end: "top top", // End when container bottom is 40% from top of viewport
-        scrub: 1.2, 
+        trigger: '.expanding-video-container',
+        start: 'top 45%',
+        end: 'bottom bottom',
+        scrub: 1,
       }
     });
 
-    // Calculate the amount video will expand (from scale 0.4 to 1 = 60% increase)
-    // Move cards down proportionally to maintain visual alignment
-    const videoExpansionOffset = 120; // Approximate pixel offset based on video growth
+    // Video expansion animation with fromTo to prevent shrinking
+    tl.fromTo('.expanding-video', 
+      {
+        width: 'min(50vw, 700px)', // Explicit start value
+        boxShadow: '0px 4px 24px 0px #FF5B0066'
+      },
+      {
+        width: 'min(90vw, 1200px)',
+        boxShadow: '0px 8px 48px 0px #FF5B0099',
+      }
+    );
 
-    // Animate video expansion
-    tl.to(video, {
-      scale: 1,
-      ease: "power2.out"
-    })
-    // Move left cards down as video expands
-    .to(leftCards, {
-      y: videoExpansionOffset,
-      ease: "power2.out"
-    }, 0) // Start at same time as video
-    // Move right cards down as video expands
-    .to(rightCards, {
-      y: videoExpansionOffset,
-      ease: "power2.out"
-    }, 0); // Start at same time as video
+    // Fixed card movements - animate containers only (not individual cards)
+    tl.fromTo('.left-cards', 
+      {
+        y: 0,
+        x: 0 // Start from CSS position
+      },
+      {
+        y: '20vh',
+        xPercent: -100, // Move further left (negative value moves left from CSS transform)
+      }, 0
+    );
+
+    tl.fromTo('.right-cards',
+      {
+        y: 0, 
+        x: 0 // Start from CSS position
+      },
+      {
+        y: '20vh',
+        xPercent: 100, // Move further right (positive value moves right from CSS transform)
+      }, 0
+    );
 
     return () => {
       ScrollTrigger.getAll().forEach(st => st.kill());
@@ -137,7 +155,10 @@ export default function ExpandingVideo() {
             </div>
           ))}
         </div>
-      </div>
+
+
+      </div> 
+
     </div>
   );
 }
