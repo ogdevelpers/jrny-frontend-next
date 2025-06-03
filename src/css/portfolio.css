@@ -63,7 +63,7 @@
   all:unset;
   display: flex;
   overflow-x: auto;
-  width: 100%;
+  width: fit-content;
   max-width: 100%;
   scrollbar-width: thin;                
   scrollbar-color: white transparent;
@@ -290,6 +290,10 @@
     height: 250px;
     max-width: 100%;
   }
+ 
+  .portfolio-list-sidebar{
+    margin-left:5rem;
+  }
 
   .portfolio-tile-container {
     grid-template-columns: 1fr 1fr;
@@ -311,5 +315,15 @@
 
   .portfolio-container {
     padding-left: 0; /* Remove left padding on mobile */
+  }
+}
+
+@media(max-width: 800px){
+  .portfolio-partner-show{
+    height:fit-content;
+  }
+
+  .portfolio-list-sidebar{
+    margin: 0 auto;
   }
 }
