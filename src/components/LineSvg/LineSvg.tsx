@@ -143,7 +143,7 @@ const LineSvg: React.FC = () => {
         {/* The path that the element follows */}
         <path
           ref={pathRef}
-          d={`M${rightEdge},40 L${rightEdge},340 L2,420 L2,1800 L${rightEdge},1900 L${rightEdge},3450 L2,3540 L2,3890`}
+          d={`M${rightEdge},40 L${rightEdge},340 L2,420 L2,1800 L${rightEdge},1900 L${rightEdge},3450 L2,3540 L2,3730`}
           fill="none"
           stroke="#FF5B00"
           strokeWidth="4"

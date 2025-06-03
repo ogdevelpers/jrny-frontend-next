@@ -12,7 +12,7 @@ import { PortfolioMiddleList } from "../Portfolio/Portfolio";
 import LineSvg from "../LineSvg/LineSvg";
 import '../../css/landingpage.css';
 import Link from "next/link";
-import Button from "../Button/Button";
+import Button from "../Button/Button"; 
 
 interface LandingPageContentProps {
   content: any;
@@ -28,6 +28,8 @@ export default function LandingPageContent({
   testimonial
 }: LandingPageContentProps) {
 
+  const portfolioTrimmed = Array.isArray(portfolio) ? portfolio.slice(0, 6) : [];
+
   const isMobile = useIsMobile(1010);
 
   const aboutTitle = extractContentByKey(content, 'about-us'),
@@ -37,8 +39,7 @@ export default function LandingPageContent({
     serviceText = extractContentByKey(content, 'services-we-provide'),
     ourText = extractContentByKey(content, 'our-portfolio'),
     portfolioText = extractContentByKey(content, 'portfolio');
-
-
+ 
 
   return (
     <>
@@ -222,7 +223,7 @@ export default function LandingPageContent({
               </div>
 
               <div className="portfolio-tiles-landing">
-                <PortfolioMiddleList portfolio={portfolio} />
+                <PortfolioMiddleList portfolio={portfolioTrimmed} />
                 <div className="see-more-container">
 
                   <Link href="/portfolio"><button className="see-more">See More</button></Link>

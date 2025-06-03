@@ -6,23 +6,13 @@ import { extractContentByKey } from "../../utils/common.util";
 import { useState } from "react";
 import Link from "next/link";
 import PortfolioList from "./PortfolioList";
+import getPortfolioSidebarTabs from "@/utils/portfolioSidebarTabs.util";
 
 export const PortfolioContent = ({ content, brandLogos, portfolio }: any) => {
   const ourText = extractContentByKey(content, 'our-portfolio'),
     portfolioText = extractContentByKey(content, 'portfolio');
     
-  const portfolioTabSet = new Set<string>();
-  portfolioTabSet.add("All Categories");
-
-  portfolio.forEach((item: any) => {
-    item?.categories?.forEach((category: any) => {
-      if (category?.name) {
-        portfolioTabSet.add(category.name);
-      }
-    });
-  });
-
-  const portfolioTabArray = Array.from(portfolioTabSet);
+  const portfolioTabArray = getPortfolioSidebarTabs(portfolio);
 
   return (
     <>

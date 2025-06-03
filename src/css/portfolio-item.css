@@ -96,6 +96,8 @@
   gap: 3rem;
   align-items: flex-start;
   padding-left: 6rem;
+  width:90svw;
+  max-width:90svw;
 }
 
 .might-like {
@@ -133,53 +135,29 @@
 
 .portfolio-item-images-container {
   display: grid;
-  gap: 15px;
-  max-width: 1600px;
-  box-sizing: border-box;
-  margin: 0 auto; /* Center the container */
-  padding: 0 1rem; /* Prevent edge touching */
-  
+  gap: 15px; 
+  width:100%;
+  box-sizing: border-box; 
+  max-width:1800px;
   /* Responsive grid using explicit breakpoints */
-  grid-template-columns: repeat(1, 1fr); /* Mobile: 1 column */
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .portfolio-item-image-box {
   width: 100%;
-  max-width: 400px;
-  min-width: 300px;
+  max-width: 100%;
+  min-width: 0%;
   position: relative;
-  border-radius: 8px;
-  overflow: hidden;
+  border-radius: 8px; 
   display:flex;
   align-items: center;
   justify-content: center;
   padding:0.3rem 0.2rem;
   transition: transform 0.3s ease;
   justify-self: center; /* Center items within grid cells */
-  background-color: rgba(255,255,255,0.3);
+  background-color: rgba(255,255,255,0.17);
 }
-
-/* Tablet: 2 columns */
-@media (min-width: 768px) {
-  .portfolio-item-images-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Desktop: 3 columns */
-@media (min-width: 1200px) {
-  .portfolio-item-images-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Large desktop: 4 columns (if container width allows) */
-@media (min-width: 1600px) {
-  .portfolio-item-images-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
+ 
 .portfolio-item-image-box:hover {
   transform: scale(1.02);
 }
@@ -188,23 +166,16 @@
 .portfolio-item-image-box::before {
   content: '+';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.9);
+  top: 0%;
+  left: 0%; 
+  transform: translate(-50%, -50%); 
   color: #007bff;
-  font-size: 2rem;
-  font-weight: bold;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  font-size: 1rem;
+  color:white;
+  font-weight: bold; 
+  border-radius: 50%; 
   pointer-events: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index:100; 
 }
 
 .portfolio-item-image-box:hover::before {
@@ -212,7 +183,7 @@
 }
 
 .portfolio-item-images {
-  width: 90%;
+  width: 94%;
   height: auto;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -316,6 +287,7 @@
 
   .portfolio-item-images-container{
     max-width:100%;
+    grid-template-columns: repeat(2, 1fr); /* Tablet: 2 columns */
   }
 
   .portfolio-item-middle-list {
@@ -349,11 +321,7 @@
 }
 
 /* Optional: Tweak layout for very small screens */
-@media (max-width: 360px) {
-  .portfolio-item-images-container {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
+@media (max-width: 360px) { 
   
   .portfolio-item-hero-container {
     padding-left: 1rem;
