@@ -9,7 +9,7 @@ import Tags from "../Tags/Tags";
 
 const PortfolioItemImage = ({itemImageSrc}:{itemImageSrc:string})=>{
     return (
-        <div className="portoflio-item-image-box">
+        <div className="portfolio-item-image-box">
             <img src={`${itemImageSrc ? itemImageSrc : "/cards.png"}`} className='portfolio-item-images'/>
         </div>
     )
