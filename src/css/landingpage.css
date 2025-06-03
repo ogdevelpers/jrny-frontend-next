@@ -582,9 +582,16 @@ letter-spacing: 0%;
   width: 100%;
   padding-right:6rem;
   max-width: 100%;
-  height: 700px;
-  max-height: 700px;
+  height: 800px;
+  max-height: 800px;
   padding-left: 6rem;
+}
+
+@media(min-width:1800px){
+  .portfolio-tiles-landing {
+    max-width:1800px;
+    margin:0 auto;
+  }
 }
 
 .landing-portfolio-title-box {
