@@ -51,9 +51,7 @@ const LineSvgMobile: React.FC = () => {
       scrollTrigger: {
         trigger: svg,
         start: "top bottom",
-        end: "bottom 40%", 
-        scrub: true,
-        markers: true, // Remove in production
+        end: "bottom 40%",   
       }
     });
 

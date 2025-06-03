@@ -138,7 +138,7 @@
   gap: 15px; 
   width:100%;
   box-sizing: border-box; 
-  
+  max-width:1800px;
   /* Responsive grid using explicit breakpoints */
   grid-template-columns: repeat(3, 1fr);
 }
@@ -183,7 +183,7 @@
 }
 
 .portfolio-item-images {
-  width: 90%;
+  width: 94%;
   height: auto;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
