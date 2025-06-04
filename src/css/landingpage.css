@@ -225,6 +225,7 @@ text-shadow:
   max-width: 100%;
   max-width: none;
   z-index:100;
+  pointer-events:none;
  }
 
 .line-outlier-mobile {
