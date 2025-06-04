@@ -1,118 +1,151 @@
 import { useGSAP } from "@gsap/react";
 import "./carasoul.css";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState, useMemo } from "react";
 import gsap from "gsap";
 import Card from "./Card";
 
+interface TestimonialItem {
+  name: string;
+  jobTitle: string;
+  message: string;
+}
 
-export default function Carasoul({ testimonial }: any) {
+interface CarouselProps {
+  testimonial: TestimonialItem[];
+}
+
+export default function Carousel({ testimonial }: CarouselProps) {
   const [active, setActive] = useState(false);
   const carSliderRef = useRef<HTMLDivElement>(null);
   const carTagRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<gsap.core.Tween | null>(null);
+  const resizeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleResize = () => {
-    if (animationRef.current) {
-      // Kill existing animation
-      animationRef.current.kill();
+  // Memoize testimonial cards to prevent unnecessary re-renders
+  const testimonialCards = useMemo(() => 
+    testimonial?.map((card, index) => (
+      <Card 
+        key={`${card.name}-${index}`} 
+        profileName={card.name} 
+        profileDesignation={card.jobTitle}
+        compliment={card.message} 
+        active={active} 
+      />
+    )) || [], 
+    [testimonial, active]
+  );
 
-      playMarkee();
-    }
-  };
-
-  const playMarkee = () => {
+  const playMarquee = useCallback(() => {
     const carSlider = carSliderRef.current;
     const carTag = carTagRef.current;
 
-    if (!carSlider || !carTag) {
-      return;
+    if (!carSlider || !carTag) return;
+
+    // Kill existing animation before creating new one
+    if (animationRef.current) {
+      animationRef.current.kill();
     }
 
     const totalWidth = carTag.getBoundingClientRect().width;
 
-    // Create the animation
+    // Use transform3d for hardware acceleration and better performance
     animationRef.current = gsap.to(carSlider, {
-      x: `-${totalWidth}px`, // Use exact pixel value
+      x: `-${totalWidth}px`,
       duration: 30,
-      ease: 'linear',
+      ease: 'none', // 'none' is more performant than 'linear' for continuous animations
       repeat: -1,
+      force3D: true, // Force hardware acceleration
+      // Use will-change CSS property for better performance
+      onStart: () => {
+        if (carSlider) {
+          carSlider.style.willChange = 'transform';
+        }
+      },
+      onComplete: () => {
+        if (carSlider) {
+          carSlider.style.willChange = 'auto';
+        }
+      }
     });
-  }
+  }, []);
+
+  // Debounced resize handler for better performance
+  const handleResize = useCallback(() => {
+    if (resizeTimeoutRef.current) {
+      clearTimeout(resizeTimeoutRef.current);
+    }
+    
+    resizeTimeoutRef.current = setTimeout(() => {
+      playMarquee();
+    }, 150); // 150ms debounce
+  }, [playMarquee]);
+
+  // Optimized mouse event handlers
+  const handleMouseEnter = useCallback(() => {
+    if (animationRef.current) {
+      animationRef.current.pause();
+    }
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    if (animationRef.current) {
+      animationRef.current.play();
+    }
+  }, []);
 
   useGSAP(() => {
     const carSlider = carSliderRef.current;
-    if (!carSlider) return;
+    if (!carSlider || !testimonial?.length) return;
 
-    playMarkee();
-    window.addEventListener('resize', handleResize);
+    // Initial animation setup
+    playMarquee();
 
+    // Add event listeners
+    window.addEventListener('resize', handleResize, { passive: true });
+    carSlider.addEventListener('mouseenter', handleMouseEnter, { passive: true });
+    carSlider.addEventListener('mouseleave', handleMouseLeave, { passive: true });
 
-    carSlider.addEventListener('mouseenter', handleMouseEnter);
-    carSlider.addEventListener('mouseleave', handleMouseLeave);
-
-
-    // Return cleanup function
+    // Cleanup function
     return () => {
+      // Clear resize timeout
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current);
+      }
+
+      // Kill animation
       if (animationRef.current) {
         animationRef.current.kill();
       }
 
-      carSlider.removeEventListener('mouseenter', handleMouseEnter);
-      carSlider.removeEventListener('mouseLeave', handleMouseEnter);
-
+      // Remove event listeners
       window.removeEventListener('resize', handleResize);
+      if (carSlider) {
+        carSlider.removeEventListener('mouseenter', handleMouseEnter);
+        carSlider.removeEventListener('mouseleave', handleMouseLeave);
+        // Reset will-change property
+        carSlider.style.willChange = 'auto';
+      }
     };
+  },{scope: carSliderRef, dependencies:[testimonial, handleResize, handleMouseEnter, handleMouseLeave, playMarquee]});
 
-  }, []);
-
-
-
-
-  // Pause/resume animation on hover
-  const handleMouseEnter = () => {
-    if (animationRef.current) {
-      animationRef.current.pause();
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (animationRef.current) {
-      animationRef.current.play();
-    }
-  };
-
-
+  // Early return if no testimonials
+  if (!testimonial?.length) {
+    return null;
+  }
 
   return (
     <div className='carousel-component'>
-      <div className="carousel-slider" ref={carSliderRef} id="yourID">
+      <div className="carousel-slider" ref={carSliderRef}>
         <div className="carousel-container" ref={carTagRef}>
-          {
-            testimonial?.map((card: any, index: number) => (
-              <Card key={index} profileName={card.name} profileDesignation={card.jobTitle}
-                compliment={card.message} active={active} />
-
-            ))
-          }
+          {testimonialCards}
         </div>
-        <div className="carousel-container" >
-          {
-            testimonial?.map((card: any, index: number) => (
-              <Card key={index} profileName={card.name} profileDesignation={card.jobTitle}
-                compliment={card.message} active={active} />
-            ))
-          }
+        <div className="carousel-container">
+          {testimonialCards}
         </div>
-        <div className="carousel-container" >
-          {
-            testimonial?.map((card: any, index: number) => (
-              <Card key={index} profileName={card.name} profileDesignation={card.jobTitle}
-                compliment={card.message} active={active} />
-            ))
-          }
+        <div className="carousel-container">
+          {testimonialCards}
         </div>
       </div>
     </div>
   );
 }
-
