@@ -17,9 +17,7 @@ interface AboutUsContentProps {
 }
 
 export const AboutUsContent = ({ content, tag, team }: AboutUsContentProps) => {
-    const isMobile = useIsMobile(1000);
-
-
+    const isMobile = useIsMobile(1000); 
 
     const AboutUsMottoArray = [
         {
@@ -78,7 +76,7 @@ export const AboutUsContent = ({ content, tag, team }: AboutUsContentProps) => {
 
             {isMobile && (
                 <div className="about-landing-buttons-mobile">
-                    <Button classList={""}>
+                    <Button classList={"button-white-theme"}>
                         <Link href='/contact-us'>Contact Us</Link>
                     </Button>
                     <Button classList={"about-portfolio-btn-mobile"}>
@@ -126,11 +124,14 @@ const PersonTile = ({ person }: { person: any }) => {
     return (
         <>
             <div className="person-tile">
+                <div className="person-image-div">
+
                 <img
                     src={person.userImage}
                     alt={person.name}
                     className="person-image"
-                />
+                    />
+                </div>
                 <div className="person-info">
                     <div className="person-credentails">
                         <div className="person-name">{person.name}</div>

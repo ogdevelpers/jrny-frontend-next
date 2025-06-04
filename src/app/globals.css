@@ -30,6 +30,10 @@ body {
   color:white;
 }
 
+img {
+  display:inline-block;
+}
+
 *{
   box-sizing: border-box;
 }

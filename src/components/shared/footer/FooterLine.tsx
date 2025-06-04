@@ -1,3 +1,4 @@
+import './footer.css'
 
 export default function FooterLine() {
   return (

@@ -5,3 +5,18 @@
     gap:1rem; 
     align-items: center;
 }
+
+.footer-line {
+  /* max-width: 100%; */
+  max-width: 70%;
+  width: 100%;
+}
+
+.landing-line {
+  margin-bottom: 50px;
+}
+
+.footer-line img {
+  width: 100%;
+  object-fit: cover;
+}
