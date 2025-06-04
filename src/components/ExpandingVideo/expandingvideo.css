@@ -1,10 +1,10 @@
 .expanding-video-wrapper { 
   width: 100%; 
   max-width: 100%;
-  max-height: min(80vh, 1200px);
-  height: 80vh; 
+  max-height: min(90vh, 900px);
+  height: min(90vh, 900px); 
   display: flex;
-  justify-content: center;
+  justify-content: csenter;
   overflow: hidden; 
   align-items: center;
   position: relative; /* Added for better positioning context */
