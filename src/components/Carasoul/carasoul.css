@@ -7,10 +7,6 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.profile-card-container:hover{
-    transform: scale(1.03);
-    z-index: 2;
-}
 
 .carousel-component{
     min-width:90svw;  
@@ -156,4 +152,112 @@
     .profile-card-container{
         /* width:70svw; */
     }
+}
+
+
+
+/* CLAUSE CSS */
+/* Enhanced carousel styles with smooth card hover */
+.carousel-component {
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+.carousel-slider {
+  display: flex;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+  user-select: none;
+  -webkit-user-select: none;
+  transform-style: preserve-3d;
+}
+
+.carousel-container {
+  display: flex;
+  flex-shrink: 0;
+  contain: layout style;
+}
+
+/* Card wrapper for smooth hover effects */
+.card-wrapper {
+  /* Ensure smooth scaling without affecting siblings */
+  transform-origin: center center;
+  position: relative;
+  z-index: 1;
+  /* Prevent layout shift during hover */
+  will-change: transform;
+  /* Smooth transitions for any remaining CSS-based changes */
+  transition: z-index 0s;
+  /* Margin to prevent cards from overlapping when scaled */
+  margin: 0 2px;
+}
+
+.card-wrapper:hover {
+  /* Bring hovered card above others */
+  z-index: 10;
+}
+
+/* Ensure card content doesn't interfere with hover detection */
+.card-content {
+  /* Prevent pointer events on child elements that might cause flicker */
+  pointer-events: none;
+  position: relative;
+  /* Re-enable pointer events for interactive elements inside cards */
+}
+
+.card-content * {
+  pointer-events: auto;
+}
+
+/* Mobile optimizations */
+@media screen and (max-width: 768px) {
+  .carousel-slider.mobile-optimized {
+    transform-style: flat;
+    image-rendering: optimizeSpeed;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Disable hover effects on mobile */
+  .card-wrapper {
+    margin: 0;
+  }
+  
+  .card-wrapper:hover {
+    z-index: 1;
+  }
+}
+
+/* Prevent hover jitter by ensuring consistent hit areas */
+.card-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Smooth animations for reduced motion users */
+@media (prefers-reduced-motion: reduce) {
+  .card-wrapper {
+    will-change: auto;
+  }
+}
+
+/* High DPI displays optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .carousel-slider {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Ensure proper stacking context */
+.carousel-component {
+  position: relative;
+  isolation: isolate;
 }
