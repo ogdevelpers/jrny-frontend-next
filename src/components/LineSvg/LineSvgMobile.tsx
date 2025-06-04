@@ -51,13 +51,16 @@ const LineSvgMobile: React.FC = () => {
       scrollTrigger: {
         trigger: svg,
         start: "top bottom",
-        end: "bottom 40%",   
+        end: "bottom 40%",
+        scrub:true,  
       }
     });
 
     ScrollTrigger.normalizeScroll(true);
     ScrollTrigger.config({
-      limitCallbacks: true,  
+      limitCallbacks: true,
+      ignoreMobileResize: true,
+      
     })
 
     tl.fromTo(moving, 
