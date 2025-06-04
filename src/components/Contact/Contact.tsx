@@ -5,9 +5,10 @@ import Button from "../Button/Button";
 import Input from "../FormInput/FormInput";
 import "./contact.css";
 import axios from 'axios';
+import Textarea from "../TextArea/TextArea";
 
 export default function Contact() {
-  const isMobile = useIsMobile(); 
+  const isMobile = useIsMobile(1000); 
   if (isMobile) {
     return (
       <div className="contact-us-container">
@@ -111,13 +112,13 @@ export const ContactForm = () => {
           />
         </div>
       </div>
-      <div className="footer-input-div footer-textarea">
-        <textarea
+      <div className="footer-input-div ">
+        <Textarea
           placeholder="Message"
           name="message"
           value={formData.message}
           onChange={handleChange}
-          className="footer-input form-textarea"
+          classList="footer-input form-textarea"
         />
       </div>
 

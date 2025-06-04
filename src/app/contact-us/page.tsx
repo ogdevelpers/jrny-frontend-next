@@ -6,7 +6,7 @@ import '../../components/Contact/contact.css'
 
 export default function ContactUs() {
 
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobile(1024);
 
   if (isMobile) {
     return (
