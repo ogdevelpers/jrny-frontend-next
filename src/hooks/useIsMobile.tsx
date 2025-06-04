@@ -1,67 +1,170 @@
 'use client';
 import { useSyncExternalStore } from "react"
 
-
 type MediaQueryStore = {
   /** Latest match result (true / false) */
   isMatch: boolean
   /** The native MediaQueryList object */
-  mediaQueryList: MediaQueryList
+  mediaQueryList: MediaQueryList | null
   /** React subscribers that need re-rendering on change */
   subscribers: Set<() => void>
+  /** Cleanup function to remove listeners */
+  cleanup: (() => void) | null
 }
 
-/** Map of raw query strings -> singleton store objects */
-const mediaQueryStores: Record<string, MediaQueryStore> = {}
+/** Map of breakpoint numbers -> singleton store objects */
+const mediaQueryStores: Record<number, MediaQueryStore> = {}
+
+/** Check if we're in a browser environment */
+const isBrowser = typeof window !== "undefined"
 
 /**
- * getMediaQueryStore("(max-width: 768px)")
- * Returns a singleton store for that query,
- * creating it (and its listener) the first time.
+ * Creates or returns existing MediaQueryStore for a given breakpoint
+ * u/param breakpoint - The breakpoint in pixels (e.g., 768)
+ * u/returns MediaQueryStore singleton for that breakpoint
  */
 export function getMediaQueryStore(breakpoint: number): MediaQueryStore {
-  // Already created? - just return it
-  if (mediaQueryStores[breakpoint]) return mediaQueryStores[breakpoint]
+  // Return existing store if already created
+  if (mediaQueryStores[breakpoint]) {
+    return mediaQueryStores[breakpoint]
+  }
 
   // --- First-time setup ---
-  const queryString = `(max-width: ${breakpoint - 0.1}px)`
-  const mqList = typeof window !== "undefined" ? window.matchMedia(queryString) : ({} as MediaQueryList)
+  const queryString = `(max-width: ${breakpoint}px)`
+  let mqList: MediaQueryList | null = null
+  let cleanup: (() => void) | null = null
+
+  if (isBrowser) {
+    mqList = window.matchMedia(queryString)
+  }
 
   const store: MediaQueryStore = {
-    isMatch: typeof window !== "undefined" ? mqList.matches : false,
+    isMatch: mqList?.matches ?? false,
     mediaQueryList: mqList,
     subscribers: new Set(),
+    cleanup: null
   }
 
-  const update = () => {
-    console.log("update: ", mqList.matches)
-    store.isMatch = mqList.matches
-    store.subscribers.forEach((cb) => cb())
-  }
+  // Only set up listeners in browser environment
+  if (mqList) {
+    const updateHandler = (event: MediaQueryListEvent) => {
+      // Only update if the match state actually changed
+      if (store.isMatch !== event.matches) {
+        store.isMatch = event.matches
+        // Batch notifications for better performance
+        if (store.subscribers.size > 0) {
+          // Use requestAnimationFrame to batch updates
+          requestAnimationFrame(() => {
+            store.subscribers.forEach((callback) => {
+              try {
+                callback()
+              } catch (error) {
+                console.error('Error in media query callback:', error)
+              }
+            })
+          })
+        }
+      }
+    }
 
-  if (mqList.addEventListener) mqList.addEventListener("change", update)
-  // for Safari < 14
-  else if (mqList.addListener) mqList.addListener(update)
+    // Modern browsers
+    if (mqList.addEventListener) {
+      mqList.addEventListener("change", updateHandler)
+      cleanup = () => mqList!.removeEventListener("change", updateHandler)
+    } 
+    // Legacy Safari support (< 14)
+    else if (mqList.addListener) {
+      mqList.addListener(updateHandler)
+      cleanup = () => mqList!.removeListener(updateHandler)
+    }
+
+    store.cleanup = cleanup
+  }
 
   mediaQueryStores[breakpoint] = store
   return store
 }
- 
 
 /**
- * Hook to check if the screen is mobile
- * u/param breakpoint - The breakpoint to check against
- * u/returns true if the screen is mobile, false otherwise
+ * Cleanup function to remove all media query listeners
+ * Useful for testing or when you need to reset the stores
  */
-export default function useIsMobile(breakpoint = 768) {
+export function cleanupMediaQueryStores(): void {
+  Object.values(mediaQueryStores).forEach(store => {
+    store.cleanup?.()
+    store.subscribers.clear()
+  })
+  // Clear the stores object
+  Object.keys(mediaQueryStores).forEach(key => {
+    delete mediaQueryStores[Number(key)]
+  })
+}
+
+/**
+ * Hook to check if the screen width is below the specified breakpoint
+ * u/param breakpoint - The breakpoint in pixels (default: 768)
+ * u/returns true if screen width <= breakpoint, false otherwise
+ */
+export default function useIsMobile(breakpoint: number = 768): boolean {
+  // Validate breakpoint
+  if (typeof breakpoint !== 'number' || breakpoint <= 0) {
+    console.warn(`useIsMobile: Invalid breakpoint ${breakpoint}. Using default 768px.`)
+    breakpoint = 768
+  }
+
   const store = getMediaQueryStore(breakpoint)
 
   return useSyncExternalStore(
-    (cb) => {
-      store.subscribers.add(cb)
-      return () => store.subscribers.delete(cb)
+    // Subscribe function
+    (callback) => {
+      store.subscribers.add(callback)
+      
+      // Return unsubscribe function
+      return () => {
+        store.subscribers.delete(callback)
+        
+        // Optional: Clean up store if no more subscribers
+        // Uncomment if you want aggressive cleanup
+        /*
+        if (store.subscribers.size === 0) {
+          store.cleanup?.()
+          delete mediaQueryStores[breakpoint]
+        }
+        */
+      }
     },
+    // Get snapshot (client)
     () => store.isMatch,
-    () => false
+    // Get server snapshot
+    () => false // Always false during SSR to prevent hydration mismatches
   )
+}
+
+/**
+ * Utility hook for common breakpoints
+ */
+export const useBreakpoints = () => ({
+  isMobile: useIsMobile(768),
+  isTablet: useIsMobile(1024),
+  isSmallDesktop: useIsMobile(1200),
+})
+
+/**
+ * Hook that returns an object with multiple breakpoint states
+ * More efficient than calling useIsMobile multiple times
+ */
+export function useResponsive() {
+  const mobile = useIsMobile(768)
+  const tablet = useIsMobile(1024)
+  const desktop = useIsMobile(1200)
+  
+  return {
+    isMobile: mobile,
+    isTablet: tablet && !mobile,
+    isDesktop: !tablet,
+    isLargeDesktop: !desktop,
+    // Convenience flags
+    isMobileOrTablet: tablet,
+    isDesktopOrLarger: !tablet,
+  }
 }
