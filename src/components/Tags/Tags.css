@@ -30,7 +30,7 @@
 
 .tag-text {
   position: relative;
-  z-index: 10000;
+  z-index: 1000;
 }
 
 /* Optional: subtle radial gradient background */
