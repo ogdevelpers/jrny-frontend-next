@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
-import { ScrollTrigger } from 'gsap/ScrollTrigger'; 
-import { useGSAP } from '@gsap/react';
+// import { gsap } from 'gsap';
+// import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger'; 
+// import { useGSAP } from '@gsap/react';
 import useIsMobile from '../../hooks/useIsMobile';
 
-gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
+// gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
 const LineSvgMobile: React.FC = () => {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -116,7 +116,7 @@ const LineSvgMobile: React.FC = () => {
         }}
       >
         {/* Define filters and gradients */}
-        <defs>
+        {/* <defs>
           <filter id="filter0_ddddddf_1156_2104" x="0.117996" y="0.117996" width="532.04" height="407.764" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
             <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
@@ -156,7 +156,7 @@ const LineSvgMobile: React.FC = () => {
             <stop stopColor="#FFCB64"/>
             <stop offset="1" stopColor="#FF4900"/>
           </radialGradient>
-        </defs>
+        </defs> */}
 
         {/* The path that the element follows - uses responsive path based on screen size */}
         <path
@@ -168,7 +168,7 @@ const LineSvgMobile: React.FC = () => {
         />
 
         {/* Moving element group */}
-        <g 
+        {/* <g 
           ref={movingGroupRef}
           opacity="0.6" 
           filter="url(#filter0_ddddddf_1156_2104)"
@@ -181,7 +181,7 @@ const LineSvgMobile: React.FC = () => {
             d="M190 204C190 196.268 196.268 190 204 190H328.276C336.008 190 342.276 196.268 342.276 204V204C342.276 211.732 336.008 218 328.276 218H204C196.268 218 190 211.732 190 204V204Z" 
             fill="url(#paint0_radial_1156_2104)"
           />
-        </g>
+        </g> */}
       </svg>
     </div>
   );
