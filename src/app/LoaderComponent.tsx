@@ -27,13 +27,13 @@ const LoaderWrapper = ({ children }: { children: ReactNode }) => {
     // Trigger letters to move out after progress bar starts filling and some settling time
     const triggerLettersOutTimer = setTimeout(() => {
       setLettersMovingOut(true);
-    }, 3200); // Adjusted for slower progress bar fill
+    }, 2100); // Adjusted for slower progress bar fill
  
 
     // Hide the entire loader component and trigger content slide-in
     const hideLoaderAndShowContentTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 3700); // After slideOutUpLoader animation (0.1s duration + buffer)
+    }, 2700); // After slideOutUpLoader animation (0.1s duration + buffer)
 
     return () => {
       clearTimeout(showTextContentTimer);

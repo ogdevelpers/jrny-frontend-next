@@ -32,12 +32,12 @@ useGSAP(() => {
     });
     
     gsap.set(leftCards, {
-      x: -200, // Start further left (relative to their CSS transform)
+      xPercent: -230, // Start further left (relative to their CSS transform)
       opacity: 0
     });
     
     gsap.set(rightCards, {
-      x: 200, // Start further right (relative to their CSS transform)  
+      xPercent: 230, // Start further right (relative to their CSS transform)  
       opacity: 0
     });
 
@@ -50,13 +50,13 @@ useGSAP(() => {
         ease: 'power3.out'
       })
       .to(leftCards, {
-        x: 0, // Move to their CSS-defined position
+        xPercent: 0, // Move to their CSS-defined position
         opacity: 1,
         duration: 0.8,
         ease: 'power2.out'
       }, '-=0.6') // Start before video finishes
       .to(rightCards, {
-        x: 0, // Move to their CSS-defined position
+        xPercent: 0, // Move to their CSS-defined position
         opacity: 1,
         duration: 0.8,
         ease: 'power2.out'
@@ -94,8 +94,8 @@ useGSAP(() => {
         x: 0 // Start from CSS position
       },
       {
-        y: '21vh',
-        xPercent: -110, // Move further left (negative value moves left from CSS transform)
+        y: '18vh',
+        xPercent: -105, // Move further left (negative value moves left from CSS transform)
       }, 0
     );
 
@@ -105,7 +105,7 @@ useGSAP(() => {
         x: 0 // Start from CSS position
       },
       {
-        y: '21vh',
+        y: '20vh',
         xPercent: 110, // Move further right (positive value moves right from CSS transform)
       }, 0
     );
@@ -131,10 +131,7 @@ useGSAP(() => {
         <div className="left-cards" ref={leftCardsRef}>
           {leftCardData.map((card) => (
             <div key={`left-${card.id}`} className="left-card card">
-              <img src={card.image} alt={card.title} className="card-image" />
-              <div className="card-content">
-                <h3 className="card-title">{card.title}</h3>
-              </div>
+              <img src={card.image} alt={card.title} className="card-image" /> 
             </div>
           ))}
         </div>
@@ -142,7 +139,7 @@ useGSAP(() => {
         {/* Main Video */}
         <video
           ref={videoRef}
-          src="https://cdn-front.freepik.com/revamp/temp/hero/1905-AnonymousHome1920x1080.webm"
+          src="https://cdn.pixabay.com/video/2023/09/25/182287-868067162_large.mp4"
           autoPlay
           muted
           loop
@@ -153,10 +150,7 @@ useGSAP(() => {
         <div className="right-cards" ref={rightCardsRef}>
           {rightCardData.map((card) => (
             <div key={`right-${card.id}`} className="right-card card">
-              <img src={card.image} alt={card.title} className="card-image" />
-              <div className="card-content">
-                <h3 className="card-title">{card.title}</h3>
-              </div>
+              <img src={card.image} alt={card.title} className="card-image" /> 
             </div>
           ))}
         </div>

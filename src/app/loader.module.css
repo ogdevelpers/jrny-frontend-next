@@ -26,7 +26,7 @@ background: linear-gradient(145deg, #3E434A 0%, #2A313B 50%, #21262B 100%);
   opacity: 0;
   
   /* Removed transform: rotate(-10deg); */
-  animation: verticalCenterReveal 2s ease-out forwards;  
+  animation: verticalCenterReveal 1.4s ease-out forwards;  
   z-index: 1000; /* Keep z-index */
 }
 

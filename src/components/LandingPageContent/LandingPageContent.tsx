@@ -76,7 +76,7 @@ export default function LandingPageContent({
                     muted
                     playsInline
                   >
-                    <source src="https://cdn-front.freepik.com/revamp/temp/hero/1905-AnonymousHome1920x1080.webm" type="video/mp4" />
+                    <source src="https://cdn.pixabay.com/video/2023/09/25/182287-868067162_large.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </section>
@@ -280,25 +280,25 @@ export const RightChoice = ({ content }: any) => {
         </p>
 
         <div className="features">
-          <div className="feature-container addPlus hover-box hover-neon-variant">
+          <div className="feature-container addPlus ">
             <span className="feature-title">{extractContentByKey(content, 'innovation')?.contentTitle}</span>
             <div className="feature-caption">
               {extractContentByKey(content, 'innovation')?.text}
             </div>
           </div>
-          <div className="feature-container addPlus hover-box hover-neon-variant">
+          <div className="feature-container addPlus ">
             <span className="feature-title">{extractContentByKey(content, 'customization')?.contentTitle}</span>
             <div className="feature-caption">
               {extractContentByKey(content, 'customization')?.text}
             </div>
           </div>
-          <div className="feature-container addPlus hover-box hover-neon-variant">
+          <div className="feature-container addPlus ">
             <span className="feature-title">{extractContentByKey(content, 'excellence')?.contentTitle}</span>
             <div className="feature-caption">
               {extractContentByKey(content, 'excellence')?.text}
             </div>
           </div>
-          <div className="feature-container addPlus hover-box hover-neon-variant">
+          <div className="feature-container addPlus ">
             <span className="feature-title">{extractContentByKey(content, 'global-reach')?.contentTitle}</span>
             <div className="feature-caption">
               {extractContentByKey(content, 'global-reach')?.text}
