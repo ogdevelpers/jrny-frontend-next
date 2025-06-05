@@ -24,7 +24,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <NavBar /> 
               </div>
               <div className="mobile-navbar-div">
-
                 <MobileNavBar />
               </div>
             </header>

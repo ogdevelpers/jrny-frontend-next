@@ -22,13 +22,15 @@
   /* height: 4000px; */
 }
 
-.one-two-grid > div {
+.one-two-grid>div {
   height: 100%;
 }
 
 .button {
-  width: 220px; /* ~185px in 1920px */
-  height: 50px; /* ~48px in 1080px */
+  width: 220px;
+  /* ~185px in 1920px */
+  height: 50px;
+  /* ~48px in 1080px */
   padding: 0.3rem 1rem;
   display: flex;
   align-items: center;
@@ -39,7 +41,8 @@
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 0 0 1rem 0; /* Circular bottom right corner */
+  border-radius: 0 0 1rem 0;
+  /* Circular bottom right corner */
   /* text-transform: uppercase; */
   font-family: "Helvetica Neue", sans-serif;
   font-weight: 700;
@@ -98,20 +101,20 @@
   align-items: center;
   width: 100%;
   max-width: 100svw;
-  position: relative;    
+  position: relative;
 }
 
 .landing-text-container {
   display: flex;
-  gap:10px;
+  gap: 10px;
   flex-direction: column;
-  margin-top:5px; 
-  height:35vh;
+  margin-top: 5px;
+  height: 35vh;
   max-height: 35vh;
   width: 100%;
   justify-content: flex-end;
-  align-items: center; 
- 
+  align-items: center;
+
 }
 
 .landing-title {
@@ -121,7 +124,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 0px;   
+  margin-top: 0px;
   line-height: 100%;
   letter-spacing: 1.1rem;
   text-align: center;
@@ -142,21 +145,19 @@
 }
 
 .landing-char-span {
-text-shadow:
-  2px 0 #FF5B00,
- -2px 0 #FF5B00,
-  0 2px #FF5B00,
-  0 -2px #FF5B00,
-  1px 1px #FF5B00,
- -1px -1px #FF5B00,
-  1px -1px #FF5B00,
- -1px 1px #FF5B00;
-  display: inline-block; 
+  text-shadow:
+    2px 0 #FF5B00,
+    -2px 0 #FF5B00,
+    0 2px #FF5B00,
+    0 -2px #FF5B00,
+    1px 1px #FF5B00,
+    -1px -1px #FF5B00,
+    1px -1px #FF5B00,
+    -1px 1px #FF5B00;
+  display: inline-block;
 }
 
-.landing-button-white{
-  
-}
+.landing-button-white {}
 
 .contact-btn {
   color: #ff4900;
@@ -172,19 +173,19 @@ text-shadow:
   font-size: 1.2rem;
   font-weight: 500;
   text-align: center;
-  background: linear-gradient(
-    92.49deg,
-    #7c7c7c 0%,
-    #ffffff 47.41%,
-    #7c7c7c 94.82%
-  );
+  background: linear-gradient(92.49deg,
+      #7c7c7c 0%,
+      #ffffff 47.41%,
+      #7c7c7c 94.82%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; /* Makes the background visible through the text */
+  -webkit-text-fill-color: transparent;
+  /* Makes the background visible through the text */
   background-clip: text;
-  text-fill-color: transparent; /* Standard property, but -webkit- is more widely supported */
+  text-fill-color: transparent;
+  /* Standard property, but -webkit- is more widely supported */
 }
 
-.landing-expanding-video { 
+.landing-expanding-video {
   width: 100%;
 }
 
@@ -194,7 +195,8 @@ text-shadow:
   align-items: center;
   border-radius: 12px;
   overflow: hidden;
-  background-color: #000; /* fallback bg for videos */
+  background-color: #000;
+  /* fallback bg for videos */
   height: 350px;
   max-height: 350px;
   padding: 8px;
@@ -205,10 +207,12 @@ text-shadow:
 
 .svg-content {
   position: absolute;
-  left: 0; /* <- fixed */ 
-  top:-9%;
+  left: 0;
+  /* <- fixed */
+  top: -9%;
   height: 100%;
-  width: 100%; /* <- fixed */
+  width: 100%;
+  /* <- fixed */
   max-width: 100%;
   max-width: none;
   z-index: 100;
@@ -216,17 +220,18 @@ text-shadow:
 }
 
 
- .svg-content-mobile{
-  position:absolute;
-  left:0;
-  top:-6%;
+.svg-content-mobile {
+  position: absolute;
+  left: 0;
+  top: -6%;
   height: 100%;
-  width: 100%; /* <- fixed */
+  width: 100%;
+  /* <- fixed */
   max-width: 100%;
   max-width: none;
-  z-index:100;
-  pointer-events:none;
- }
+  z-index: 100;
+  pointer-events: none;
+}
 
 .line-outlier-mobile {
   position: fixed;
@@ -247,7 +252,8 @@ text-shadow:
 .landing-video-mobile-tag {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* fill container nicely */
+  object-fit: cover;
+  /* fill container nicely */
   border-radius: 8px;
 }
 
@@ -313,16 +319,16 @@ text-shadow:
 .card-paragraph {
   text-align: center;
   font-family: "Helvetica Neue";
-  background: linear-gradient(
-    92.49deg,
-    #7c7c7c 0%,
-    #ffffff 47.41%,
-    #7c7c7c 94.82%
-  );
+  background: linear-gradient(92.49deg,
+      #7c7c7c 0%,
+      #ffffff 47.41%,
+      #7c7c7c 94.82%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; /* Makes the background visible through the text */
+  -webkit-text-fill-color: transparent;
+  /* Makes the background visible through the text */
   background-clip: text;
-  text-fill-color: transparent; /* Standard property, but -webkit- is more widely supported */
+  text-fill-color: transparent;
+  /* Standard property, but -webkit- is more widely supported */
 }
 
 .card-container {
@@ -339,8 +345,10 @@ text-shadow:
 .button-content-animated {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* initial gap */
-  transition: gap 0.4s cubic-bezier(0.25, 0.1, 0.25, 1); /* smooth easing */
+  gap: 0.5rem;
+  /* initial gap */
+  transition: gap 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  /* smooth easing */
 }
 
 .button-base:hover .button-content-animated {
@@ -356,7 +364,8 @@ text-shadow:
   width: 100%;
   max-width: 100%;
   font-size: 3rem;
-  line-height: 2.5rem; /* Scales naturally with font size */
+  line-height: 2.5rem;
+  /* Scales naturally with font size */
   letter-spacing: 1px;
   text-align: center;
   text-align: center;
@@ -412,7 +421,8 @@ text-shadow:
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; /* Needed for caption positioning */
+  position: relative;
+  /* Needed for caption positioning */
 }
 
 .card-paragraph-start {
@@ -429,8 +439,10 @@ text-shadow:
 }
 
 .profile-card:hover img {
-  filter: grayscale(0%); /* Restores color */
-  transform: scale(1.05); /* Zooms in */
+  filter: grayscale(0%);
+  /* Restores color */
+  transform: scale(1.05);
+  /* Zooms in */
   animation: bounceScale 0.5s ease-in-out;
 }
 
@@ -449,7 +461,8 @@ text-shadow:
 /* Caption Styles */
 .profile-caption {
   position: absolute;
-  bottom: -100%; /* Starts hidden below */
+  bottom: -100%;
+  /* Starts hidden below */
   left: 0;
   width: 100%;
   background: rgba(0, 0, 0, 0.8);
@@ -536,10 +549,10 @@ text-shadow:
 
 .partnered {
 
-font-weight: 700;
-font-size: 14px;
-line-height: 20px;
-letter-spacing: 0%;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
 
   color: #ff5b00;
   font-family: "Helvetica Neue";
@@ -548,13 +561,13 @@ letter-spacing: 0%;
   display: inline-block;
 }
 
-.see-more-container{
-  display:flex;
+.see-more-container {
+  display: flex;
   justify-content: center;
-  width:100%;
+  width: 100%;
 }
 
-.see-more { 
+.see-more {
   width: 80px;
   font-family: "Helvetica Neue";
   font-weight: 700;
@@ -581,17 +594,17 @@ letter-spacing: 0%;
 
 .portfolio-tiles-landing {
   width: 100%;
-  padding-right:6rem;
+  padding-right: 6rem;
   max-width: 100%;
   height: 800px;
   max-height: 800px;
-  padding-left: 6rem; 
+  padding-left: 6rem;
 }
 
-@media(min-width:1800px){
+@media(min-width:1800px) {
   .portfolio-tiles-landing {
-    max-width:1800px;
-    margin:0 auto;
+    max-width: 1800px;
+    margin: 0 auto;
   }
 }
 
@@ -657,7 +670,7 @@ letter-spacing: 0%;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height:300px;
+  height: 300px;
 }
 
 .carousol-logo {
@@ -694,26 +707,29 @@ letter-spacing: 0%;
 .right-choice-h1 {
 
   font-family: Armstrong;
-font-weight: 400;
-font-size: 48px;
-line-height: 100%;
-letter-spacing: 0%;
-text-align: center;
-margin-bottom: 0px;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-bottom: 0px;
 }
 
 .right-choice-p {
 
   font-family: 'Helvetica Neue';
-font-weight: 400;
-font-size: 24px;
-line-height: 100%;
-letter-spacing: 0%;
-text-align: center;
-  max-width: 35svw;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  max-width: 45svw;
   color: #808186;
   margin-top: 0px;
-  margin-bottom: 50px;
+  margin-bottom: 50px;   
+  line-height: 1.8rem; 
+  text-align: center;
+
 }
 
 .about-us-home,
@@ -750,9 +766,9 @@ text-align: center;
   margin: 0 auto;
   /* backdrop-filter: blur(6px);
   background-color: rgba(0, 0,0 , 0.1); */
-border-radius: 0px 0px var(--Corner-Radius-14---L, 16px) 0px;
-background: rgba(255, 255, 255, 0.10);
-backdrop-filter: blur(4px);
+  border-radius: 0px 0px var(--Corner-Radius-14---L, 16px) 0px;
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 
 }
@@ -766,18 +782,18 @@ backdrop-filter: blur(4px);
 
 .feature-title {
 
-font-weight: 400;
-font-size: 32px;
-line-height: 100%;
-  color: #FF5B00  ;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 100%;
+  color: #FF5B00;
 }
 
 .feature-caption {
 
   font-family: 'Helvetica Neue';
-font-weight: 400;
-font-size: 14px;
-line-height: 20px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
   padding: 0.4rem 0.1rem;
 }
 
@@ -800,10 +816,11 @@ line-height: 20px;
 }
 
 .cards-section {
-  height: 700px; /* Still fixed */
+  height: 700px;
+  /* Still fixed */
   padding-top: 20px;
   padding-left: 6rem;
-  width:100%;
+  width: 100%;
 }
 
 .cards-section-grid-container {
@@ -849,9 +866,7 @@ line-height: 20px;
   padding-left: 6rem;
 }
 
-@media(max-width: 1200px){
-  
-}
+@media(max-width: 1200px) {}
 
 @media (max-width: 1000px) {
   .hero-container {
@@ -864,18 +879,18 @@ line-height: 20px;
     width: 100%;
     max-width: 100%;
     text-align: left;
-    margin-top:2rem;  
-    line-height:3rem;
+    margin-top: 2rem;
+    line-height: 3rem;
   }
 
-  .landing-title br{
-    height:10px;
+  .landing-title br {
+    height: 10px;
   }
 
-  .landing-title-main{
-    font-size:2rem;
-    max-width:90%;
-    margin:0 auto;
+  .landing-title-main {
+    font-size: 2rem;
+    max-width: 90%;
+    margin: 0 auto;
   }
 
   .landing-text-container {
@@ -947,9 +962,9 @@ line-height: 20px;
     max-width: 90%;
   }
 
-  .cards-section{
-    padding-left:0;
-    margin:0 auto;
+  .cards-section {
+    padding-left: 0;
+    margin: 0 auto;
   }
 
   .cards-section-grid-container {
@@ -957,8 +972,8 @@ line-height: 20px;
     grid-template-rows: 1fr 1fr;
     column-gap: 1rem;
     row-gap: 0.4rem;
-    height:700px;
-    margin:0 auto;
+    height: 700px;
+    margin: 0 auto;
   }
 
   .profile-card {
@@ -967,16 +982,16 @@ line-height: 20px;
     height: 85%;
   }
 
-  .profile-caption{
-    height:40%;
+  .profile-caption {
+    height: 40%;
   }
 
-  .profile-caption .heading{
-    font-size:1rem;
+  .profile-caption .heading {
+    font-size: 1rem;
   }
 
-  .profile-caption .description{
-    font-size:0.8rem;
+  .profile-caption .description {
+    font-size: 0.8rem;
     line-height: 1rem;
   }
 
@@ -1005,28 +1020,28 @@ line-height: 20px;
     max-width: 100%;
   }
 
-  .journeys-div{
-    height:2000px;
+  .journeys-div {
+    height: 2000px;
   }
 
-  .landing-portfolio{
-    height:1000px;
+  .landing-portfolio {
+    height: 1000px;
   }
 
-  .testimonial-bottom{
-    height:100px;
+  .testimonial-bottom {
+    height: 100px;
   }
 
-  .carousol-container{
-    height:800px;
+  .carousol-container {
+    height: 800px;
     justify-content: space-evenly;
-    gap:2rem; 
+    gap: 2rem;
   }
 
   .portfolio-tiles-landing {
     padding: 0;
-    margin:0 auto;
-    height:800px;
+    margin: 0 auto;
+    height: 800px;
   }
 
   .right-choice-container {
@@ -1081,19 +1096,19 @@ line-height: 20px;
   }
 
   .landing-footer {
-  padding-left: 0;
+    padding-left: 0;
   }
 }
 
-@media(max-width:800px){
-  .landing-title-main{
-    font-size:1rem;
+@media(max-width:800px) {
+  .landing-title-main {
+    font-size: 1rem;
     letter-spacing: 0.4rem;
 
   }
 
-  .landing-page-matter-text{
-    font-size:4rem;
+  .landing-page-matter-text {
+    font-size: 4rem;
   }
 }
 
@@ -1104,33 +1119,34 @@ line-height: 20px;
   }
 
   .landing-svg-container {
-    height: 3800px;max-height:3800px;
+    height: 3800px;
+    max-height: 3800px;
   }
 
   /* Inside svg-container */
-  .about-us-landing{
-    height:600px;
+  .about-us-landing {
+    height: 600px;
   }
 
-  .card-container{
-    height:1400px;
+  .card-container {
+    height: 1400px;
   }
-  
-  .journeys-div{
-    height:1800px;
+
+  .journeys-div {
+    height: 1800px;
   }
 
   /* Inside journeys-div */
 
-  .landing-portfolio{
-    height:1000px;
+  .landing-portfolio {
+    height: 1000px;
   }
 
-  .testimonial-bottom{
-    height:200px;
+  .testimonial-bottom {
+    height: 200px;
   }
 
-  .carousol-container{
+  .carousol-container {
     height: 600px;
   }
 
@@ -1158,7 +1174,6 @@ line-height: 20px;
     max-height: 250px;
     width: auto;
   }
- 
- 
+
+
 }
- 

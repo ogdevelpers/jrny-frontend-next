@@ -94,13 +94,17 @@ html, body {
 
 @media(max-width:1040px){
   .navbar-div{
-    display:none;
+    display:none !important;
     visibility: hidden;
+    width:0;
+    min-width:0;
   }
 
   .header{
     overflow:visible;
-    z-index:10000;
+    max-width: 100svw;
+    display:flex;
+    justify-content: space-between;
   }
 }
 
