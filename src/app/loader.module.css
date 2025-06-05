@@ -9,6 +9,22 @@
   z-index: 9999;
   background-color: black;
   overflow: hidden;
+  transition: opacity 0.5s ease-out;
+}
+
+.slideOutUpLoader {
+  animation: slideOutUpLoader 0.8s ease-out forwards;
+}
+
+@keyframes slideOutUpLoader {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
 }
 
 .whiteBar {
@@ -17,9 +33,10 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: white;
+  background-color: #1c1c1c; /* Very dark grey, closer to black */
   transform: translateY(100%);
   animation: slideUp 1s ease-out forwards;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 }
 
 @keyframes slideUp {
@@ -31,6 +48,21 @@
   }
 }
 
+.burstOut {
+  animation: burstOut 0.5s ease-out forwards;
+}
+
+@keyframes burstOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
 .textContainer {
   position: absolute;
   top: 50%;
@@ -39,12 +71,12 @@
   width: 90vw;
   height: 89vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column; /* Changed to column to stack text and progress bar */
+  align-items: center; /* Centers items horizontally */
+  justify-content: center; /* Centers items vertically within the container */
   font-family: 'Arial', sans-serif;
   font-weight: bold;
-  color: black;
-  background-color: white;
+  background-color: transparent; /* Changed to transparent for seamless background */
   opacity: 0;
   animation: fadeInText 0.5s ease-in-out 1s forwards;
 }
@@ -59,62 +91,128 @@
 }
 
 .textContent {
-  font-size: 22vw;
+  font-size: 25vw; /* Increased font size */
   line-height: 1;
   letter-spacing: -0.02em;
   display: flex;
   white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: transparent; /* Changed JRNY text color to transparent */
 }
 
 .letter {
   display: inline-block;
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-shadow: 2px 0 #ff5b00, -2px 0 #ff5b00, 0 2px #ff5b00, 0 -2px #ff5b00,
+    1px 1px #ff5b00, -1px -1px #ff5b00, 1px -1px #ff5b00, -1px 1px #ff5b00;
 }
 
 .letter.moveOut {
   transform: translateY(-150vh);
-  opacity: 0;
+  opacity: 0; /* Ensures text fades out as it moves up */
 }
 
-/* Individual letter delays */
-.letter:nth-child(1) {
-  animation-delay: 0ms;
+/* Progress Bar Styles */
+.progressBarContainer {
+  width: 50%;
+  max-width: 300px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-top: 20px;
+  border-radius: 2px;
+  overflow: hidden;
 }
 
-.letter:nth-child(2) {
-  animation-delay: 200ms;
+.progressBar {
+  width: 0%;
+  height: 100%;
+  background-color: #ff5b00;
+  /* Delay the start of fillProgressBar */
+  animation: fillProgressBar 0.8s ease-out forwards;
 }
 
-.letter:nth-child(3) {
-  animation-delay: 400ms;
+@keyframes fillProgressBar {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
-.letter:nth-child(4) {
-  animation-delay: 600ms;
+/* New: Final black bar that slides up */
+.finalBlackBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black; /* Pure black */
+  transform: translateY(100%); /* Start off-screen */
+  animation: slideUpFinalBlackBar 0.5s ease-out forwards; /* Slide up animation */
+  z-index: 9998; /* Just below loaderContainer */
 }
 
-/* Responsive font sizing */
+@keyframes slideUpFinalBlackBar {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* New: Animation for the main content to slide in from the right */
+.contentSlideIn {
+  animation: contentSlideIn 0.8s ease-out forwards;
+  position: relative; /* Needed for transform */
+}
+
+@keyframes contentSlideIn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Responsive font sizing - unchanged, but consider the new larger base font size */
 @media (max-width: 768px) {
   .textContent {
-    font-size: 25vw;
+    font-size: 28vw; /* Adjust based on new base */
+  }
+  .progressBarContainer {
+    width: 60%;
   }
 }
 
 @media (max-height: 600px) {
   .textContent {
-    font-size: 20vh;
+    font-size: 20vh; /* Adjust based on new base */
+  }
+  .progressBarContainer {
+    margin-top: 10px;
   }
 }
 
-/* Ensure text fits exactly in container */
-@media (aspect-ratio < 1) {
+@media (max-width: 480px) {
   .textContent {
-    font-size: min(22vw, 18vh);
+    font-size: 35vw; /* Adjust based on new base */
+  }
+  .progressBarContainer {
+    width: 70%;
   }
 }
 
-@media (aspect-ratio >= 1) {
+@media (min-width: 1200px) {
   .textContent {
-    font-size: min(18vw, 22vh);
+    font-size: 15vw; /* Adjust based on new base */
+  }
+  .progressBarContainer {
+    width: 25%;
   }
 }
