@@ -95,13 +95,9 @@ const LineSvgMobile: React.FC = () => {
   //     window.removeEventListener('resize', handleResize);
   //   };
   // }, { scope: svgRef });
-
-  const isMobile = useIsMobile(450);
-
-  const smallScreen = `M${rightEdge/2},40 L${rightEdge/2},40 L${rightEdge/2},160 L2,300 L2,1850 L${rightEdge},1900 L${rightEdge},3040 L2,3140 L2,3290`;
-
-  const d = isMobile ? smallScreen
-    : `M${rightEdge/2},40 L${rightEdge/2},40 L${rightEdge/2},160 L2,300 L2,1900 L${rightEdge},1950 L${rightEdge},3380 L2,3440 L2,3590`;
+ 
+ 
+  const d = `M${rightEdge/2},150 L${rightEdge/2},200 L${rightEdge/2},210 L2,250 L2,1900 L${rightEdge},1950 L${rightEdge},3200 L2,3300 L2,3420`;
 
   return (
     <div style={{ position: 'relative' }}>

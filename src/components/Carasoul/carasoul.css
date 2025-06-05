@@ -86,9 +86,9 @@
     padding: 1rem 0.7rem;
     word-break: keep-all;
     border-radius: 0 0 2rem 0;  
-    backdrop-filter: blur(10px);  
+    backdrop-filter: blur(14px);  
     -webkit-backdrop-filter: blur(10px);
-    background-color: rgba(200, 200, 200, 0.1); /* Adjust opacity for better effect */
+    background-color: rgba(240, 240, 240, 0.1); /* Adjust opacity for better effect */
     backdrop-filter: blur(8px);
     position: relative; 
     color: white;
