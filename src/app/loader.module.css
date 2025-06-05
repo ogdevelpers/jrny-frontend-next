@@ -1,0 +1,256 @@
+/* Loader.module.css */
+
+.loaderContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999; /* Higher z-index for the main loader container */
+  background-color: black;
+  overflow: hidden;
+  /* Removed transition as it's handled by slideOutUpLoader animation */
+}
+
+.slideOutUpLoader {
+  animation: slideOutUpLoader 0.8s ease-out forwards;
+}
+
+@keyframes slideOutUpLoader {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.whiteBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #1c1c1c; /* Very dark grey, closer to black */
+  transform: translateY(100%);
+  animation: slideUp 1s ease-out forwards;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.burstOut {
+  animation: burstOut 0.5s ease-out forwards;
+}
+
+@keyframes burstOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.textContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  height: 89vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  background-color: transparent;
+  opacity: 0;
+  animation: fadeInText 0.5s ease-in-out 1s forwards;
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.textContent {
+  font-size: 25vw;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  display: flex;
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: transparent; /* Keep transparent, shadow provides visibility */
+}
+
+.letter {
+  display: inline-block;
+  /* Adjust transition duration for a slightly faster move-out */
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Changed text-shadow to white */
+  text-shadow: 2px 0 white, -2px 0 white, 0 2px white, 0 -2px white,
+    1px 1px white, -1px -1px white, 1px -1px white, -1px 1px white;
+}
+
+.letter.moveOut {
+  /* Move up by 20% of viewport height and disappear */
+  transform: translateY(-20vh);
+  opacity: 0;
+}
+
+/* Progress Bar Styles */
+.progressBarContainer {
+  width: 70%; /* Increased width */
+  max-width: 400px; /* Increased max-width */
+  height: 8px; /* Increased height */
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-top: 40px; /* Increased margin to create more separation */
+  border-radius: 4px; /* Adjusted border-radius for new height */
+  overflow: hidden;
+  position: relative; /* Needed for pseudo-element */
+}
+
+.progressBar {
+  width: 0%;
+  height: 100%;
+  background-color: white;
+  animation: fillProgressBar 0.8s ease-out forwards;
+  position: relative; /* Needed for pseudo-element */
+  overflow: hidden; /* To contain the slanted lines */
+}
+
+.progressBar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%; /* Make it wider to cover the slant */
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg, /* Slanted lines */
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 5px,
+    transparent 5px,
+    transparent 10px
+  );
+  animation: animateSlant 0.8s linear infinite; /* Animate the slanted lines */
+}
+
+@keyframes fillProgressBar {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes animateSlant {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-10px); /* Move by the pattern width */
+  }
+}
+
+/* New: Final black bar that slides up */
+.finalBlackBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black; /* Pure black */
+  transform: translateY(100%); /* Start off-screen */
+  animation: slideUpFinalBlackBar 0.5s ease-out forwards; /* Slide up animation */
+  z-index: 10000; /* Increased z-index to cover loaderContainer during transition */
+}
+
+@keyframes slideUpFinalBlackBar {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* New: Animation for the main content to slide in from the right */
+.contentSlideIn {
+  animation: contentSlideIn 0.8s ease-out forwards;
+  position: relative; /* Needed for transform */
+}
+
+@keyframes contentSlideIn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Responsive font sizing - unchanged */
+@media (max-width: 768px) {
+  .textContent {
+    font-size: 28vw;
+  }
+  .progressBarContainer {
+    width: 80%; /* Adjusted for mobile */
+    max-width: 350px;
+    margin-top: 30px;
+  }
+}
+
+@media (max-height: 600px) {
+  .textContent {
+    font-size: 20vh;
+  }
+  .progressBarContainer {
+    margin-top: 20px;
+    height: 6px; /* Slightly smaller on shorter screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .textContent {
+    font-size: 35vw;
+  }
+  .progressBarContainer {
+    width: 90%; /* Adjusted for mobile */
+    max-width: 300px;
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .textContent {
+    font-size: 15vw;
+  }
+  .progressBarContainer {
+    width: 35%; /* Adjusted for larger screens */
+    max-width: 500px;
+    margin-top: 50px;
+  }
+}

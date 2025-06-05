@@ -1,5 +1,6 @@
 import LandingPageContent from "@/components/LandingPageContent/LandingPageContent";
 import { fetchFromStrapi } from "@/lib/strapi";
+import LoaderWrapper from "./LoaderComponent";
 
 export default async function LandingPage() { 
   let contentData = null; 
@@ -26,14 +27,16 @@ export default async function LandingPage() {
 
   } catch (error) {
     console.error('Error fetching data:', error);
-    
   }
 
   return (
-    <>
-    <LandingPageContent content={contentData} portfolio={portfolioData} 
-      brandLogos={brandLogos} testimonial={testimonialData}
-    /> 
-    </>
+    <LoaderWrapper>
+      <LandingPageContent 
+        content={contentData} 
+        portfolio={portfolioData} 
+        brandLogos={brandLogos} 
+        testimonial={testimonialData}
+      /> 
+    </LoaderWrapper>
   )
 }
