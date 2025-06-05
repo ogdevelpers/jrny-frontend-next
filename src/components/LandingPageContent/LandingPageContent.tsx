@@ -13,6 +13,7 @@ import LineSvg from "../LineSvg/LineSvg";
 import '../../css/landingpage.css';
 import Link from "next/link";
 import Button from "../Button/Button"; 
+import { showReelVideoUrl } from "@/lib/constants";
 
 interface LandingPageContentProps {
   content: any;
@@ -76,7 +77,7 @@ export default function LandingPageContent({
                     muted
                     playsInline
                   >
-                    <source src="https://cdn.pixabay.com/video/2023/09/25/182287-868067162_large.mp4" type="video/mp4" />
+                    <source src={showReelVideoUrl} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </section>

@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import './expandingvideo.css'; 
+import { showReelVideoUrl } from '@/lib/constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -139,7 +140,7 @@ useGSAP(() => {
         {/* Main Video */}
         <video
           ref={videoRef}
-          src="https://cdn.pixabay.com/video/2023/09/25/182287-868067162_large.mp4"
+          src={showReelVideoUrl}
           autoPlay
           muted
           loop
