@@ -1020,8 +1020,7 @@ line-height: 20px;
   .carousol-container{
     height:800px;
     justify-content: space-evenly;
-    gap:2rem;
-    border:2px solid red;
+    gap:2rem; 
   }
 
   .portfolio-tiles-landing {

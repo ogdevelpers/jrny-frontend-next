@@ -11,17 +11,20 @@
 .carousel-component{
     min-width:90svw;  
     overflow-x: hidden;
+ 
 }
 
 .carousel-slider{
     display:flex;
     overflow-x: hidden;
     position: relative;
+    
 }
 
 .carousel-container{
     display:flex;
     flex-shrink:0;
+    
 }
  
 .profile-container{
@@ -53,8 +56,7 @@
     object-fit: contain; 
 }
 
-.carousol-img--active{
-    border:3px solid #FF4900;
+.carousol-img--active{ 
 }
 
 .profile-infor{
@@ -264,4 +266,82 @@
 .carousel-component {
   position: relative;
   isolation: isolate;
+}
+
+/* Add to your existing CSS */
+
+.carousel-component{
+    /* ... existing styles ... */
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 15%,
+      black 85%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 15%,
+      black 85%,
+      transparent
+    );
+}
+
+@media(max-width:1000px){
+    .profile-card-container{
+        width:69vw; /* Increased width for mobile view */
+    }
+}
+
+/* Add this new class to your carasoul.css */
+.carousel-viewport-mask {
+    position: relative; /* Needed for stacking context if you add more layers */
+    overflow: hidden; /* This is crucial to crop the slider */
+    /* Apply the mask here */
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 15%,
+      black 85%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 15%,
+      black 85%,
+      transparent
+    );
+}
+
+/* Existing styles remain */
+.profile-card-container{
+    display:flex;
+    flex-direction: column;
+    gap:1rem;
+    width:22svw;
+    height:200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-component{
+    /* min-width:90svw; */ /* This might no longer be needed or should be adjusted */
+    /* overflow-x: hidden; */ /* This can be removed from here as we'll use the new mask container */
+    position: relative; /* Ensures stacking context for the mask */
+}
+
+.carousel-slider{
+    display:flex;
+    overflow-x: hidden; /* Keep this if you want overflow for cards, but not for the main scroll */
+    position: relative;
+    /* Remove mask-image from here */
+}
+
+/* ... rest of your CSS ... */
+
+@media(max-width:1000px){
+    .profile-card-container{
+        width:70vw; /* Increased width for mobile view */
+    }
 }

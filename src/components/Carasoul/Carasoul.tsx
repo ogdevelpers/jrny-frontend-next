@@ -40,7 +40,7 @@ const EnhancedCard = forwardRef<HTMLDivElement, EnhancedCardProps>(
         // Bring card forward
         zIndex: 10,
       });
-    }, [isMobile, ref]);  
+    }, [isMobile, ref]);
 
     const handleCardMouseLeave = useCallback(() => {
       if (!ref || typeof ref === 'function' || !ref.current || isMobile) return;
@@ -315,22 +315,25 @@ export default function Carousel({ testimonial }: CarouselProps) {
 
   return (
     <div className='carousel-component'>
-      <div
-        className={`carousel-slider ${isMobile ? 'mobile-optimized' : ''}`}
-        ref={carSliderRef}
-        style={{
-          ...(isMobile && {
-            transform: 'translateZ(0)',
-            backfaceVisibility: 'hidden',
-            perspective: '1000px',
-          }),
-        }}
-      >
-        {Array.from({ length: containerCount }, (_, i) => (
-          <div key={i} className="carousel-container" {...(i === 0 && { ref: carTagRef })}>
-            {testimonialCards}
-          </div>
-        ))}
+      {/* New wrapper for the mask */}
+      <div className="carousel-viewport-mask">
+        <div
+          className={`carousel-slider ${isMobile ? 'mobile-optimized' : ''}`}
+          ref={carSliderRef}
+          style={{
+            ...(isMobile && {
+              transform: 'translateZ(0)',
+              backfaceVisibility: 'hidden',
+              perspective: '1000px',
+            }),
+          }}
+        >
+          {Array.from({ length: containerCount }, (_, i) => (
+            <div key={i} className="carousel-container" {...(i === 0 && { ref: carTagRef })}>
+              {testimonialCards}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

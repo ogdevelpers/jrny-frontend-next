@@ -95,7 +95,7 @@
 .expanding-video {
   /* ... existing styles ... */
   will-change: width, box-shadow, transform; /* Add this line */
-  transform-origin: center center; /* Ensure it expands from the center */
+  transform-origin: bottom bottom; /* Ensure it expands from the center */
 }
 
 .left-cards,
