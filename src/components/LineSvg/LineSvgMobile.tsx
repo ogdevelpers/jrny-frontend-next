@@ -24,77 +24,77 @@ const LineSvgMobile: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useGSAP(() => {
-    if (!pathRef.current || !movingGroupRef.current || !svgRef.current) return;
+  // useGSAP(() => {
+  //   if (!pathRef.current || !movingGroupRef.current || !svgRef.current) return;
 
-    const path = pathRef.current;
-    const moving = movingGroupRef.current;
-    const svg = svgRef.current;
+  //   const path = pathRef.current;
+  //   const moving = movingGroupRef.current;
+  //   const svg = svgRef.current;
 
-    // Get SVG dimensions and viewport info
-    const svgRect = svg.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
+  //   // Get SVG dimensions and viewport info
+  //   const svgRect = svg.getBoundingClientRect();
+  //   const viewportHeight = window.innerHeight;
     
-    // Calculate path bounds to understand the full travel distance
-    const pathBBox = path.getBBox();
-    const pathWidth = pathBBox.width;
-    const pathHeight = pathBBox.height;
+  //   // Calculate path bounds to understand the full travel distance
+  //   const pathBBox = path.getBBox();
+  //   const pathWidth = pathBBox.width;
+  //   const pathHeight = pathBBox.height;
     
-    // Calculate the maximum dimension to ensure full visibility
-    const maxDimension = Math.max(pathWidth, pathHeight);
+  //   // Calculate the maximum dimension to ensure full visibility
+  //   const maxDimension = Math.max(pathWidth, pathHeight);
     
-    // Dynamic scroll distance calculation
-    const baseScrollDistance = svgRect.height + viewportHeight;
-    const pathTravelBuffer = maxDimension * 0.5; 
+  //   // Dynamic scroll distance calculation
+  //   const baseScrollDistance = svgRect.height + viewportHeight;
+  //   const pathTravelBuffer = maxDimension * 0.5; 
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: svg,
-        start: "top bottom",
-        end: "bottom 40%",
-        scrub:true,  
-      }
-    });
+  //   const tl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: svg,
+  //       start: "top bottom",
+  //       end: "bottom 40%",
+  //       scrub:true,  
+  //     }
+  //   });
 
-    ScrollTrigger.normalizeScroll(true);
-    ScrollTrigger.config({
-      limitCallbacks: true,
-      ignoreMobileResize: true,
+  //   ScrollTrigger.normalizeScroll(true);
+  //   ScrollTrigger.config({
+  //     limitCallbacks: true,
+  //     ignoreMobileResize: true,
       
-    })
+  //   })
 
-    tl.fromTo(moving, 
-      { 
-        x: -100, 
-        y: -100,
-        scale: 0.3, // Scale down to fit better in the SVG coordinate system
-        opacity: 1
-      }, 
-      {
-        ease: "none",
-        motionPath: {
-          path: path,
-          align: path,
-          autoRotate: true,
-          alignOrigin: [0.5, 0.5]
-        },
-        scale: 0.35, // Slight scale change during animation
-        duration: 1
-      }
-    );
+  //   tl.fromTo(moving, 
+  //     { 
+  //       x: -100, 
+  //       y: -100,
+  //       scale: 0.3, // Scale down to fit better in the SVG coordinate system
+  //       opacity: 1
+  //     }, 
+  //     {
+  //       ease: "none",
+  //       motionPath: {
+  //         path: path,
+  //         align: path,
+  //         autoRotate: true,
+  //         alignOrigin: [0.5, 0.5]
+  //       },
+  //       scale: 0.35, // Slight scale change during animation
+  //       duration: 1
+  //     }
+  //   );
 
-    // Handle window resize to recalculate distances
-    const handleResize = () => {
-      ScrollTrigger.refresh();
-    };
+  //   // Handle window resize to recalculate distances
+  //   const handleResize = () => {
+  //     ScrollTrigger.refresh();
+  //   };
 
-    window.addEventListener('resize', handleResize);
+  //   window.addEventListener('resize', handleResize);
 
-    return () => {
-      ScrollTrigger.getAll().forEach(st => st.kill());
-      window.removeEventListener('resize', handleResize);
-    };
-  }, { scope: svgRef });
+  //   return () => {
+  //     ScrollTrigger.getAll().forEach(st => st.kill());
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, { scope: svgRef });
 
   const isMobile = useIsMobile(450);
 
