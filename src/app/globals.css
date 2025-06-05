@@ -66,8 +66,7 @@ html, body {
 .header {
   width: 100%;
   max-width:100%;
-  position:sticky !important;
-  overflow:hidden;
+  position:sticky !important; 
   display: flex;
   flex-direction: row; /* Explicitly set to row */
   align-items: center;
