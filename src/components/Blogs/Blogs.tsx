@@ -71,7 +71,7 @@ interface BlogItemProps {
 
 export const BlogTile = ({ thumbnail, title, content, description, categories }: BlogItemProps) => {
     return (
-        <div className="blog-tile">
+        <div className="blog-tile hover-box hover-neon">
             <div className="blog-info">
                 <div className="minute-count-in-tile"><MinuteCount textString={description} /></div>
 
@@ -130,7 +130,7 @@ export const BlogTileMobileContainer = ({blogsData}: any) => {
         <>
             <div className="blog-tile-container-mobile">
                 {blogsData?.map((BlogItem: any, index: any) => (
-                    <div key={index} className='blog-tile-mobile'>
+                    <div key={index} className='blog-tile-mobile hover-box hover-lift-2'>
                         <Link href={`/blog/${BlogItem.slug}`} className="blog-link" key={BlogItem.id}>
                             <BlogTileMobile
                                 thumbnail={BlogItem.thumbnailUrl}

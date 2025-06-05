@@ -17,7 +17,7 @@ interface CardProps {
     return (
       <div className="profile-card-container">
         <div
-          className={`compliment  `} 
+          className={`compliment  hover-box hover-glass`} 
         >
           <span className="compliment-span">{compliment}</span>
           <span className="line line-right" />

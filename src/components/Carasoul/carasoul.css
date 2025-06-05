@@ -86,13 +86,15 @@
     border-radius: 0 0 2rem 0;  
     backdrop-filter: blur(10px);  
     -webkit-backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.2); /* Adjust opacity for better effect */
+    background-color: rgba(200, 200, 200, 0.1); /* Adjust opacity for better effect */
+    backdrop-filter: blur(8px);
     position: relative; 
     color: white;
     max-height: 200px; 
     overflow: hidden; /* Ensures content outside the box is hidden */
     text-overflow: ellipsis; /* Adds ellipsis for overflowing text */
     white-space:wrap; /* Prevents text from wrapping to the next line */
+    filter: grayscale(1)
 }
 
 
@@ -124,7 +126,8 @@
 /* Hover Animation */
 .compliment:hover {
     color: white;
-    border-color: #FF4900;
+    border-color: #ff1086;
+    background: rgba(100, 10 , 1, 0.61);
 }
 
 .compliment:hover::before {

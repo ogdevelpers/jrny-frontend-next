@@ -58,7 +58,7 @@ const PortfolioTile = ({ videoLink, thumbnail, tileTitle, id }: PortfolioTilePro
   }
 
   return (
-    <div className="portfolio-tile-box hover-box hover-magnetic">
+    <div className="portfolio-tile-box hover-box hover-magnetic hover-lift-1 hover-neon">
       <div className="tile-thumbnail">
         <Link href={`/portfolio/${id}`} className='portfolio-link'>
           {/* <img src={thumbnail ?? '/landing-video-card.png'} alt="" /> */}

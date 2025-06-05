@@ -131,7 +131,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden; /* Prevent overflow inside each tile */
+  overflow: hidden;  
 }
 
 .portfolio-tile-box {
