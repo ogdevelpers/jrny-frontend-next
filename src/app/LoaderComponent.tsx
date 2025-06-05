@@ -33,7 +33,7 @@ const LoaderWrapper = ({ children }: { children: ReactNode }) => {
     // Hide the entire loader component and trigger content slide-in
     const hideLoaderAndShowContentTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 4100); // After slideOutUpLoader animation (0.1s duration + buffer)
+    }, 3700); // After slideOutUpLoader animation (0.1s duration + buffer)
 
     return () => {
       clearTimeout(showTextContentTimer);

@@ -113,14 +113,18 @@
   /* padding:0.9rem 0.8rem; */
   padding: 16px;
 
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(200, 200, 200, 0.1);
+  color:white;
   border-bottom-right-radius: 20px;
 
-  border-radius: 0px 0px var(--Corner-Radius-14---L, 16px) 0px;
-  background: rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(4px);
+  border-radius: 0px 0px var(--Corner-Radius-14---L, 16px) 0px; 
+  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(5.6px);
 
+}
+
+.about-motto-box:hover{
+  backdrop-filter: blur(0); 
 }
 
 .motto-title {

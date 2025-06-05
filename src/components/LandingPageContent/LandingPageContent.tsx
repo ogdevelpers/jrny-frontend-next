@@ -280,25 +280,25 @@ export const RightChoice = ({ content }: any) => {
         </p>
 
         <div className="features">
-          <div className="feature-container addPlus">
+          <div className="feature-container addPlus hover-box hover-neon-variant">
             <span className="feature-title">{extractContentByKey(content, 'innovation')?.contentTitle}</span>
             <div className="feature-caption">
               {extractContentByKey(content, 'innovation')?.text}
             </div>
           </div>
-          <div className="feature-container addPlus">
+          <div className="feature-container addPlus hover-box hover-neon-variant">
             <span className="feature-title">{extractContentByKey(content, 'customization')?.contentTitle}</span>
             <div className="feature-caption">
               {extractContentByKey(content, 'customization')?.text}
             </div>
           </div>
-          <div className="feature-container addPlus">
+          <div className="feature-container addPlus hover-box hover-neon-variant">
             <span className="feature-title">{extractContentByKey(content, 'excellence')?.contentTitle}</span>
             <div className="feature-caption">
               {extractContentByKey(content, 'excellence')?.text}
             </div>
           </div>
-          <div className="feature-container addPlus">
+          <div className="feature-container addPlus hover-box hover-neon-variant">
             <span className="feature-title">{extractContentByKey(content, 'global-reach')?.contentTitle}</span>
             <div className="feature-caption">
               {extractContentByKey(content, 'global-reach')?.text}

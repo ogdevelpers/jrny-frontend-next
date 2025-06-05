@@ -228,6 +228,22 @@ body {
   );
 }
 
+.hover-neon-variant:hover {
+  transform: scale(1.03); /* Slightly larger scale for a more pronounced "pop" */
+  box-shadow:
+    0 0 25px rgba(255, 120, 0, 0.7), /* Softer inner glow */
+    0 0 50px rgba(255, 120, 0, 0.5),
+    0 0 80px rgba(255, 120, 0, 0.3),
+    0 15px 40px rgba(0, 0, 0, 0.2); /* Deeper shadow for more lift */
+  border: 1px solid rgba(255, 120, 0, 0.7); /* Stronger border glow */
+  background: linear-gradient(
+    135deg, /* Changed gradient direction */
+    rgba(255, 120, 0, 0.15), /* Slightly more opaque background */
+    rgba(255, 120, 0, 0.08)
+  );
+  transition: all 0.3s ease-in-out; /* Added transition for smoother effect */
+}
+
 /* Glassmorphism Float */
 .hover-glass:hover {
   transform: translateY(-10px) scale(1.04);

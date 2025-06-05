@@ -254,6 +254,7 @@ color: #808186;
   .blog-hero-container{
     max-width: 100svw;
     width:99%;
+    margin-left:1rem;
   }
 
   .blog-container{
@@ -271,6 +272,7 @@ color: #808186;
     grid-template-columns: repeat(2, 1fr); /* Two columns */
     gap: 1.2rem;
   }
+ 
 
   .blog-tile-mobile {
     aspect-ratio: unset;
