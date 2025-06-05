@@ -1,78 +1,15 @@
-/* navbar.css */
+/* MobileNavBar.css */
 
-/* --- GENERAL NAVBAR STYLES --- */
-.navbar-list {
+/* --- MOBILE NAV WRAPPER (Optional, useful if you need to position the burger button differently) --- */
+.mobile-nav-wrapper {
+  /* This wrapper helps contain the burger button for mobile layout */
   display: flex;
+  justify-content: flex-end; /* Align burger button to the right */
   align-items: center;
-  justify-content: space-between;
-  color: white;
-  flex-direction: row;
-  width: 80%;
-  max-width: 80%;
-}
-
-.navbar-list li {
-  list-style: none;
-}
-
-.logo {
-  width: 6.3svw;
-  height: auto;
-  margin: auto 0;
-}
-
-.logo img {
   width: 100%;
-  height: auto;
-}
-
-.navbar-list-item {
-  overflow: visible;
-}
-
-.navbar-list-item a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
-}
-
-.navbar-list-item:hover a {
-  color: #FF5B00;
-}
-
-.navbar-list-item img {
-  position: absolute;
-  bottom: -90%;
-  right: -20%;
-}
-
-.navbar-text {
-  font-family: Armstrong;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  text-align: center;
-}
-
-.navbar-active {
-  color: #FF5B00 !important;
-}
-
-/* --- BASE NAVBAR COMPONENT --- */
-.navbar {
-  z-index: 1000; /* Standard z-index for a header */
-  min-width: 500px; /* Kept from your original code */
-}
-
-/* --- MOBILE SPECIFIC CONTAINER --- */
-.navbar-mobile-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1001;
-  padding: 1rem;
-  width: 100%; /* Take full width of parent */
+  padding: 1rem; /* Adjust padding as needed for your mobile header */
+  box-sizing: border-box; /* Include padding in width */
+  z-index: 1001; /* Ensure this wrapper is above other content but below sidebar */
 }
 
 /* --- BURGER BUTTON --- */
@@ -124,11 +61,8 @@
   transition: opacity 0.4s ease-in-out; /* Only opacity transition when opening */
 }
 
-/* --- MOBILE MENU OVERLAY (Can be removed if sidebar goes full screen) --- */
-/* If the sidebar takes up the whole screen, this overlay is redundant.
-   I've commented it out as the sidebar itself will act as the overlay.
-   If you want a separate sidebar that slides in and *then* has an overlay,
-   you'd need to re-enable and adjust. */
+/* --- MOBILE MENU OVERLAY (This is now part of the sidebar's full-screen effect) --- */
+/* If you still want a distinct overlay behind a *smaller* sliding sidebar, re-add this */
 /*
 .mobile-menu-overlay {
   position: fixed;
@@ -142,7 +76,7 @@
   transition: opacity 0.4s ease-in-out;
 }
 
-.navbar.mobile-menu-open .mobile-menu-overlay {
+.mobile-nav-wrapper.mobile-menu-open .mobile-menu-overlay {
   opacity: 1;
 }
 */
@@ -178,11 +112,4 @@
 .navbar-list-mobile .navbar-active {
   color: #FF5B00;
   font-weight: bold;
-}
-
-/* --- RESPONSIVE ADJUSTMENTS --- */
-@media (max-width: 1024px) {
-  .navbar {
-    min-width: unset; /* Remove min-width for smaller screens */
-  }
 }

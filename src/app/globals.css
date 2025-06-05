@@ -60,7 +60,8 @@ html, body {
 
 .pinMe{
   background-color: black;
-  position:relative; 
+  position:relative;
+  z-index:999;
 }
 
 .header {
@@ -73,13 +74,44 @@ html, body {
   justify-content: space-between; /* This will space logo and navbar */
   position: sticky;
   top: 0;
-  left: 0;
-  z-index: 200000;
+  left: 0; 
+  overflow:hidden;
   backdrop-filter: blur(5.6px);
   -webkit-backdrop-filter: blur(5.6px);
   padding: 50px 6rem; /* Combine padding */
   height: 80px;
+  max-height:100svh;
   box-sizing: border-box; /* Include padding in height calculation */
+}
+
+@media(min-width:1040px){
+  .mobile-navbar-div{
+    display:none;
+    visibility: hidden;
+  }
+}
+
+@media(max-width:1040px){
+  .navbar-div{
+    display:none;
+    visibility: hidden;
+  }
+
+  .header{
+    overflow:visible;
+    z-index:10000;
+  }
+}
+
+.mobile-header{ 
+  position:sticky;
+  top:0;
+  display:flex;
+  justify-content: space-between;
+  width:100%;
+  border:3px solid red;
+  max-width: 100svw;
+  z-index:10001;
 }
 
 .logo-div {
