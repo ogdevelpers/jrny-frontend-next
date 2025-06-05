@@ -81,6 +81,7 @@ html, body {
   padding: 50px 6rem; /* Combine padding */
   height: 80px;
   max-height:100svh;
+  z-index:10000;
   box-sizing: border-box; /* Include padding in height calculation */
 }
 
