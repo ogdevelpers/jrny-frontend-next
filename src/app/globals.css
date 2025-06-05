@@ -165,3 +165,157 @@ body {
 .jrny-span {
   color: #ff5b00;
 }
+
+
+/* TILE ANIMATIONS */
+
+/* Generic Hover Animation Classes */
+
+/* Base transition for all hover boxes */
+.hover-box {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+
+/* Version 1: Lift & Glow */
+.hover-lift-1:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 16px 40px rgba(255, 91, 0, 0.3);
+  outline-offset: -4px;
+}
+
+/* Version 2: Tilt & Gradient */
+.hover-lift-2:hover {
+  transform: translateY(-8px) scale(1.03) rotateZ(-0.5deg);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 91, 0, 0.05),
+    rgba(255, 91, 0, 0.1)
+  );
+}
+
+/* Version 3: Deep Lift & Multi-Shadow */
+.hover-lift-3:hover {
+  transform: translateY(-12px) scale(1.05) rotateX(2deg);
+  box-shadow: 
+    0 20px 60px rgba(255, 91, 0, 0.25),
+    0 8px 24px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 91, 0, 0.08),
+    rgba(255, 91, 0, 0.02)
+  );
+}
+
+/* Modern Eye-Catching Hover Transitions */
+
+/* Neon Pulse Effect */
+.hover-neon:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 
+    0 0 20px rgba(255, 91, 0, 0.6),
+    0 0 40px rgba(255, 91, 0, 0.4),
+    0 0 60px rgba(255, 91, 0, 0.2),
+    0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 91, 0, 0.5);
+  background: linear-gradient(
+    45deg,
+    rgba(255, 91, 0, 0.1),
+    rgba(255, 91, 0, 0.05)
+  );
+}
+
+/* Glassmorphism Float */
+.hover-glass:hover {
+  transform: translateY(-10px) scale(1.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 25px 50px rgba(255, 91, 0, 0.15),
+    0 10px 25px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Magnetic Pull Effect */
+.hover-magnetic {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(255, 255, 255, 0.15),
+    rgba(0, 0, 0, 0.9)
+  );
+  transition: all 0.3s ease;
+  filter: brightness(1) saturate(1) contrast(1) grayscale(0.1);
+}
+
+.hover-magnetic:hover {
+  transform: translateY(-10px);
+  filter: brightness(1.15) saturate(1.3) contrast(1.1) grayscale(0.1);
+}
+
+/* Animated Border Effect */
+.hover-magnetic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-bottom: 2px solid red;
+  border-radius: inherit;
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hover-magnetic:hover::before {
+  transform: scale(1);
+  opacity: 1;
+}
+
+
+/* Usage Examples with Combined Classes */
+.card-example {
+  /* Apply base hover class + specific animation */
+  /* Example: class="hover-box hover-lift-1" */
+  /* Example: class="hover-box hover-neon" */
+  /* Example: class="hover-box hover-glass" */
+  /* Example: class="hover-box hover-magnetic" */
+}
+
+/* Mobile Optimizations - Disable complex animations on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .hover-lift-1:hover,
+  .hover-lift-2:hover,
+  .hover-lift-3:hover,
+  .hover-neon:hover,
+  .hover-glass:hover,
+  .hover-magnetic:hover {
+    transform: none;
+    box-shadow: none;
+    background: none;
+    border: none;
+    filter: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hover-box {
+    transition: none;
+  }
+  
+  .hover-lift-1:hover,
+  .hover-lift-2:hover,
+  .hover-lift-3:hover,
+  .hover-neon:hover,
+  .hover-glass:hover,
+  .hover-magnetic:hover {
+    transform: none;
+  }
+}
