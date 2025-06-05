@@ -49,7 +49,7 @@ const EnhancedCard = forwardRef<HTMLDivElement, EnhancedCardProps>(
         // Bring card forward
         zIndex: 10,
       });
-    }, [isMobile, setIsPaused, animationRef, ref]); // Added ref to dependency array
+    }, [isMobile, setIsPaused, animationRef, ref]);  
 
     const handleCardMouseLeave = useCallback(() => {
       // It's safer to check ref.current directly as `ref` itself might be the ref object or a function
