@@ -4,21 +4,22 @@
   max-height: min(90vh, 900px);
   height: min(90vh, 900px); 
   display: flex;
-  justify-content: csenter;
-  overflow: hidden; 
+  justify-content: center; /* Fixed typo: was 'csenter' */
+  overflow: visible; /* Changed to visible so cards can overflow */
   align-items: center;
-  position: relative; /* Added for better positioning context */ 
-  z-index:1000;
+  position: relative;
+  z-index: 10; /* Base z-index for the wrapper */
 }
 
 /* Container for the expanding video animation */
 .expanding-video-container {
   position: relative; 
   display: flex;  
-  align-items: flex-start; /* Changed to center for better alignment */
+  align-items: flex-start; /* Better alignment */
   justify-content: center; 
   width: 100%;
-  height: 100%; 
+  height: 100%;
+  z-index: 10; /* Same as wrapper */
 }
 
 .expanding-video {
@@ -27,32 +28,32 @@
   border-radius: 0.5rem;
   box-shadow: 0px 4px 24px 0px #FF5B0066;
   aspect-ratio: 16/9; 
-  z-index: 10;
-  position: relative; /* Ensure video is positioned for edge calculations */
+  z-index: 20; /* Higher than cards so it appears above them */
+  position: relative;
 }
 
 /* Left cards container - positioned to touch left edge of video */
 .left-cards {
   position: absolute;
   /* Calculate position: video center - (video width / 2) - small gap */
-  left: calc(48% - min(39vw, 550px)  );
-  top: 1%; 
+  left: calc(48% - min(39vw, 550px));
+  top: -3%; 
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  z-index: 1;
+  z-index: 15; /* Below video but above background */
 }
 
 /* Right cards container - positioned to touch right edge of video */
 .right-cards {
   position: absolute;
   /* Calculate position: video center + (video width / 2) + small gap */
-  right: calc(47.4% - min(39vw, 550px) );
-  top: -15%; 
+  right: calc(47.4% - min(39vw, 550px));
+  top: -10%; 
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  z-index: 1;
+  z-index: 15; /* Below video but above background */
 }
 
 /* Card styling */
@@ -60,11 +61,11 @@
   background-color: transparent;
   border-radius: 1.1rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
+  overflow: hidden; /* Keep this to clip the image within card boundaries */
   width: 293px;
   height: 154px;   
-  z-index:1000;
-  
+  z-index: 15;  
+  position: relative; /* Ensure proper stacking context */ 
 }
 
 .left-cards :nth-last-child(1) {
@@ -80,11 +81,12 @@
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  z-index: 25; /* Higher z-index on hover to appear above video */
 }
 
 .card-image {
   width: 100%;
-  height: 100%; /* Changed to fill card completely */
+  height: 100%;
   object-fit: cover;
+  z-index: inherit; /* Inherit z-index from parent card */
 }
-
