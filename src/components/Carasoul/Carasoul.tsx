@@ -15,24 +15,15 @@ interface EnhancedCardProps {
   active: boolean;
   isMobile: boolean;
   isVisible: boolean;
-  setIsPaused: (paused: boolean) => void;
-  animationRef: React.MutableRefObject<gsap.core.Tween | null>;
 }
 
 // Extracted EnhancedCard into its own component
 const EnhancedCard = forwardRef<HTMLDivElement, EnhancedCardProps>(
-  ({ card, active, isMobile, isVisible, setIsPaused, animationRef }, ref) => {
+  ({ card, active, isMobile, isVisible }, ref) => {
     const hoverTween = useRef<gsap.core.Tween | null>(null);
 
     const handleCardMouseEnter = useCallback(() => {
-      // It's safer to check ref.current directly as `ref` itself might be the ref object or a function
       if (!ref || typeof ref === 'function' || !ref.current || isMobile) return;
-
-      // Pause carousel animation when hovering over any card
-      setIsPaused(true);
-      if (animationRef.current) {
-        animationRef.current.pause();
-      }
 
       // Kill any existing hover animation
       if (hoverTween.current) {
@@ -49,17 +40,10 @@ const EnhancedCard = forwardRef<HTMLDivElement, EnhancedCardProps>(
         // Bring card forward
         zIndex: 10,
       });
-    }, [isMobile, setIsPaused, animationRef, ref]);  
+    }, [isMobile, ref]);  
 
     const handleCardMouseLeave = useCallback(() => {
-      // It's safer to check ref.current directly as `ref` itself might be the ref object or a function
       if (!ref || typeof ref === 'function' || !ref.current || isMobile) return;
-
-      // Resume carousel animation
-      setIsPaused(false);
-      if (animationRef.current && isVisible) {
-        animationRef.current.play();
-      }
 
       // Kill any existing hover animation
       if (hoverTween.current) {
@@ -75,11 +59,11 @@ const EnhancedCard = forwardRef<HTMLDivElement, EnhancedCardProps>(
         force3D: true,
         zIndex: 1,
       });
-    }, [isMobile, isVisible, setIsPaused, animationRef, ref]); // Added ref to dependency array
+    }, [isMobile, ref]);
 
     return (
       <div
-        ref={ref} // Assign the ref passed from the parent
+        ref={ref}
         className="card-wrapper"
         onMouseEnter={handleCardMouseEnter}
         onMouseLeave={handleCardMouseLeave}
@@ -113,7 +97,6 @@ export default function Carousel({ testimonial }: CarouselProps) {
   const [isMobile, setIsMobile] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [reducedMotion, setReducedMotion] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
 
   const carSliderRef = useRef<HTMLDivElement>(null);
   const carTagRef = useRef<HTMLDivElement>(null);
@@ -156,12 +139,6 @@ export default function Carousel({ testimonial }: CarouselProps) {
       (entries) => {
         const [entry] = entries;
         setIsVisible(entry.isIntersecting);
-
-        if (!entry.isIntersecting && animationRef.current) {
-          animationRef.current.pause();
-        } else if (entry.isIntersecting && animationRef.current && !isPaused) {
-          animationRef.current.play();
-        }
       },
       {
         rootMargin: '50px',
@@ -176,7 +153,7 @@ export default function Carousel({ testimonial }: CarouselProps) {
         intersectionObserverRef.current.disconnect();
       }
     };
-  }, [isPaused]); // isPaused is a dependency because the play/pause logic depends on its value
+  }, []);
 
   // Memoize testimonial cards with enhanced hover functionality
   const testimonialCards = useMemo(() => {
@@ -189,17 +166,15 @@ export default function Carousel({ testimonial }: CarouselProps) {
         active={active}
         isMobile={isMobile}
         isVisible={isVisible}
-        setIsPaused={setIsPaused}
-        animationRef={animationRef}
       />
     ));
-  }, [testimonial, active, isMobile, isVisible, setIsPaused, animationRef]); // Added animationRef as a dependency
+  }, [testimonial, active, isMobile, isVisible]);
 
   const playMarquee = useCallback(() => {
     const carSlider = carSliderRef.current;
     const carTag = carTagRef.current;
 
-    if (!carSlider || !carTag || !isVisible || isPaused) return;
+    if (!carSlider || !carTag || !isVisible) return;
 
     // Kill existing animation
     if (animationRef.current) {
@@ -243,7 +218,7 @@ export default function Carousel({ testimonial }: CarouselProps) {
         }
       },
     });
-  }, [isMobile, isVisible, reducedMotion, isPaused]); // No changes here
+  }, [isMobile, isVisible, reducedMotion]);
 
   // Debounced resize handler
   const handleResize = useCallback(() => {
@@ -256,7 +231,7 @@ export default function Carousel({ testimonial }: CarouselProps) {
     resizeTimeoutRef.current = setTimeout(() => {
       playMarquee();
     }, debounceTime);
-  }, [playMarquee, isMobile]); // No changes here
+  }, [playMarquee, isMobile]);
 
   useGSAP(
     () => {
@@ -273,12 +248,32 @@ export default function Carousel({ testimonial }: CarouselProps) {
       const handleVisibilityChange = () => {
         if (document.hidden && animationRef.current) {
           animationRef.current.pause();
-        } else if (!document.hidden && animationRef.current && isVisible && !isPaused) {
+        } else if (!document.hidden && animationRef.current && isVisible) {
           animationRef.current.play();
         }
       };
 
       document.addEventListener('visibilitychange', handleVisibilityChange, { passive: true });
+
+      // Handle mouse enter/leave events for pausing animation
+      const handleMouseEnter = () => {
+        if (!isMobile && animationRef.current) {
+          animationRef.current.pause();
+        }
+      };
+
+      const handleMouseLeave = () => {
+        if (!isMobile && animationRef.current && isVisible) {
+          animationRef.current.play();
+        }
+      };
+
+      // Add mouse event listeners to all card wrappers
+      const cardWrappers = carSlider.querySelectorAll('.card-wrapper');
+      cardWrappers.forEach(wrapper => {
+        wrapper.addEventListener('mouseenter', handleMouseEnter, { passive: true });
+        wrapper.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+      });
 
       // Cleanup function
       return () => {
@@ -293,6 +288,12 @@ export default function Carousel({ testimonial }: CarouselProps) {
         window.removeEventListener('resize', handleResize);
         document.removeEventListener('visibilitychange', handleVisibilityChange);
 
+        // Remove mouse event listeners
+        cardWrappers.forEach(wrapper => {
+          wrapper.removeEventListener('mouseenter', handleMouseEnter);
+          wrapper.removeEventListener('mouseleave', handleMouseLeave);
+        });
+
         if (carSlider) {
           carSlider.style.willChange = 'auto';
         }
@@ -300,7 +301,7 @@ export default function Carousel({ testimonial }: CarouselProps) {
     },
     {
       scope: carSliderRef,
-      dependencies: [testimonial, handleResize, playMarquee, isPaused, isVisible, animationRef], // Added animationRef here
+      dependencies: [testimonial, handleResize, playMarquee, isVisible, isMobile],
     }
   );
 
