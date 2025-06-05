@@ -90,3 +90,22 @@
   object-fit: cover;
   z-index: inherit; /* Inherit z-index from parent card */
 }
+
+
+.expanding-video {
+  /* ... existing styles ... */
+  will-change: width, box-shadow, transform; /* Add this line */
+  transform-origin: center center; /* Ensure it expands from the center */
+}
+
+.left-cards,
+.right-cards {
+  /* ... existing styles ... */
+  will-change: transform; /* Add this line */
+}
+
+/* Consider adding this if your cards have individual transform properties set in CSS */
+.left-card,
+.right-card {
+  will-change: transform; /* For individual cards if they also move independently */
+}

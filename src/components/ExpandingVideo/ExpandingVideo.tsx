@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import './expandingvideo.css'; 
+import './expandingvideo.css';
 import { showReelVideoUrl } from '@/lib/constants';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -15,7 +15,7 @@ export default function ExpandingVideo() {
   const leftCardsRef = useRef(null);
   const rightCardsRef = useRef(null);
 
-useGSAP(() => {
+  useGSAP(() => {
     const video = videoRef.current;
     const leftCards = gsap.utils.toArray('.left-card');
     const rightCards = gsap.utils.toArray('.right-card');
@@ -25,20 +25,20 @@ useGSAP(() => {
 
     // Initial page load animation
     const entranceTl = gsap.timeline();
-    
+
     // Set initial positions (off-screen)
     gsap.set('.expanding-video', {
       y: window.innerHeight, // Start from bottom of screen
       opacity: 0
     });
-    
+
     gsap.set(leftCards, {
       xPercent: -230, // Start further left (relative to their CSS transform)
       opacity: 0
     });
-    
+
     gsap.set(rightCards, {
-      xPercent: 230, // Start further right (relative to their CSS transform)  
+      xPercent: 230, // Start further right (relative to their CSS transform)
       opacity: 0
     });
 
@@ -48,19 +48,19 @@ useGSAP(() => {
         y: 0,
         opacity: 1,
         duration: 1.2,
-        ease: 'power3.out'
+        ease: 'power3.out' // Good for initial entrance
       })
       .to(leftCards, {
         xPercent: 0, // Move to their CSS-defined position
         opacity: 1,
         duration: 0.8,
-        ease: 'power2.out'
+        ease: 'power3.out' // Consistent ease for entrance
       }, '-=0.6') // Start before video finishes
       .to(rightCards, {
         xPercent: 0, // Move to their CSS-defined position
         opacity: 1,
         duration: 0.8,
-        ease: 'power2.out'
+        ease: 'power3.out' // Consistent ease for entrance
       }, '-=0.8'); // Start at same time as left cards
 
     // Scroll-based expansion animation
@@ -72,12 +72,12 @@ useGSAP(() => {
         scrub: 1.1,
       },
       defaults: {
-        ease: 'sine.out',
+        ease: 'power2.out', // Try this for the main scroll animation
       },
     });
 
     // Video expansion animation with fromTo to prevent shrinking
-    tl.fromTo('.expanding-video', 
+    tl.fromTo('.expanding-video',
       {
         width: 'min(50vw, 700px)', // Explicit start value
         boxShadow: '0px 4px 24px 0px #FF5B0066'
@@ -89,29 +89,30 @@ useGSAP(() => {
     );
 
     // Fixed card movements - animate containers only (not individual cards)
-    tl.fromTo('.left-cards', 
+    tl.fromTo('.left-cards',
       {
         y: 0,
-        x: 0 // Start from CSS position
+        xPercent: 0 // Explicitly start from current CSS position
       },
       {
         y: '18vh',
-        xPercent: -105, // Move further left (negative value moves left from CSS transform)
-      }, 0
+        xPercent: -105, // Move further left
+      }, 0 // Start at the same time as the video animation
     );
 
     tl.fromTo('.right-cards',
       {
-        y: 0, 
-        x: 0 // Start from CSS position
+        y: 0,
+        xPercent: 0 // Explicitly start from current CSS position
       },
       {
         y: '20vh',
-        xPercent: 110, // Move further right (positive value moves right from CSS transform)
-      }, 0
+        xPercent: 110, // Move further right
+      }, 0 // Start at the same time as the video animation
     );
 
     return () => {
+      // Clean up ScrollTriggers on component unmount
       ScrollTrigger.getAll().forEach(st => st.kill());
     };
   }, { scope: containerRef });
@@ -122,7 +123,7 @@ useGSAP(() => {
   ];
 
   const rightCardData = [
-    { id: 3, title: 'Card 3', image: 'https://picsum.photos/150/200?random=3' }, 
+    { id: 3, title: 'Card 3', image: 'https://picsum.photos/150/200?random=3' },
   ];
 
   return (
@@ -132,7 +133,7 @@ useGSAP(() => {
         <div className="left-cards" ref={leftCardsRef}>
           {leftCardData.map((card) => (
             <div key={`left-${card.id}`} className="left-card card">
-              <img src={card.image} alt={card.title} className="card-image" /> 
+              <img src={card.image} alt={card.title} className="card-image" />
             </div>
           ))}
         </div>
@@ -151,14 +152,11 @@ useGSAP(() => {
         <div className="right-cards" ref={rightCardsRef}>
           {rightCardData.map((card) => (
             <div key={`right-${card.id}`} className="right-card card">
-              <img src={card.image} alt={card.title} className="card-image" /> 
+              <img src={card.image} alt={card.title} className="card-image" />
             </div>
           ))}
         </div>
-
-
-      </div> 
-
+      </div>
     </div>
   );
 }
