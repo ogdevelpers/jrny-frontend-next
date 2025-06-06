@@ -258,6 +258,8 @@
 }
 
 
+
+
 .about-us-landing {
   display: flex;
   flex-direction: column;
@@ -900,23 +902,37 @@
     flex: 0 0 10%;
   }
 
+  .landing-watch-btn{
+    display: inline-block;
+    width:250px;
+  }
+
+  .landing-watch-btn  button {
+      width:100%;
+    }
+
   .about-us-landing {
     flex-direction: column;
     padding-left: 0rem;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items:center;
   }
 
   .about-landing-button{
     display:inline-block;
+    width:250px;
+  }
 
+  .about-landing-button button {
+    width:100%;
   }
 
   .about-us-section {
-    flex-direction: column;
-    gap: 0.2rem;
+    flex-direction: column; 
     padding-top: 0rem;
     align-items: center;
+    justify-content: flex-end;
+
   }
 
   .about-us-landing-text {
@@ -940,9 +956,11 @@
   .showreel-container {
     width: 100%;
     max-width: 100%;
+    flex: 0 0 40%;
     display:flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .services-landing-container {

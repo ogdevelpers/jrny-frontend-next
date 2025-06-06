@@ -86,7 +86,7 @@ export default function LandingPageContent({
           }
 
           <div style={{ marginTop: "30px" }}>
-              <Link href={`${getRoute('About Us')}`}>
+              <Link href={`${getRoute('About Us')}`} className="landing-watch-btn">
             <Button classList='landing-showreel-button button-white-theme'>
 
               <div className="button-content-animated">
