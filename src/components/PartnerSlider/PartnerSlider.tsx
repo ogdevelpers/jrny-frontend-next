@@ -23,7 +23,7 @@ const PartnerSlider: React.FC<PartnerSliderProps> = ({ brandLogos }) => {
     if (!firstPartner || !secondPartner) return;
     
     // Calculate total width of the first partner section
-    const totalWidth = firstPartner.offsetWidth;
+    const totalWidth = firstPartner.getBoundingClientRect().width;
     
     // Adjust animation duration based on screen size for better mobile experience
     const isMobile = window.innerWidth <= 768;

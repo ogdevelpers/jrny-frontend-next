@@ -9,7 +9,7 @@
   width: 100%;
   padding: 1rem; /* Adjust padding as needed for your mobile header */
   box-sizing: border-box; /* Include padding in width */
-  z-index: 1001; /* Ensure this wrapper is above other content but below sidebar */
+  z-index: 100001; /* Ensure this wrapper is above other content but below sidebar */
 }
 
 /* --- BURGER BUTTON --- */
@@ -33,7 +33,7 @@
   top: 0;
   left: 0; /* Changed from right:0 to left:0 for full-width overlay behavior */
   width: 100%; /* Occupy full width for overlay effect */
-  height: 100vh; /* Full viewport height */
+  height: 100svh; /* Full viewport height */
   background: rgba(0, 0, 0, 0.95); /* Darker background for a full overlay */
   backdrop-filter: blur(20px); /* Stronger blur for a more immersive effect */
   -webkit-backdrop-filter: blur(20px);

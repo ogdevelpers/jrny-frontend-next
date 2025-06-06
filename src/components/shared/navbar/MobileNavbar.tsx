@@ -8,16 +8,30 @@ import { routes } from "@/lib/constants";
 
 const routesArray = Object.values(routes);
 
-const MobileNavBar = () => {
+const MobileNavBar = ( ) => {
   const location = usePathname();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [active, setActive] = useState("");
+  const [mobileMenuOpen, setMobileMenuOpen]= useState(false);
 
   useEffect(() => {
     const mainRoute = "/" + (location.split("/")[1] || "");
     setActive(mainRoute === "//" ? "/" : mainRoute);
     setMobileMenuOpen(false);
   }, [location, setActive]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.classList.add('mobile-menu-open');
+    } else {
+      document.body.classList.remove('mobile-menu-open');
+    }
+
+    // Cleanup function to remove class when component unmounts
+    return () => {
+      document.body.classList.remove('mobile-menu-open');
+    };
+  }, [mobileMenuOpen]);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);

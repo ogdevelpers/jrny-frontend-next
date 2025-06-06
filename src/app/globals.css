@@ -81,7 +81,7 @@ html, body {
   padding: 50px 6rem; /* Combine padding */
   height: 80px;
   max-height:100svh;
-  z-index:10000;
+  z-index:10001;
   box-sizing: border-box; /* Include padding in height calculation */
 }
 
@@ -362,4 +362,11 @@ body {
   .hover-magnetic:hover {
     transform: none;
   }
+}
+
+
+
+body.mobile-menu-open {
+  overflow: hidden;
+  height: 100vh;
 }
