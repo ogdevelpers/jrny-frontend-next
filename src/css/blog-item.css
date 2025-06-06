@@ -62,7 +62,7 @@
 
 }
 
-.rich-content p{
+.rich-content p strong{
     font-family: 'Helvetica Neue';
     font-weight: 700;
     margin-top: 35px;
@@ -73,7 +73,7 @@
     color: #FFFFFF;
 }
 
-.rich-content strong{
+.rich-content p{
     font-family: 'Helvetica Neue';
     font-weight: 400;
     font-size: 20px;
