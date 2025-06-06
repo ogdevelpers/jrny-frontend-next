@@ -205,6 +205,11 @@
   box-sizing: border-box;
 }
 
+.about-landing-button{
+    display:inline-block;
+    width:250px;
+  }
+
 .svg-content {
   position: absolute;
   left: 0;
@@ -916,11 +921,6 @@
     padding-left: 0rem;
     justify-content: flex-end;
     align-items:center;
-  }
-
-  .about-landing-button{
-    display:inline-block;
-    width:250px;
   }
 
   .about-landing-button button {
