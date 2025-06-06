@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import PortfolioList from '@/components/Portfolio/PortfolioList';
 import '../../../css/portfolio-item.css';
 import { PortfolioItemContent } from "@/components/PortfolioItemContent/PortfolioItemContent";

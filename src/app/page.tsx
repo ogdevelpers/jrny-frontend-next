@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import LandingPageContent from "@/components/LandingPageContent/LandingPageContent";
 import { fetchFromStrapi } from "@/lib/strapi";
 import LoaderWrapper from "./LoaderComponent";

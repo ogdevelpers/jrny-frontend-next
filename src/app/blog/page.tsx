@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import { BlogHero } from "@/components/Blogs/Blogs";
 import Footer from "@/components/shared/footer/Footer";
 import { fetchFromStrapi } from "@/lib/strapi";

@@ -90,8 +90,8 @@ export default function LandingPageContent({
             <Button classList='landing-showreel-button button-white-theme'>
 
               <div className="button-content-animated">
-                Watch Showreel
-                {/* <img src="/arrow-right.png" alt="arrow" /> */}
+                Showreel
+                <img src="/arrow-right.png" alt="arrow" />
               </div>
             </Button>
               </Link> 
