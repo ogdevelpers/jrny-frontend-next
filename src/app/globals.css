@@ -108,16 +108,6 @@ html, body {
   }
 }
 
-.mobile-header{ 
-  position:sticky;
-  top:0;
-  display:flex;
-  justify-content: space-between;
-  width:100%;
-  border:3px solid red;
-  max-width: 100svw;
-  z-index:10001;
-}
 
 .logo-div {
   flex: 0 0 auto; /* Don't grow or shrink */

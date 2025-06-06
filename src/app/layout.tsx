@@ -1,9 +1,7 @@
-import './globals.css';
-import { Logo } from '@/components/shared/navbar/Logo';
-import { NavBar } from '@/components/shared/navbar/Navbar';
+import './globals.css'; ;
 import ChatUs from '../components/ChatUs/ChatUs';
-import ScrollToTop from '../components/ScrollToTop/ScrollToTop'; 
-import MobileNavBar from '@/components/shared/navbar/MobileNavbar';
+import ScrollToTop from '../components/ScrollToTop/ScrollToTop';  
+import Header from '@/components/Header/Header';
 
 export const metadata = {
   title: 'Your App',
@@ -16,17 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {/* <SmoothWrapper> */}
           <div className="pinMe" id="smooth-wrapper">
-            <header className="header">
-              <div className="logo-div">
-                <Logo />
-              </div>
-              <div className="navbar-div">
-                <NavBar /> 
-              </div>
-              <div className="mobile-navbar-div">
-                <MobileNavBar />
-              </div>
-            </header>
+          <Header/>
  
 
             <div className="container" id="smooth-content">
