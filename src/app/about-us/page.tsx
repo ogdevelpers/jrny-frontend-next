@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import { AboutUsContent } from "@/components/AboutUsContent/AboutsUsContent";
 import { fetchFromStrapi } from "@/lib/strapi";
 

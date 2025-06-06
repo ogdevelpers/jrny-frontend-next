@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import { PortfolioContent } from '@/components/Portfolio/Portfolio';
 import { fetchFromStrapi } from '@/lib/strapi';
 

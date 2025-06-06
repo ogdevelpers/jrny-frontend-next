@@ -1,4 +1,5 @@
 'use client'
+export const runtime = 'edge';
 import Contact, { ContactForm, ContactHeading, SocialDivs } from '../../components/Contact/Contact';
 import useIsMobile from '../../hooks/useIsMobile';
 import '../../css/contactus.css';

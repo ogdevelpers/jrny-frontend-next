@@ -166,7 +166,7 @@ export const SocialDivs = ()=>{
       <div className="social-heading">Location</div>
       <div className="social-example">
         <span>Mumbai</span>
-        <span>Delhi</span>Indore<span></span>
+        <span>Delhi</span><span></span>
       </div>
     </div>
     <div className="social-div-container">

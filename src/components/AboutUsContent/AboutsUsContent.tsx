@@ -98,7 +98,8 @@ export const AboutUsContent = ({ content, tag, team }: AboutUsContentProps) => {
                 <div className="about-motto">
                     {
                         AboutUsMottoArray.map((Motto, index: number) =>
-                            <div className="about-motto-box  hover-box hover-neon-variant" key={index}>
+                            // <div className="about-motto-box  hover-box hover-neon-variant" key={index}>
+                                <div className="about-motto-box" key={index}>
                                 <div className="motto-title">{Motto.title}</div>
                                 <div className="motto-description">{Motto.description}</div>
                             </div>

@@ -209,21 +209,24 @@
   will-change: transform, box-shadow;
 }
 
-.person-tile:hover {
-  transform: translateY(-8px) scale(1.03); /* lift + zoom */
-  box-shadow: 0 16px 40px rgba(255, 91, 0, 0.3); /* orange glow */
-  /* Optional border glow */ 
-  outline-offset: -4px;
+.person-credentails{
+  padding-top: 10px;
 }
 
-.person-tile:hover {
+/* .person-tile:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 16px 40px rgba(255, 91, 0, 0.3);
+  outline-offset: -4px;
+} */
+
+/* .person-tile:hover {
   transform: translateY(-8px) scale(1.03) rotateZ(-0.5deg);
   background: linear-gradient(
     145deg,
     rgba(255, 91, 0, 0.05),
     rgba(255, 91, 0, 0.1)
   );
-}
+} */
 
 
 .person-image-div {
