@@ -4,8 +4,8 @@ import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 import Header from '@/components/Header/Header';
 
 export const metadata = {
-  title: 'Your App',
-  description: 'Your app description',
+  title: 'JRNY',
+  description: 'JRNY Experimental',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
