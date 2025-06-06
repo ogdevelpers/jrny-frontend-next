@@ -2,7 +2,7 @@
   position: fixed;
   right: 5%;
   bottom: 80px;
-  z-index: 1000;
+  z-index: 999;
 }
 
 .chat-hover-wrapper {
