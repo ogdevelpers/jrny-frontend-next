@@ -314,12 +314,15 @@
     align-items: center;
   }
 
-  .tile-title{
-    max-height:15%;
-    height:15%;
-    overflow:hidden;
-    text-overflow: ellipsis; 
-  }
+.tile-title {
+  height: auto;               /* Remove fixed height */
+  max-height: none;           /* Remove any height restriction */
+  font-size: 1rem;
+  
+  white-space: nowrap;        /* Prevent text from wrapping to next line */
+  overflow: hidden;           /* Hide any overflow text */
+  text-overflow: ellipsis;    /* Show "..." if text is too long */
+}
 
   .portfolio-container {
     padding-left: 0; /* Remove left padding on mobile */

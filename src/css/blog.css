@@ -312,7 +312,8 @@ color: #808186;
 /* Extra small screens */
 @media (max-width: 500px) {
   .blog-tile-container-mobile {
-    grid-template-columns: 1fr  1fr;
+    grid-template-columns: 1fr;
+    row-gap: 2rem; 
   }
 
   .blog-image-mobile {

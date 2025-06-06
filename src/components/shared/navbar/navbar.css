@@ -18,7 +18,14 @@
 .logo {
   width: 6.3svw;
   height: auto;
-  margin: auto 0;
+  margin: auto 0; 
+}
+
+@media(max-width:1040px){
+  .logo{
+    height:90%;
+    width:10svw;
+  }
 }
 
 .logo img {
