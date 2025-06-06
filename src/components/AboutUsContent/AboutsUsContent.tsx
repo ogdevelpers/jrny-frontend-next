@@ -5,7 +5,7 @@ import ShowReel from '@/components/ShowReel/ShowReel';
 import Footer from '@/components/shared/footer/Footer';
 import useIsMobile from '@/hooks/useIsMobile';
 import TagSlider from '@/components/TagSlider/TagSlider';
-import { extractContentByKey } from '@/utils/common.util';
+import { extractContentByKey, getRoute } from '@/utils/common.util';
 import Link from 'next/link';
 import '../../css/about.css';
 
@@ -55,12 +55,14 @@ export const AboutUsContent = ({ content, tag, team }: AboutUsContentProps) => {
                         !isMobile && (
 
                             <div className="about-landing-buttons">
+                                    <Link href={`${getRoute('Contact Us')}`}>
                                 <Button classList="button-white-theme">
                                     <div className="button-content-animated">
-                                        <Link href='/contact-us'>Contact Us</Link>
+                                        Contact Us
                                         <img src="/arrow-right.png" alt="arrow" />
                                     </div>
                                 </Button>
+                                    </Link>
                             </div>
                         )
                     }
@@ -76,12 +78,17 @@ export const AboutUsContent = ({ content, tag, team }: AboutUsContentProps) => {
 
             {isMobile && (
                 <div className="about-landing-buttons-mobile">
+                    <Link href={`${getRoute('Contact Us')}`}>
                     <Button classList={"button-white-theme"}>
-                        <Link href='/contact-us'>Contact Us</Link>
+                        Contact Us 
                     </Button>
+                    </Link>
+
+                    <Link href={`${getRoute('Portfolio')}`}>
                     <Button classList={"about-portfolio-btn-mobile"}>
-                        <Link href='/portfolio'>Portfolio</Link>
+                         Portfolio 
                     </Button>
+                    </Link>
                 </div>
             )}
 

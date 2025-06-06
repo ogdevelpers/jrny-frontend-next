@@ -7,13 +7,13 @@ import PartnerSlider from "@/components/PartnerSlider/PartnerSlider";
 import Footer from "@/components/shared/footer/Footer";
 import ShowReel from "@/components/ShowReel/ShowReel";
 import useIsMobile from "@/hooks/useIsMobile";
-import { extractContentByKey } from "@/utils/common.util";
+import { extractContentByKey, getRoute } from "@/utils/common.util";
 import { PortfolioMiddleList } from "../Portfolio/Portfolio";
 import LineSvg from "../LineSvg/LineSvg";
 import '../../css/landingpage.css';
 import Link from "next/link";
 import Button from "../Button/Button"; 
-import { showReelVideoUrl } from "@/lib/constants";
+import { routes, showReelVideoUrl } from "@/lib/constants";
 
 interface LandingPageContentProps {
   content: any;
@@ -86,12 +86,15 @@ export default function LandingPageContent({
           }
 
           <div style={{ marginTop: "30px" }}>
+              <Link href={`${getRoute('About Us')}`}>
             <Button classList='landing-showreel-button button-white-theme'>
+
               <div className="button-content-animated">
                 Watch Showreel
                 {/* <img src="/arrow-right.png" alt="arrow" /> */}
               </div>
             </Button>
+              </Link> 
           </div>
 
         </div>
@@ -128,12 +131,14 @@ export default function LandingPageContent({
                   From concept to execution, every touchpoint is curated to captivate the senses, ignite curiosity, and leave a memorable impact.
                 </div>
 
+                  <Link href={`${getRoute('About Us')}`}>
                 <Button classList="button-white-theme">
                   <div className="button-content-animated">
-                    <Link href="/about-us">About Us</Link>
+                    About Us
                     <img src="/arrow-right.png" alt="arrow" />
                   </div>
                 </Button>
+                  </Link>
               </div>
             </div>
           </div>

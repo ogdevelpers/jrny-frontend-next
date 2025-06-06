@@ -15,13 +15,9 @@ export const NavBar = () => {
     setActive(mainRoute === "//" ? "/" : mainRoute); 
   }, [location]);
 
- 
-
   return (
     <nav className={`navbar `}>
-   
-        <NavBarUl active={active} setActive={setActive} />
- 
+      <NavBarUl active={active} setActive={setActive} />
     </nav>
   );
 };
@@ -36,16 +32,16 @@ const NavBarUl = ({
   return (
     <ul className="navbar-list">
       {routes.map((route) => {
-        const isActive = active === route;
+        const isActive = active === route.path;
         return (
-          <li className="navbar-list-item" key={route}>
+          <li className="navbar-list-item" key={route.path}>
             <Link
-              href={route}
+              href={route.path}
               className={isActive ? "navbar-active" : ""}
-              onClick={() => setActive(route)}
+              onClick={() => setActive(route.path)}
             >
               <span className="navbar-text">
-                {route === "/" ? "Home" : route.replace("/", "").replace("-", " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+                {route.name}
               </span>
             </Link>
           </li>
@@ -54,4 +50,3 @@ const NavBarUl = ({
     </ul>
   );
 };
- 

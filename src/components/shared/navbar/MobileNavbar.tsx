@@ -1,24 +1,22 @@
- 'use client';
+'use client';
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import "./MobileNavBar.css"; // Ensure you create this CSS file
+import "./MobileNavBar.css";
 import { routes } from "@/lib/constants";
 
-// These routes should ideally be imported from a shared constants file
+const routesArray = Object.values(routes);
 
- 
-const MobileNavBar = ( ) => {
+const MobileNavBar = () => {
   const location = usePathname();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false); 
-  const [active, setActive] = useState(""); 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [active, setActive] = useState("");
 
-  // Close menu on route change and update active state
   useEffect(() => {
     const mainRoute = "/" + (location.split("/")[1] || "");
     setActive(mainRoute === "//" ? "/" : mainRoute);
-    setMobileMenuOpen(false); // Close menu when navigating
+    setMobileMenuOpen(false);
   }, [location, setActive]);
 
   const toggleMobileMenu = () => {
@@ -26,7 +24,7 @@ const MobileNavBar = ( ) => {
   };
 
   return (
-    <div className="mobile-nav-wrapper"> {/* Top-level wrapper for mobile nav */}
+    <div className="mobile-nav-wrapper">
       <div className="navbar-mobile-container">
         <button
           className="navbar-burger-button"
@@ -41,13 +39,10 @@ const MobileNavBar = ( ) => {
         </button>
       </div>
 
-      {/* Overlay: Render conditionally only when menu is open */}
       {mobileMenuOpen && (
         <div className="mobile-menu-overlay" onClick={toggleMobileMenu}></div>
       )}
 
-      {/* Sidebar: Render conditionally and apply 'open' class */}
-      {/* The `visibility` and `pointer-events` transitions are managed by CSS */}
       <div className={`mobile-sidebar ${mobileMenuOpen ? "open" : ""}`}>
         <NavBarUlMobile
           active={active}
@@ -59,7 +54,6 @@ const MobileNavBar = ( ) => {
   );
 };
 
-// --- Mobile Navigation List Component (Moved from original NavBar) ---
 const NavBarUlMobile = ({
   active,
   setActive,
@@ -71,19 +65,19 @@ const NavBarUlMobile = ({
 }) => {
   return (
     <ul className="navbar-list-mobile">
-      {routes.map((route) => {
-        const isActive = active === route;
+      {routesArray.map((route) => {
+        const isActive = active === route.path;
         return (
-          <li className="navbar-list-item" key={route}>
+          <li className="navbar-list-item" key={route.path}>
             <Link
-              href={route}
+              href={route.path}
               className={isActive ? "navbar-active" : ""}
               onClick={() => {
-                setActive(route);
+                setActive(route.path);
                 closeMenu();
               }}
             >
-              {route === "/" ? "Home" : route.replace("/", "").replace("-", " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+              {route.name}
             </Link>
           </li>
         );

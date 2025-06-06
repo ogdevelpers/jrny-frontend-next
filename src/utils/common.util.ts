@@ -1,3 +1,5 @@
+import { routes } from "@/lib/constants";
+
 type TextChild = {
   text: string;
   type: string;
@@ -47,4 +49,16 @@ export const extractContentByKey = (
     .join('\n');
 
   return { contentTitle, text };
+};
+
+ 
+
+/**
+ * Returns the path for a given route key.
+ * @param key - The key of the route (e.g., 'home', 'portfolio', etc.)
+ * @returns The path string or undefined if not found.
+ */
+export const getRoute = (key:string) => {
+  const route = routes.find(route=> route.name=== key);
+  return route?.path ?? routes[0].path;
 };
