@@ -131,7 +131,7 @@ export default function LandingPageContent({
                   From concept to execution, every touchpoint is curated to captivate the senses, ignite curiosity, and leave a memorable impact.
                 </div>
 
-                  <Link href={`${getRoute('About Us')}`}>
+                <Link href={`${getRoute('About Us')}`} className='about-landing-button'>
                 <Button classList="button-white-theme">
                   <div className="button-content-animated">
                     About Us

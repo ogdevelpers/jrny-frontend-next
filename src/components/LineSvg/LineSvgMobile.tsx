@@ -5,7 +5,7 @@ import React, { useEffect, useRef } from 'react';
 // import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 // import { ScrollTrigger } from 'gsap/ScrollTrigger'; 
 // import { useGSAP } from '@gsap/react';
-import useIsMobile from '../../hooks/useIsMobile';
+// import useIsMobile from '../../hooks/useIsMobile';
 
 // gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
@@ -97,7 +97,7 @@ const LineSvgMobile: React.FC = () => {
   // }, { scope: svgRef });
  
  
-  const d = `M${rightEdge/2},150 L${rightEdge/2},200 L${rightEdge/2},210 L2,250 L2,1900 L${rightEdge},1950 L${rightEdge},3200 L2,3300 L2,3420`;
+  const d = `M${rightEdge/2},250 L${rightEdge/2},250 L${rightEdge/2},300 L2,350 L2,1900 L${rightEdge},1950 L${rightEdge},3200 L2,3300 L2,3420`;
 
   return (
     <div style={{ position: 'relative' }}>
