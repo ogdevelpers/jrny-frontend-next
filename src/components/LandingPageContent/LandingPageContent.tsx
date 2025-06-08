@@ -167,7 +167,7 @@ export default function LandingPageContent({
                       </div>
                     </div>
                   </div>
-                  <div className="profile-card generic">
+                  <div className="profile-card">
                     <img src="services.jpg" alt="" />
                     <div className="profile-caption">
                       <div className="heading">Category 2</div>
@@ -177,7 +177,7 @@ export default function LandingPageContent({
                       </div>
                     </div>
                   </div>
-                  <div className="profile-card generic">
+                  <div className="profile-card">
                     <img src="services.jpg" alt="" />
                     <div className="profile-caption">
                       <div className="heading">Category 3</div>
@@ -187,7 +187,7 @@ export default function LandingPageContent({
                       </div>
                     </div>
                   </div>
-                  <div className="profile-card generic">
+                  <div className="profile-card">
                     <img src="services.jpg" alt="" />
                     <div className="profile-caption">
                       <div className="heading">Category 4</div>
