@@ -451,18 +451,7 @@
   /* Zooms in */
   animation: bounceScale 0.5s ease-in-out;
 }
-
-/* @keyframes bounceScale {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1.05);
-  }
-} */
+ 
 
 /* Caption Styles */
 .profile-caption {
