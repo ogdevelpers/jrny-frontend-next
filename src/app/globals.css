@@ -80,7 +80,7 @@ html, body {
   -webkit-backdrop-filter: blur(5.6px);
   padding: 50px 6rem; /* Combine padding */
   height: 80px;
-  max-height:100svh;
+  max-height:100dvh;
   z-index:10001;
   box-sizing: border-box; /* Include padding in height calculation */
 }
