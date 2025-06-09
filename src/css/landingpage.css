@@ -483,6 +483,9 @@
   color: #A7A7A7;
   text-align: left; 
   line-height: 110%;
+  display:flex; 
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .profile-card:hover {
@@ -948,6 +951,7 @@
     line-height: 1.1rem;
     width: 90%;
     max-width: 90%;
+    margin:0 auto;
   }
 
   .cards-section {

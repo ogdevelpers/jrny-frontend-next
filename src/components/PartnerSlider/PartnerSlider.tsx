@@ -68,27 +68,11 @@ const PartnerSlider: React.FC<PartnerSliderProps> = ({brandLogos}) => {
 
   }, { scope: containerRef });
 
- 
-
-  // Pause/resume animation on hover
-  const handleMouseEnter = () => {
-    if (animationRef.current) {
-      // animationRef.current.pause();
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (animationRef.current) {
-      // animationRef.current.play();
-    }
-  };
 
   return (
     <div
       className="partner-slider"
       ref={containerRef}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
       <div className="partner-slider-container">
         <div className="partner-images" ref={sliderRef}>

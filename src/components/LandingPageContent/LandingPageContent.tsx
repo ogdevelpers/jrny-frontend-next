@@ -162,8 +162,8 @@ export default function LandingPageContent({
                     <div className="profile-caption">
                       <div className="heading">Category 1</div>
                       <div className="description">
-                       Content Creation
-                        Experience Design
+                        <div className="description-1">Content Creation </div>
+                        <div className="description-2">Experience Design</div>
                       </div>
                     </div>
                   </div>
@@ -172,8 +172,8 @@ export default function LandingPageContent({
                     <div className="profile-caption">
                       <div className="heading">Category 2</div>
                       <div className="description">
-                        Content Creation
-                        Experience Design
+                        <div className="description-1">Content Creation </div>
+                        <div className="description-2">Experience Design</div>
                       </div>
                     </div>
                   </div>
@@ -182,8 +182,8 @@ export default function LandingPageContent({
                     <div className="profile-caption">
                       <div className="heading">Category 3</div>
                       <div className="description">
-                        Content Creation
-                        Experience Design
+                        <div className="description-1">Content Creation </div>
+                        <div className="description-2">Experience Design</div>
                       </div>
                     </div>
                   </div>
@@ -192,8 +192,8 @@ export default function LandingPageContent({
                     <div className="profile-caption">
                       <div className="heading">Category 4</div>
                       <div className="description">
-                       Content Creation
-                        Experience Design
+                        <div className="description-1">Content Creation </div>
+                        <div className="description-2">Experience Design</div>
                       </div>
                     </div>
                   </div>
