@@ -146,12 +146,12 @@ export default function LandingPageContent({
           <div className="card-container">
             <section className="card-para-div">
               <div className="services-landing-container  ">
-                <h1 className="services-landing-title">
+                <h1 className="services-landing-title services-text-content">
                   {serviceText?.contentTitle} <span className="jrny-span">{provideText?.contentTitle}</span>
                 </h1>
-                <p className="services-landing-paragraph">
+                <div className="services-landing-paragraph">
                   {serviceText?.text}
-                </p>
+                </div>
               </div>
 
               <div className="cards-section">
@@ -162,38 +162,38 @@ export default function LandingPageContent({
                     <div className="profile-caption">
                       <div className="heading">Category 1</div>
                       <div className="description">
-                       Content Creation
-                        Experience Design
+                        <div className="description-1">Content Creation </div>
+                        <div className="description-2">Experience Design</div>
                       </div>
                     </div>
                   </div>
-                  <div className="profile-card generic">
+                  <div className="profile-card">
                     <img src="services.jpg" alt="" />
                     <div className="profile-caption">
                       <div className="heading">Category 2</div>
                       <div className="description">
-                        Content Creation
-                        Experience Design
+                        <div className="description-1">Content Creation </div>
+                        <div className="description-2">Experience Design</div>
                       </div>
                     </div>
                   </div>
-                  <div className="profile-card generic">
+                  <div className="profile-card">
                     <img src="services.jpg" alt="" />
                     <div className="profile-caption">
                       <div className="heading">Category 3</div>
                       <div className="description">
-                        Content Creation
-                        Experience Design
+                        <div className="description-1">Content Creation </div>
+                        <div className="description-2">Experience Design</div>
                       </div>
                     </div>
                   </div>
-                  <div className="profile-card generic">
+                  <div className="profile-card">
                     <img src="services.jpg" alt="" />
                     <div className="profile-caption">
                       <div className="heading">Category 4</div>
                       <div className="description">
-                       Content Creation
-                        Experience Design
+                        <div className="description-1">Content Creation </div>
+                        <div className="description-2">Experience Design</div>
                       </div>
                     </div>
                   </div>
@@ -232,7 +232,9 @@ export default function LandingPageContent({
                 <PortfolioMiddleList portfolio={portfolioTrimmed} />
                 <div className="see-more-container">
 
-                  <Link href="/portfolio"><button className="see-more">See More</button></Link>
+                  <Link href="/portfolio">
+                  <Button classList="see-more">See More</Button>
+                  </Link>
                 </div>
               </div>
             </section>

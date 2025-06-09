@@ -309,14 +309,7 @@
   text-align: left;
   margin-bottom: 0px;
 }
-
-.about-us-landing-paragraph,
-.services-landing-title,
-.services-landing-paragraph {
-  text-align: left;
-  max-width: 35svw;
-
-}
+ 
 
 .showreel-container {
   height: 72%;
@@ -364,8 +357,7 @@
 
 .card-para-div {
   position: relative;
-  min-height: max-content;
-  margin-top: 2rem;
+  min-height: max-content; 
   font-family: "Helvetica Neue", sans-serif;
   font-weight: 500;
   width: 100%;
@@ -380,10 +372,11 @@
 
 .services-landing-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   max-width: 100%;
   padding-left: 6rem;
+  margin-bottom:20px;
 }
 
 .services-landing-container,
@@ -392,16 +385,12 @@
 }
 
 .about-us-landing-text,
-.services-landing-title {
+.services-landing-title,
+.services-landing-paragraph {
   width: 40svw;
   max-width: 40svw;
-}
-
-.showreel-container,
-.services-landing-paragraph {
-  width: 40vw;
-  max-width: 40vw;
-}
+  text-align:left;
+} 
 
 .services-landing-title {
   font-family: "Armstrong";
@@ -409,27 +398,30 @@
   font-weight: 500;
   color: white;
   text-align: left;
-  flex: 1;
-  /* max-width: calc(35%-6rem); */
+  flex: 1; 
 }
+
+.services-text-content{
+  margin-bottom:auto;
+  margin-top:0;
+}
+
 
 .services-landing-paragraph {
   font-size: 1.3rem;
   line-height: 1.6rem;
-  flex: 1;
-  /* max-width: calc(35%-6rem); */
+  flex: 1; 
 }
 
 .profile-card {
   width: 90%;
-  height: 500px;
-  border: 5px solid white;
+  height: 500px; 
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  /* Needed for caption positioning */
+  border-bottom-right-radius: 8px;
 }
 
 .card-paragraph-start {
@@ -452,18 +444,7 @@
   /* Zooms in */
   animation: bounceScale 0.5s ease-in-out;
 }
-
-/* @keyframes bounceScale {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1.05);
-  }
-} */
+ 
 
 /* Caption Styles */
 .profile-caption {
@@ -499,37 +480,16 @@
   margin-top: 0.5rem;
   opacity: 0.8;
   font-family: 'Helvetica Neue';
+  color: #A7A7A7;
+  text-align: left; 
+  line-height: 110%;
+  display:flex; 
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .profile-card:hover {
   cursor: grabbing;
-}
-
-.profile-card::before,
-.profile-card::after {
-  content: "";
-  position: absolute;
-  background-color: white;
-}
-
-.profile-card::before {
-  width: 2px;
-  height: 10px;
-  top: -4px;
-  left: -3px;
-}
-
-.profile-card::after {
-  width: 10px;
-  height: 2px;
-  top: 0px;
-  left: -7px;
-}
-
-/* Add these new styles to your app.css */
-.animated-underline {
-  position: relative;
-  overflow: hidden;
 }
 
 .journeys-div {
@@ -571,23 +531,22 @@
 .see-more-container {
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   width: 100%;
 }
 
+.see-more-container a {
+  display:inline-block;
+}
+
 .see-more {
-  width: 80px;
+  width: 200px;
   font-family: "Helvetica Neue";
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0%;
   text-align: center;
-
-  color: #808186;
-  background-color: black;
-  border: none;
-  padding: 5px 2px;
-  cursor: pointer;
 }
 
 .landing-portfolio {
@@ -606,6 +565,8 @@
   height: 800px;
   max-height: 800px;
   padding-left: 6rem;
+  display:flex;
+  flex-direction: column;
 }
 
 @media(min-width:1800px) {
@@ -990,6 +951,7 @@
     line-height: 1.1rem;
     width: 90%;
     max-width: 90%;
+    margin:0 auto;
   }
 
   .cards-section {

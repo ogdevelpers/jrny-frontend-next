@@ -68,8 +68,8 @@ export default function ExpandingVideo() {
       scrollTrigger: {
         trigger: '.expanding-video-container',
         start: 'top 45%',
-        end: 'bottom bottom',
-        scrub: 1.1,
+        end: 'bottom bottom', 
+        scrub: 1,
       },
       defaults: {
         ease: 'power2.out', // Try this for the main scroll animation
@@ -79,7 +79,7 @@ export default function ExpandingVideo() {
     // Video expansion animation with fromTo to prevent shrinking
     tl.fromTo('.expanding-video',
       {
-        width: 'min(50vw, 700px)', // Explicit start value
+        width: 'min(45vw, 650px)', // Explicit start value
         boxShadow: '0px 4px 24px 0px #FF5B0066'
       },
       {
