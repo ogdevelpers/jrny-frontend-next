@@ -84,7 +84,7 @@ export default function ExpandingVideo() {
         boxShadow: '0px 4px 24px 0px #FF5B0066'
       },
       {
-        width: 'min(80vw, 1400px)',
+        width: 'min(74vw, 1400px)',
         boxShadow: '0px 8px 48px 0px #FF5B0099',
       }
     );
