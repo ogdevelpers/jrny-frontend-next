@@ -70,7 +70,7 @@ export default function ExpandingVideo() {
         start: 'top 45%',
         end: 'bottom bottom', 
         scrub: 0.8,
-        snap:0.4,
+        snap:0.2,
       },
       defaults: {
         ease: 'power2.out', // Try this for the main scroll animation
@@ -84,7 +84,7 @@ export default function ExpandingVideo() {
         boxShadow: '0px 4px 24px 0px #FF5B0066'
       },
       {
-        width: 'min(80vw, 1400px)',
+        width: 'min(74vw, 1400px)',
         boxShadow: '0px 8px 48px 0px #FF5B0099',
       }
     );
