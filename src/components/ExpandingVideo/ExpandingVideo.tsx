@@ -70,7 +70,7 @@ export default function ExpandingVideo() {
         start: 'top 45%',
         end: 'bottom bottom', 
         scrub: 0.8,
-        snap:0.4,
+        snap:0.2,
       },
       defaults: {
         ease: 'power2.out', // Try this for the main scroll animation
