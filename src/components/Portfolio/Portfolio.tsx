@@ -8,11 +8,18 @@ import Link from "next/link";
 import PortfolioList from "./PortfolioList";
 import getPortfolioSidebarTabs from "@/utils/portfolioSidebarTabs.util";
 
-export const PortfolioContent = ({ content, brandLogos, portfolio }: any) => {
-  const ourText = extractContentByKey(content, 'our-portfolio'),
-    portfolioText = extractContentByKey(content, 'portfolio');
-    
-  const portfolioTabArray = getPortfolioSidebarTabs(portfolio);
+export const PortfolioContent = ({ content, contactUs }: any) => {
+  const portfolioTabArray = getPortfolioSidebarTabs(content?.portfolios);
+
+  const ourPortfolioTitle = (title: string) => {
+    const titleData = title.split(/<([^>]+)>/);
+
+    return (
+        <span className="our-projects-span">
+                {titleData[0]} <span className="jrny-span-text">{titleData[1]}</span>
+          </span>
+    )
+  }
 
   return (
     <>
@@ -21,26 +28,22 @@ export const PortfolioContent = ({ content, brandLogos, portfolio }: any) => {
         <div className="portfolio-top-section">
           <div className="portfolio-our-projects">
             <div className="our-projects-heading">
-              <span className="our-projects-span">
-                {ourText?.contentTitle} <span className="jrny-span-text">{portfolioText?.contentTitle}</span>
-              </span>
+             {ourPortfolioTitle(content?.pageTitle)}
             </div>
             <p className="our-projects-p">
-              {ourText?.text}
+              {content?.pageDescription}
             </p>
           </div>
           <div className="portfolio-partner-show">
-            <PartnerSlider brandLogos={brandLogos} />
+            <PartnerSlider brandLogos={content?.brandLogos} />
           </div>
         </div>
         <div className="portfolio-list-container">
-        <PortfolioList portfolio={portfolio} sidebarTabs={portfolioTabArray}/>
+        <PortfolioList portfolio={content?.portfolios} sidebarTabs={portfolioTabArray}/>
         </div>
-
-
       </div>
 
-      <Footer />
+      <Footer content={contactUs} />
     </>
   )
 }
@@ -85,8 +88,8 @@ export const PortfolioMiddleList = ({ portfolio }: any) => {
         {portfolio?.slice(0, visibleCount)?.map((element: any) => (
           <div key={element.id} className="portfolio-tile">
             <PortfolioTile
-              tileTitle={element.portfolioTitle}
-              videoLink={element.portfolioVideo}
+              tileTitle={element.Project_Name}
+              videoLink={element.Project_Video_Url}
               thumbnail={element.portfolioImage}
               id={element.key}
             />

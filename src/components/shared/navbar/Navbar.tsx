@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { routes } from "@/lib/constants";
 
-export const NavBar = () => {
+export const NavBar = ({navBar}: any) => {
   const location = usePathname();
   const [active, setActive] = useState(""); 
 
@@ -17,7 +17,7 @@ export const NavBar = () => {
 
   return (
     <nav className={`navbar `}>
-      <NavBarUl active={active} setActive={setActive} />
+      <NavBarUl active={active} setActive={setActive} navBarData={navBar} />
     </nav>
   );
 };
@@ -25,23 +25,25 @@ export const NavBar = () => {
 const NavBarUl = ({
   active,
   setActive,
+  navBarData,
 }: {
   active: string;
   setActive: React.Dispatch<React.SetStateAction<string>>;
+  navBarData: any;
 }) => {
   return (
     <ul className="navbar-list">
-      {routes.map((route) => {
-        const isActive = active === route.path;
+      {navBarData?.map((route: any) => {
+        const isActive = active === route.url;
         return (
-          <li className="navbar-list-item" key={route.path}>
+          <li className="navbar-list-item" key={route.url}>
             <Link
-              href={route.path}
+              href={route.url}
               className={isActive ? "navbar-active" : ""}
-              onClick={() => setActive(route.path)}
+              onClick={() => setActive(route.url)}
             >
               <span className="navbar-text">
-                {route.name}
+                {route.title}
               </span>
             </Link>
           </li>

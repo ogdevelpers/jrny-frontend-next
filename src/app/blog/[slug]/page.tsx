@@ -27,18 +27,32 @@ export default async function BlogItem({ params }: {params: Promise<{ slug: stri
 
   let blogDetailData = null;
       let blogsData= null;
+      let contactUsData = null;
+
+      const contactUsPopulate = [
+        'Form',
+        'Form.locations',
+        'Form.services',
+    ]
+
+    const urlParamsContactUs = new URLSearchParams();
+    contactUsPopulate.forEach((value, index) => {
+        urlParamsContactUs.append(`populate[${index}]`, value);
+    })
       
           try {
               const [
                   blogDetailRes,
-                  blogsRes
+                  blogsRes,
+                  contactUsResp,
               ] = await Promise.all([
                   fetchFromStrapi(`blogs?filters[slug][$eq]=${slug}&populate=*`),
                   fetchFromStrapi('blogs?populate=*'),
+                  fetchFromStrapi(`contact?${urlParamsContactUs.toString()}`),
               ]);
              blogDetailData = blogDetailRes.data;
              blogsData = blogsRes.data;
-      
+             contactUsData = contactUsResp.data;
           } catch (error) {
               console.error('Error fetching data:', error);
           }
@@ -110,7 +124,7 @@ const blogs = transformBlogs(blogsData);
         </div>
     <div className="blog-item-bottom">
     <BlogHero route='derived' blogsData={blogs}/>
-    <Footer/>
+    <Footer content={contactUsData}/>
     </div>
     </div>
     </>

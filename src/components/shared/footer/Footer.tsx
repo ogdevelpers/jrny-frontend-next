@@ -5,11 +5,11 @@ import ScrollTopButton from "../../ScrollToTop/ScrollToTopButton";
 import FooterLine from "./FooterLine";
 import './footer.css'
 
-export default function Footer() {
+export default function Footer({content}: any) {
   return (
 <div className="footer-contact">
   <FooterLine/>
-  <Contact />
+  <Contact contents={content}/>
   <ScrollTopButton />
 </div>  )
 }

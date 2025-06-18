@@ -17,6 +17,10 @@
   background-repeat: no-repeat;
 }
 
+.abt-landing{
+  text-align: left;
+}
+
 .landing-svg-container {
   position: relative;
   /* height: 4000px; */

@@ -1,46 +1,37 @@
-'use client'
 export const runtime = 'edge';
-import Contact, { ContactForm, ContactHeading, SocialDivs } from '../../components/Contact/Contact';
-import useIsMobile from '../../hooks/useIsMobile';
 import '../../css/contactus.css';
 import '../../components/Contact/contact.css'
+import { fetchFromStrapi } from '@/lib/strapi';
+import ContactUs from '@/components/Contact/Contact-Us';
 
-export default function ContactUs() {
+export default async function Contact() {
+  let contactUsData = null;
 
-  const isMobile = useIsMobile(1024);
+  const contactUsPopulate = [
+    'Form',
+    'Form.locations',
+    'Form.services',
+  ]
 
-  if (isMobile) {
+  const urlParamsContactUs = new URLSearchParams();
+  contactUsPopulate.forEach((value, index) => {
+    urlParamsContactUs.append(`populate[${index}]`, value);
+  })
+
+   try {
+      const [
+        contactUsResp,
+      ] = await Promise.all([
+        fetchFromStrapi(`contact?${urlParamsContactUs.toString()}`),
+      ]);
+      contactUsData = contactUsResp.data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+
     return (
-      <div className="contact-us-page-container-mobile">
-        <div className="contact-us-page-box-mobile">
-          <div className="contact-form-mobile">
-            <ContactHeading />
-            <ContactForm />
-          </div>
-          <div className="social-container-mobile">
-            <SocialDivs /> 
-          </div>
-
-        </div>
-      </div>
-
-    )
-  }
-
-  return (
-    <>
-      <div className="contact-us-page-container">
-        <div className="contact-heading">
-          <span className="contactus-span">Contact Us</span>
-          <span className="line"></span>
-          <span className="create-jrny-contact">Create a JRNY</span>
-          <span className="line"></span>
-        </div>
-        <div className="contact-us-page-box">
-          <Contact />
-        </div>
-      </div>
-
-    </>
+      <>
+      <ContactUs contents={contactUsData}/>
+      </>
   )
 }

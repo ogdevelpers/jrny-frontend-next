@@ -7,7 +7,7 @@ import { PortfolioMiddleList } from "./Portfolio";
 const PortfolioList = ({ portfolio, sidebarTabs }: { portfolio: any, sidebarTabs: string[] }) => { 
    const [selectedTab, setSelectedTab] = useState(0);
 
-  const portfolioFiltered = selectedTab === 0 ? portfolio: 
+  const portfolioFiltered = selectedTab === 0 ? portfolio : 
   portfolio.filter((item:any) => {
     if (item?.categories) { 
       return item.categories.some((category: any) => category.name === sidebarTabs[selectedTab]);

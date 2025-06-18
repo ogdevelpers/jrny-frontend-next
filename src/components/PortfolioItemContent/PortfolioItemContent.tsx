@@ -51,61 +51,76 @@ const VideoPlayer = ({videoUrl}: {videoUrl: string}) => {
 export const PortfolioItemContent = ({portfolioDetailData}: any) =>{  
     const [showMore, setShowMore] = useState(false);
 
+    console.log('portfolioDetailData', portfolioDetailData)
+
     const toggleShowMore = () => {
         setShowMore(!showMore);
     };
 
+    const renderTitle = (title:string) => {
+        const key = title.split(/<([^>]+)>/);
+
+        return (
+             <div className="project-name">
+                    {key[0]} <span className='jrny-span'>{key[1]}</span>
+                </div>
+        )
+    }
+
     // Demo array for images - replace with actual portfolio images array
-    const portfolioImages = [0,1,2,3,4,5,6,7,8,9,10];
+    const portfolioImages = portfolioDetailData?.Project_Images;
     
     // Show only first 6 images initially, or all if showMore is true
     const visibleImages = showMore ? portfolioImages : portfolioImages.slice(0, 6);
     const hasMoreImages = portfolioImages.length > 6;
 
-    console.log("portfolioDetailData", portfolioDetailData);
+    const renderSubTitle = (title:string) => {
+        const key = title.split(/<([^>]+)>/);
+        return (
+             <div className="project-second-header">
+                    {key[0]} <span className='jrny-span'>{key[1]}</span>
+                </div>
+        )
+    }
     
     return (
         <div className="project-box">
             <div className="project-header">
                 <PortfolioItemHeader portfolioDetailData={portfolioDetailData}/>
-                <div className="project-name">
-                    Project <span className='jrny-span'>Name</span>
-                </div>
+               {renderTitle(portfolioDetailData?.Project_Name)}
                 <div className="project-description">
-                    {portfolioDetailData?.[0]?.portfolioDescription?.[0]?.children?.[0]?.text}
+                    {portfolioDetailData?.Project_Description}
                 </div>
                 <div className="portfolio-item-tag-container">
                     {
-                    [0,1,2].map((item:number ) => {
+                    portfolioDetailData?.categories?.map((data: any, item:number ) => {
                         return (
-                            <Tags key={item} tagTitle='Visual Marketing'/>
+                            <Tags key={item} tagTitle={data.Name}/>
                         )
                     })
                     }
                 </div>
             </div>
             
-            {portfolioDetailData?.[0]?.portfolioVideo && (
+            {portfolioDetailData?.Project_Video_Url && (
                 <div className="project-video-container">
-                    <VideoPlayer videoUrl={portfolioDetailData[0].portfolioVideo} />
+                    <VideoPlayer videoUrl={portfolioDetailData?.Project_Video_Url} />
                 </div>
             )}
 
             <div className="project-second-box">
-                <div className="project-second-header">
-                    More about the <span className='jrny-span'>Project</span>
-                </div>
+               {renderSubTitle(portfolioDetailData?.Project_Sub_Heading)}
                 <div className="project-second-description">
-                    {portfolioDetailData?.[0]?.portfolioMoreAboutDescription}
+                    {portfolioDetailData?.Project_Sub_Description}
                 </div>
             </div>
 
             <div className={'portfolio-item-images-container'}>
-                {visibleImages.map((item, index) => {
+                {visibleImages?.map((item: any, index: number) => {
                     return (
                         <PortfolioItemImage 
                             key={index} 
-                            itemImageSrc={portfolioDetailData?.[0]?.portfolioImage}
+                            itemImageSrc={item.thumbnail}
                         />
                     )
                 })}
@@ -130,10 +145,10 @@ const PortfolioItemHeader = ({portfolioDetailData}: any) =>{
         <div className="portfolio-item-header-container">
             <div className="item-date-company">
                 <span className="item-date">
-                    {portfolioDetailData?.[0]?.portfolioYear}
+                    {portfolioDetailData?.Project_Year}
                 </span>
                 <span className="item-company">
-                    JRNY
+                    {portfolioDetailData?.Project_Heading}
                 </span>
             </div>
             <div className="share-on">

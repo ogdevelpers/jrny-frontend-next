@@ -6,9 +6,7 @@ import Link from "next/link";
 import "./MobileNavBar.css";
 import { routes } from "@/lib/constants";
 
-const routesArray = Object.values(routes);
-
-const MobileNavBar = ( ) => {
+const MobileNavBar = ( {navBar}: any ) => {
   const location = usePathname();
   const [active, setActive] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen]= useState(false);
@@ -62,6 +60,7 @@ const MobileNavBar = ( ) => {
           active={active}
           setActive={setActive}
           closeMenu={() => setMobileMenuOpen(false)}
+          navBarData={navBar}
         />
       </div>
     </div>
@@ -72,26 +71,31 @@ const NavBarUlMobile = ({
   active,
   setActive,
   closeMenu,
+  navBarData,
 }: {
   active: string;
   setActive: React.Dispatch<React.SetStateAction<string>>;
   closeMenu: () => void;
+  navBarData: any;
 }) => {
+
+  const routesArray = Object.values(navBarData);
+
   return (
     <ul className="navbar-list-mobile">
-      {routesArray.map((route) => {
-        const isActive = active === route.path;
+      {routesArray.map((route: any) => {
+        const isActive = active === route.url;
         return (
-          <li className="navbar-list-item" key={route.path}>
+          <li className="navbar-list-item" key={route.url}>
             <Link
-              href={route.path}
+              href={route.url}
               className={isActive ? "navbar-active" : ""}
               onClick={() => {
-                setActive(route.path);
+                setActive(route.url);
                 closeMenu();
               }}
             >
-              {route.name}
+              {route.title}
             </Link>
           </li>
         );

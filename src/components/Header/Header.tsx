@@ -5,7 +5,7 @@ import { Logo } from "../shared/navbar/Logo";
 import MobileNavBar from "../shared/navbar/MobileNavbar";
 import { NavBar } from "../shared/navbar/Navbar";
 
-export default function Header() {
+export default function Header({header}: any) {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -61,13 +61,13 @@ export default function Header() {
       }}
     >
       <div className="logo-div">
-        <Logo />
+        <Logo logo={header?.Logo}/>
       </div>
       <div className="navbar-div">
-        <NavBar /> 
+        <NavBar navBar={header?.Links}/> 
       </div>
       <div className="mobile-navbar-div">
-        <MobileNavBar />
+        <MobileNavBar navBar={header?.Links}/>
       </div>
     </header>
   );

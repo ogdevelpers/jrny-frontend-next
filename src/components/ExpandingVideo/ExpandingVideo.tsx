@@ -9,7 +9,7 @@ import { showReelVideoUrl } from '@/lib/constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ExpandingVideo() {
+export default function ExpandingVideo({heroData}: any) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef(null);
   const leftCardsRef = useRef(null);
@@ -118,23 +118,18 @@ export default function ExpandingVideo() {
     };
   }, { scope: containerRef });
 
-  const leftCardData = [
-    { id: 1, title: 'Card 1', image: 'https://picsum.photos/150/200?random=1' },
-    { id: 2, title: 'Card 2', image: 'https://picsum.photos/150/200?random=2' },
-  ];
+  const leftCardData = heroData?.Background_Image_Left;
 
-  const rightCardData = [
-    { id: 3, title: 'Card 3', image: 'https://picsum.photos/150/200?random=3' },
-  ];
+  const rightCardData = heroData?.Background_Image_Right;
 
   return (
     <div className="expanding-video-wrapper" ref={containerRef}>
       <div className="expanding-video-container">
         {/* Left Cards */}
         <div className="left-cards" ref={leftCardsRef}>
-          {leftCardData.map((card) => (
-            <div key={`left-${card.id}`} className="left-card card">
-              <img src={card.image} alt={card.title} className="card-image" />
+          {leftCardData.map((card: any, index: number) => (
+            <div key={`left-${card.id}-${index}`} className="left-card card">
+              <img src={card.thumbnail} alt={card.original} className="card-image" />
             </div>
           ))}
         </div>
@@ -142,7 +137,7 @@ export default function ExpandingVideo() {
         {/* Main Video */}
         <video
           ref={videoRef}
-          src={showReelVideoUrl}
+          src={heroData?.ShowReelVideoLink}
           autoPlay
           muted
           loop
@@ -151,9 +146,9 @@ export default function ExpandingVideo() {
 
         {/* Right Cards */}
         <div className="right-cards" ref={rightCardsRef}>
-          {rightCardData.map((card) => (
-            <div key={`right-${card.id}`} className="right-card card">
-              <img src={card.image} alt={card.title} className="card-image" />
+          {rightCardData.map((card: any, index: number) => (
+            <div key={`right-${index}`} className="right-card card">
+              <img src={card.thumbnail} alt={card.original} className="card-image" />
             </div>
           ))}
         </div>

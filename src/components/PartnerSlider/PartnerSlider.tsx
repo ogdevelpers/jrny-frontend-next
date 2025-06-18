@@ -78,8 +78,8 @@ const PartnerSlider: React.FC<PartnerSliderProps> = ({brandLogos}) => {
         <div className="partner-images" ref={sliderRef}>
           {/* First set of images */}
           <div className="first-partner">
-            {brandLogos?.map((element: any) => (
-              <div className="partner-image" key={element.key}>
+            {brandLogos?.map((element: any, i: number) => (
+              <div className="partner-image" key={i}>
                 <img
                   className="partner-image-img"
                   src={element.brandLogoLink}
@@ -92,8 +92,8 @@ const PartnerSlider: React.FC<PartnerSliderProps> = ({brandLogos}) => {
             ))} 
           </div>
           <div className="second-partner">
-            {brandLogos?.map((element: any) => (
-              <div className="partner-image" key={element.key} aria-hidden="true">
+            {brandLogos?.map((element: any, i: number) => (
+              <div className="partner-image" key={i} aria-hidden="true">
                 <img
                   className="partner-image-img"
                   src={element.brandLogoLink}

@@ -7,19 +7,19 @@ import "./contact.css";
 import axios from 'axios';
 import Textarea from "../TextArea/TextArea";
 
-export default function Contact() {
+export default function Contact({contents}: any) {
   const isMobile = useIsMobile(1000); 
   if (isMobile) {
     return (
       <div className="contact-us-container">
         <div className="social-container-mobile">
-        <SocialDivs /> 
+        <SocialDivs contentData={contents}/> 
         </div>
         <div className="contact-mobile-line">
           <img src="/landing_line.png" alt="" />
         </div>
         <div className="contact-form-mobile-container">
-          <ContactHeading />
+          <ContactHeading contentData={contents}/>
           <ContactForm />
         </div>
       </div>
@@ -30,7 +30,7 @@ export default function Contact() {
     <>
       <div className="contact-us-container">
         <div className="contact-us-row">
-        < ContactHeading /> 
+        < ContactHeading contentData={contents}/> 
         </div>
         <div className="contactUsLine">
           <img src="/contact_line.png" />{" "}
@@ -38,7 +38,7 @@ export default function Contact() {
         <div className="contact-us-box">
           <ContactForm />
           <div className="socials-container">
-            <SocialDivs />
+            <SocialDivs contentData={contents}/>
           </div>
         </div>
       </div>
@@ -46,11 +46,13 @@ export default function Contact() {
   );
 }
 
-export const ContactHeading = ()=>{
+export const ContactHeading = ({contentData}: any)=>{
+  console.log('contentData', contentData)
+  const title = contentData?.Form?.title?.split(/<([^>]+)>/);
   return (
     <div className="contact-us-heading">
-    Let’s shape your <span className="jrny-span">JRNY</span> into
-    something unforgettable.
+    {title[0]}<span className="jrny-span">{title[1]}</span>
+    {title[2]}
   </div>
   )
 }
@@ -149,32 +151,34 @@ export const SocialIcons = () =>{
   )
 }
 
-export const SocialDivs = ()=>{
+export const SocialDivs = ({contentData}: any)=>{
   const isMobile = useIsMobile();
+  const extractMobileNumber = contentData?.Form?.PhoneNumber?.split(',');
   return (
     <div className={  `${isMobile?"social-divs-mobile":"social-divs"}`  }>
     <div className="social-div-container">
       <div className="social-heading">Email</div>
-      <div className="social-example">info@zerodesignstudios.com</div>
+      <div className="social-example">{contentData?.Form?.Email}</div>
     </div>
     <div className="social-div-container">
       <div className="social-heading">Phone</div>
-      <div className="social-example">9977098856</div>
-      <div className="social-example">8837636101</div>
+      {extractMobileNumber?.map((element: any, i: number) => (
+        <div key={i} className="social-example">{element}</div>
+      ))}
     </div>
     <div className="social-div-container">
       <div className="social-heading">Location</div>
       <div className="social-example">
-        <span>Mumbai</span>
-        <span>Delhi</span><span></span>
+        {contentData?.Form?.locations?.map((element: any, i: number) => (
+          <span key={i}>{element.Name}</span>
+        ))}
       </div>
     </div>
     <div className="social-div-container">
       <div className="social-heading">Services</div>
-      <div className="social-example">Content Creation</div>
-      <div className="social-example">Experience Design</div>
-      <div className="social-example">Experimental Marketing</div>
-      <div className="social-example">Multimedia Production</div>
+      {contentData?.Form?.services?.map((element: any, i: number) => (
+        <div key={i} className="social-example">{element?.Title}</div>
+      ))}
     </div>
   </div>
   )

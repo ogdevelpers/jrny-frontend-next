@@ -1,5 +1,4 @@
 'use client';
-import { useState } from 'react';
 import Button from '@/components/Button/Button';
 import ShowReel from '@/components/ShowReel/ShowReel';
 import Footer from '@/components/shared/footer/Footer';
@@ -12,32 +11,36 @@ import '../../css/about.css';
 
 interface AboutUsContentProps {
     content: any;
-    tag: any;
-    team: any;
+    contactUs: any;
 }
 
-export const AboutUsContent = ({ content, tag, team }: AboutUsContentProps) => {
-    const isMobile = useIsMobile(1000); 
+export const AboutUsContent = ({ content, contactUs }: AboutUsContentProps) => {
+    const isMobile = useIsMobile(1000);
 
-    const AboutUsMottoArray = [
-        {
-            title: extractContentByKey(content, 'mission')?.contentTitle,
-            description: extractContentByKey(content, 'mission')?.text
-        },
-        {
-            title: extractContentByKey(content, 'vision')?.contentTitle,
-            description: extractContentByKey(content, 'vision')?.text
-        },
-        {
-            title: extractContentByKey(content, 'impact')?.contentTitle,
-            description: extractContentByKey(content, 'impact')?.text
-        }
-    ]
+    console.log('content', content);
+    console.log('contactUs', contactUs);
 
-    const aboutText = extractContentByKey(content, 'about-us'),
-        usText = extractContentByKey(content, 'us');
+    const AboutUsMottoArray = content?.about_us_texts;
 
+    const renderTitle = (title: string) => {
+        const key = title.split(/<([^>]+)>/);
 
+        return (
+            <div className="about-landing-header">
+                       {key[0]} <span className='jrny-span'>{key[1]}</span>
+                    </div>
+        )
+    }
+    
+    const renderOurTeamTitle = (title: string) => {
+        const key = title.split(/<([^>]+)>/);
+
+        return (
+            <p className="about-main-description">
+                <span className="jrny-span">{key[1]}</span>{key[2]}
+            </p>
+        )
+    }
 
     return (
         <>
@@ -45,20 +48,18 @@ export const AboutUsContent = ({ content, tag, team }: AboutUsContentProps) => {
                 {
                     !isMobile &&
                     <div className="about-show-reel">
-                        <ShowReel />
+                        <ShowReel reelData={content}/>
                     </div>}
                 <div className="about-landing-content">
-                    <div className="about-landing-header">
-                        {aboutText?.contentTitle} <span className='jrny-span'>{usText?.contentTitle}</span>
-                    </div>
+                    {renderTitle(content?.Page_Title)}
                     {
                         !isMobile && (
 
                             <div className="about-landing-buttons">
-                                    <Link href={`${getRoute('Contact Us')}`}>
+                                    <Link href={`/${content?.CTA_Link}`}>
                                 <Button classList="button-white-theme">
                                     <div className="button-content-animated">
-                                        Contact Us
+                                       {content?.CTA_Text}
                                         <img src="/arrow-right.png" alt="arrow" />
                                     </div>
                                 </Button>
@@ -67,28 +68,28 @@ export const AboutUsContent = ({ content, tag, team }: AboutUsContentProps) => {
                         )
                     }
                     <div className="about-landing-description">
-                        {aboutText?.text}
+                        {content?.Page_Description}
                     </div>
                 </div>
             </div>
 
             <div className="about-tag-container">
-                <TagSlider tag={tag} />
+                <TagSlider tag={content?.tags} />
             </div>
 
             {isMobile && (
                 <div className="about-landing-buttons-mobile">
-                    <Link href={`${getRoute('Contact Us')}`}>
+                    <Link href={`/${content?.CTA_Link}`}>
                     <Button classList={"button-white-theme"}>
-                        Contact Us 
+                        {content?.CTA_Text}
                     </Button>
                     </Link>
 
-                    <Link href={`${getRoute('Portfolio')}`}>
+                    {/* <Link href={`${getRoute('Portfolio')}`}>
                     <Button classList={"about-portfolio-btn-mobile"}>
                          Portfolio 
                     </Button>
-                    </Link>
+                    </Link> */}
                 </div>
             )}
 
@@ -97,30 +98,28 @@ export const AboutUsContent = ({ content, tag, team }: AboutUsContentProps) => {
             <div className="about-main-container">
                 <div className="about-motto">
                     {
-                        AboutUsMottoArray.map((Motto, index: number) =>
+                        AboutUsMottoArray.map((Motto: any, index: number) =>
                             // <div className="about-motto-box  hover-box hover-neon-variant" key={index}>
                                 <div className="about-motto-box" key={index}>
                                 <div className="motto-title">{Motto.title}</div>
-                                <div className="motto-description">{Motto.description}</div>
+                                <div className="motto-description">{Motto.Description}</div>
                             </div>
                         )
                     }
                 </div>
 
                 <div className="about-main-tag">
-                    <p className="about-main-description">
-                        <span className="jrny-span">{extractContentByKey(content, 'our-team')?.contentTitle} </span>{extractContentByKey(content, 'our-team-description')?.contentTitle}
-                    </p>
+                    {renderOurTeamTitle(content?.Page_Sub_Description)}
                 </div>
 
                 <div className="about-people-tile-container">
-                    {team?.map((person: any, index: number) => (
+                    {content?.teams?.map((person: any, index: number) => (
                         <PersonTile key={index} person={person} />
                     ))}
                 </div>
             </div>
             <div className="about-footer">
-                <Footer />
+                <Footer content={contactUs}/>
             </div>
 
         </>
