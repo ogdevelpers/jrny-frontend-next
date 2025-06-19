@@ -1,4 +1,3 @@
-export const runtime = 'edge';
 import './globals.css'; ;
 import ChatUs from '../components/ChatUs/ChatUs';
 import ScrollToTop from '../components/ScrollToTop/ScrollToTop';  
