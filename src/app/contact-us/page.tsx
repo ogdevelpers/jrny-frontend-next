@@ -11,6 +11,7 @@ export default async function Contact() {
     'Form',
     'Form.locations',
     'Form.services',
+    'socials'
   ]
 
   const urlParamsContactUs = new URLSearchParams();
@@ -28,6 +29,8 @@ export default async function Contact() {
     } catch (error) {
       console.error('Error fetching data:', error);
     }
+
+    console.log('contactUsData', contactUsData);
 
     return (
       <>
