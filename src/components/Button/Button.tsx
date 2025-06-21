@@ -6,9 +6,10 @@ interface ButtonProps {
   variant?: 'draw' | 'meet';
   classList: string;
   onClick?: () => void; // 👈 added support
+  disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, classList, variant = 'draw', onClick }) => {
+const Button: React.FC<ButtonProps> = ({ children, classList, variant = 'draw', onClick, disabled=false }) => {
   const [explode, setExplode] = useState(false);
   const [active, setActive] = useState(false);
 
@@ -31,6 +32,7 @@ const Button: React.FC<ButtonProps> = ({ children, classList, variant = 'draw', 
       className={`button-base ${active ? 'active' : ''} ${variant} ${explode ? 'explode' : ''} ${classList}`}
       onClick={handleClick}
       onMouseEnter={triggerExplosion}
+      disabled={disabled}
     >
       <div className="button-content">
         {children}

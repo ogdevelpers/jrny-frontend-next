@@ -1,25 +1,55 @@
 'use client';
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import useIsMobile from "../../hooks/useIsMobile";
 import Button from "../Button/Button";
 import Input from "../FormInput/FormInput";
-import "./contact.css";
-import axios from 'axios';
 import Textarea from "../TextArea/TextArea";
+import axios from 'axios';
+import "./contact.css";
 
-export default function Contact({contents}: any) {
-  const isMobile = useIsMobile(1000); 
+// Type definitions
+interface ContentData {
+  Form?: {
+    title?: string;
+    Email?: string;
+    PhoneNumber?: string;
+    locations?: Array<{ Name: string }>;
+    services?: Array<{ Title: string }>;
+  };
+}
+
+interface ContactProps {
+  contents: ContentData;
+}
+
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface ContactHeadingProps {
+  contentData: ContentData;
+}
+
+interface SocialDivsProps {
+  contentData: ContentData;
+}
+
+export default function Contact({ contents }: ContactProps) {
+  const isMobile = useIsMobile(1000);
+
   if (isMobile) {
     return (
       <div className="contact-us-container">
         <div className="social-container-mobile">
-        <SocialDivs contentData={contents}/> 
+          <SocialDivs contentData={contents} />
         </div>
         <div className="contact-mobile-line">
-          <img src="/landing_line.png" alt="" />
+          <img src="/landing_line.png" alt="Decorative line" />
         </div>
         <div className="contact-form-mobile-container">
-          <ContactHeading contentData={contents}/>
+          <ContactHeading contentData={contents} />
           <ContactForm />
         </div>
       </div>
@@ -27,66 +57,105 @@ export default function Contact({contents}: any) {
   }
 
   return (
-    <>
-      <div className="contact-us-container">
-        <div className="contact-us-row">
-        < ContactHeading contentData={contents}/> 
-        </div>
-        <div className="contactUsLine">
-          <img src="/contact_line.png" />{" "}
-        </div>
-        <div className="contact-us-box">
-          <ContactForm />
-          <div className="socials-container">
-            <SocialDivs contentData={contents}/>
-          </div>
+    <div className="contact-us-container">
+      <div className="contact-us-row">
+        <ContactHeading contentData={contents} />
+      </div>
+      <div className="contactUsLine">
+        <img src="/contact_line.png" alt="Contact section divider" />
+      </div>
+      <div className="contact-us-box">
+        <ContactForm />
+        <div className="socials-container">
+          <SocialDivs contentData={contents} />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
-export const ContactHeading = ({contentData}: any)=>{
-  console.log('contentData', contentData)
-  const title = contentData?.Form?.title?.split(/<([^>]+)>/);
+export const ContactHeading = ({ contentData }: ContactHeadingProps) => {
+  const title = contentData?.Form?.title;
+  
+  if (!title) {
+    return <div className="contact-us-heading">Contact Us</div>;
+  }
+
+  // Safely parse HTML-like tags
+  const titleParts = title.split(/<([^>]+)>/);
+  
   return (
     <div className="contact-us-heading">
-    {title[0]}<span className="jrny-span">{title[1]}</span>
-    {title[2]}
-  </div>
-  )
-}
+      {titleParts[0]}
+      {titleParts[1] && <span className="jrny-span">{titleParts[1]}</span>}
+      {titleParts[2]}
+    </div>
+  );
+};
 
 export const ContactForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     message: '',
   });
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState<string>('');
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const handleChange = (e: any) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
+    
+    // Clear status when user starts typing
+    if (status) {
+      setStatus('');
+    }
+  }, [status]);
+
+  const validateForm = (): boolean => {
+    if (!formData.name.trim()) {
+      setStatus('Please enter your name');
+      return false;
+    }
+    if (!formData.email.trim()) {
+      setStatus('Please enter your email');
+      return false;
+    }
+    if (!formData.message.trim()) {
+      setStatus('Please enter your message');
+      return false;
+    }
+    
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setStatus('Please enter a valid email address');
+      return false;
+    }
+    
+    return true;
   };
 
   const handleSubmit = async () => {
-    if (!formData.name || !formData.email || !formData.message) {
-      setStatus('Please fill in all fields');
+    if (!validateForm() || isSubmitting) {
       return;
     }
 
+    setIsSubmitting(true);
     setStatus('Sending...');
 
     try {
-      await axios.post('http://localhost:1337/api/send-email', formData);
-      setStatus('Message sent!');
+      await axios.post('http://localhost:3000/api/sendEmail', formData);
+      setStatus('Message sent successfully!');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       console.error('Error sending message:', error);
-      setStatus('Failed to send message');
+      setStatus('Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -100,7 +169,7 @@ export const ContactForm = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            classList="footer-input"
+            classList="footer-input" 
           />
         </div>
         <div className="footer-input-div">
@@ -110,76 +179,115 @@ export const ContactForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            classList="footer-input"
+            classList="footer-input" 
           />
         </div>
       </div>
-      <div className="footer-input-div ">
+      <div className="footer-input-div">
         <Textarea
           placeholder="Message"
           name="message"
           value={formData.message}
           onChange={handleChange}
-          classList="footer-input form-textarea"
+          classList="footer-input form-textarea" 
         />
       </div>
 
-{status && <p style={{color: 'red'}}>{status}</p>}
+      {status && (
+        <p 
+          style={{ 
+            color: status.includes('success') ? 'green' : 'red',
+            margin: '10px 0',
+            fontSize: '14px'
+          }}
+        >
+          {status}
+        </p>
+      )}
 
       <div className="contact-button-container">
-
-  
-      <Button classList="button-white-theme" onClick={handleSubmit}>
-        <div className="button-content-animated">
-          <span className="send-mail-text">Send Mail</span>
-          <img src="/arrow-right.png" alt="arrow" />
-        </div>
-      </Button>
+        <Button 
+          classList="button-white-theme" 
+          onClick={handleSubmit}
+          disabled={isSubmitting}
+        >
+          <div className="button-content-animated">
+            <span className="send-mail-text">
+              {isSubmitting ? 'Sending...' : 'Send Mail'}
+            </span>
+            <img src="/arrow-right.png" alt="Send arrow" />
           </div>
+        </Button>
+      </div>
     </div>
   );
 };
 
-export const SocialIcons = () =>{
+export const SocialIcons = () => {
   return (
     <div className="social-icons">
-    <img src="/favicon/whatsapp.svg" alt="whatsapp" />
-    <img src="/favicon/linkedin.svg" alt="linkedin" />
-    <img src="/favicon/instagram.svg" alt="instagram" />
-    <img src="/favicon/facebook.svg" alt="facebook" />
-  </div>
-  )
-}
+      <img src="/favicon/whatsapp.svg" alt="WhatsApp" />
+      <img src="/favicon/linkedin.svg" alt="LinkedIn" />
+      <img src="/favicon/instagram.svg" alt="Instagram" />
+      <img src="/favicon/facebook.svg" alt="Facebook" />
+    </div>
+  );
+};
 
-export const SocialDivs = ({contentData}: any)=>{
+export const SocialDivs = ({ contentData }: SocialDivsProps) => {
   const isMobile = useIsMobile();
-  const extractMobileNumber = contentData?.Form?.PhoneNumber?.split(',');
+  const phoneNumbers = contentData?.Form?.PhoneNumber?.split(',') || [];
+
   return (
-    <div className={  `${isMobile?"social-divs-mobile":"social-divs"}`  }>
-    <div className="social-div-container">
-      <div className="social-heading">Email</div>
-      <div className="social-example">{contentData?.Form?.Email}</div>
-    </div>
-    <div className="social-div-container">
-      <div className="social-heading">Phone</div>
-      {extractMobileNumber?.map((element: any, i: number) => (
-        <div key={i} className="social-example">{element}</div>
-      ))}
-    </div>
-    <div className="social-div-container">
-      <div className="social-heading">Location</div>
-      <div className="social-example">
-        {contentData?.Form?.locations?.map((element: any, i: number) => (
-          <span key={i}>{element.Name}</span>
-        ))}
+    <div className={isMobile ? "social-divs-mobile" : "social-divs"}>
+      <div className="social-div-container">
+        <div className="social-heading">Email</div>
+        <div className="social-example">
+          {contentData?.Form?.Email || 'Not available'}
+        </div>
+      </div>
+      
+      <div className="social-div-container">
+        <div className="social-heading">Phone</div>
+        {phoneNumbers.length > 0 ? (
+          phoneNumbers.map((phone: string, i: number) => (
+            <div key={i} className="social-example">
+              {phone.trim()}
+            </div>
+          ))
+        ) : (
+          <div className="social-example">Not available</div>
+        )}
+      </div>
+      
+      <div className="social-div-container">
+        <div className="social-heading">Location</div>
+        <div className="social-example">
+          {contentData?.Form?.locations?.length ? (
+            contentData.Form.locations.map((location, i: number) => (
+              <span key={i}>
+                {location.Name}
+                {i < (contentData?.Form?.locations?.length?? 0) - 1 && ', '}
+              </span>
+            ))
+          ) : (
+            'Not available'
+          )}
+        </div>
+      </div>
+      
+      <div className="social-div-container">
+        <div className="social-heading">Services</div>
+        {contentData?.Form?.services?.length ? (
+          contentData.Form.services.map((service, i: number) => (
+            <div key={i} className="social-example">
+              {service?.Title}
+            </div>
+          ))
+        ) : (
+          <div className="social-example">Not available</div>
+        )}
       </div>
     </div>
-    <div className="social-div-container">
-      <div className="social-heading">Services</div>
-      {contentData?.Form?.services?.map((element: any, i: number) => (
-        <div key={i} className="social-example">{element?.Title}</div>
-      ))}
-    </div>
-  </div>
-  )
-}
+  );
+};
