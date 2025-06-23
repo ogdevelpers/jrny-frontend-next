@@ -78,12 +78,10 @@ const NavBarUlMobile = ({
   closeMenu: () => void;
   navBarData: any;
 }) => {
-
-  const routesArray = Object.values(navBarData);
-
+ 
   return (
     <ul className="navbar-list-mobile">
-      {routesArray.map((route: any) => {
+      {navBarData?.map((route: any) => {
         const isActive = active === route.url;
         return (
           <li className="navbar-list-item" key={route.url}>
