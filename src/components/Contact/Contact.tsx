@@ -149,7 +149,7 @@ export const ContactForm = () => {
     setStatus('Sending...');
 
     try {
-      await axios.post('http://localhost:3000/api/sendEmail', formData);
+      await axios.post(`${process.env.APP_URL}/api/sendEmail`, formData);
       setStatus('Message sent successfully!');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
