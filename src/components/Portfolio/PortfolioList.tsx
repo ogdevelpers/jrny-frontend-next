@@ -29,7 +29,6 @@ const PortfolioList = ({ portfolio, sidebarTabs }: { portfolio: any, sidebarTabs
               <button className={`sidebar-list-tab ${selectedTab === index ? 'sidebar-list-tab-active' : ''}`}                 
               onClick={
                   () => {
-                    console.log("Selected Tab: ", tab);
                     setSelectedTab(index);
                   }
                 }>

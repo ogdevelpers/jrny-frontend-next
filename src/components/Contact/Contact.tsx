@@ -6,6 +6,7 @@ import Input from "../FormInput/FormInput";
 import Textarea from "../TextArea/TextArea";
 import axios from 'axios';
 import "./contact.css";
+import { useRouter } from 'next/navigation';
 
 // Type definitions
 interface ContentData {
@@ -237,6 +238,11 @@ export const SocialIcons = () => {
 export const SocialDivs = ({ contentData }: SocialDivsProps) => {
   const isMobile = useIsMobile();
   const phoneNumbers = contentData?.Form?.PhoneNumber?.split(',') || [];
+  const router = useRouter();
+
+  const handleClick = (location: string) => {
+    router.push(`/portfolio?location=${location?.toLocaleLowerCase()}`);
+  }
 
   return (
     <div className={isMobile ? "social-divs-mobile" : "social-divs"}>
@@ -265,7 +271,7 @@ export const SocialDivs = ({ contentData }: SocialDivsProps) => {
         <div className="social-example">
           {contentData?.Form?.locations?.length ? (
             contentData.Form.locations.map((location, i: number) => (
-              <span key={i}>
+              <span key={i} onClick={() => handleClick(location.Name)}>
                 {location.Name}
                 {i < (contentData?.Form?.locations?.length?? 0) - 1 && ', '}
               </span>

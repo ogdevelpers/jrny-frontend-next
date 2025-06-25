@@ -3,9 +3,11 @@ import { PortfolioContent } from '@/components/Portfolio/Portfolio';
 import { fetchFromStrapi } from '@/lib/strapi';
 import { extractPortfolioContent } from '@/utils/process.util';
 
-export default async function Portfolio() {
+export default async function Portfolio({ searchParams }: {searchParams: Promise<{ location: string }> }) {
     let contentData = null;
     let contactUsData = null;
+
+   const { location } = await searchParams;
 
     const populate = [
 	'brand_logos',
@@ -49,10 +51,18 @@ export default async function Portfolio() {
 
     const extractedData = extractPortfolioContent(contentData);
 
+    let filteredPortfolios = extractedData?.portfolios;
+
+    if (location) {
+        filteredPortfolios = filteredPortfolios.filter((item: any) =>
+            item?.Location?.toLowerCase() === location
+        )
+    }
+
     return (
         <>
             <div className="portfolio-container">
-                < PortfolioContent content={extractedData} contactUs={contactUsData} />
+                <PortfolioContent content={{ ...extractedData, portfolios: filteredPortfolios }} contactUs={contactUsData}  />
             </div>
         </>
     );

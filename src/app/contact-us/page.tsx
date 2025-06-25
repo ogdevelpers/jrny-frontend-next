@@ -30,8 +30,6 @@ export default async function Contact() {
       console.error('Error fetching data:', error);
     }
 
-    console.log('contactUsData', contactUsData);
-
     return (
       <>
       <ContactUs contents={contactUsData}/>

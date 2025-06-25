@@ -103,7 +103,7 @@ export const extractPortfolioContent = (data: any) => {
       thumbnil: getThumbnailUrl(element.thumbnail),
       categories: element?.categories.map((element: any) => (
         {
-          name: element.name
+          name: element.Name
         }
       ))
     }))

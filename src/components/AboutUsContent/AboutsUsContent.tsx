@@ -17,9 +17,6 @@ interface AboutUsContentProps {
 export const AboutUsContent = ({ content, contactUs }: AboutUsContentProps) => {
     const isMobile = useIsMobile(1000);
 
-    console.log('content', content);
-    console.log('contactUs', contactUs);
-
     const AboutUsMottoArray = content?.about_us_texts;
 
     const renderTitle = (title: string) => {

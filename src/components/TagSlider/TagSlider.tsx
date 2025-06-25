@@ -21,7 +21,7 @@ const TagSlider = ({tag}: any) => {
     // Ensure we have a valid width before animating
     if (containerWidth <= 0) return;
 
-    console.log("Container width:", containerWidth); // Debug width value
+    // console.log("Container width:", containerWidth); // Debug width value
 
     // Create the animation
     const animation = gsap.to(slider, {

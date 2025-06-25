@@ -51,8 +51,6 @@ const VideoPlayer = ({videoUrl}: {videoUrl: string}) => {
 export const PortfolioItemContent = ({portfolioDetailData}: any) =>{  
     const [showMore, setShowMore] = useState(false);
 
-    console.log('portfolioDetailData', portfolioDetailData)
-
     const toggleShowMore = () => {
         setShowMore(!showMore);
     };
