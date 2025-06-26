@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import { EmailTemplate } from '@/components/EmailTemplate/EmailTemplate';
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
