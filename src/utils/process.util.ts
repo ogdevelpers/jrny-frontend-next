@@ -125,6 +125,7 @@ export const extractPortfolioDetailData = (data: any) => {
       Project_Video_Url: data.Project_Video_Url,
       Project_Year: data.Project_Year,
       Project_Images: getLeftImages(data.Project_Images),
-      categories: data?.categories
+      categories: data?.categories, 
+      descriptionGlobal: data?.description || '',
   }
 }
