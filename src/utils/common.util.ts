@@ -62,3 +62,4 @@ export const getRoute = (key:string) => {
   const route = routes.find(route=> route.name=== key);
   return route?.path ?? routes[0].path;
 };
+ 
