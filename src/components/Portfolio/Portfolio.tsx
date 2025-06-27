@@ -8,6 +8,16 @@ import Link from "next/link";
 import PortfolioList from "./PortfolioList";
 import getPortfolioSidebarTabs from "@/utils/portfolioSidebarTabs.util";
 
+const renderTitle = (title:string ) =>{
+  const key = title.split(/<([^>]+)>/);
+
+  return (
+    <span>
+      {key[0]} <span className='jrny-span'>{key[1]}</span>
+    </span>
+  )
+}
+
 export const PortfolioContent = ({ content, contactUs }: any) => {
   const portfolioTabArray = getPortfolioSidebarTabs(content?.portfolios);
 
@@ -60,6 +70,8 @@ const PortfolioTile = ({ videoLink, thumbnail, tileTitle, id }: PortfolioTilePro
   if (!thumbnail) {
   }
 
+  const tileTitleParsed = renderTitle(tileTitle);
+
   return (
     <div className="portfolio-tile-box hover-box hover-magnetic hover-lift-1 hover-neon">
       <div className="tile-thumbnail">
@@ -69,7 +81,7 @@ const PortfolioTile = ({ videoLink, thumbnail, tileTitle, id }: PortfolioTilePro
         </Link>
       </div>
       <div className="tile-title">
-        {tileTitle}
+        {tileTitleParsed}
       </div>
     </div>
   )
