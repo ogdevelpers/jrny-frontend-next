@@ -20,21 +20,21 @@ export const AboutUsContent = ({ content, contactUs }: AboutUsContentProps) => {
     const AboutUsMottoArray = content?.about_us_texts;
 
     const renderTitle = (title: string) => {
-        const key = title.split(/<([^>]+)>/);
+        const key = title?.split(/<([^>]+)>/);
 
         return (
             <div className="about-landing-header">
-                       {key[0]} <span className='jrny-span'>{key[1]}</span>
+                       {key?.[0]} <span className='jrny-span'>{key?.[1]}</span>
                     </div>
         )
     }
     
     const renderOurTeamTitle = (title: string) => {
-        const key = title.split(/<([^>]+)>/);
+        const key = title?.split(/<([^>]+)>/);
 
         return (
             <p className="about-main-description">
-                <span className="jrny-span">{key[1]}</span>{key[2]}
+                <span className="jrny-span">{key?.[1]}</span>{key?.[2]}
             </p>
         )
     }

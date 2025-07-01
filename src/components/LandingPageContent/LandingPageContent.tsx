@@ -35,9 +35,9 @@ export default function LandingPageContent({
 
     return (
       <span className="about-us-landing-title">
-        {aboutUsTitle[0]}
-        <span className="jrny-span">{aboutUsTitle[1]}</span>
-        {aboutUsTitle[2]}
+        {aboutUsTitle?.[0]}
+        <span className="jrny-span">{aboutUsTitle?.[1]}</span>
+        {aboutUsTitle?.[2]}
       </span>
     )
   }
@@ -47,8 +47,8 @@ export default function LandingPageContent({
 
     return (
       <h1 className="services-landing-title services-text-content">
-        {serviceTitle[0]}
-        <span className="jrny-span">{serviceTitle[1]}</span>
+        {serviceTitle?.[0]}
+        <span className="jrny-span">{serviceTitle?.[1]}</span>
       </h1>
     )
   }
@@ -58,8 +58,8 @@ export default function LandingPageContent({
 
     return (
       <h1 className="landing-portfolio-title">
-        {portfolioTitle[0]}
-        <span className="jrny-span">{portfolioTitle[1]}</span>
+        {portfolioTitle?.[0]}
+        <span className="jrny-span">{portfolioTitle?.[1]}</span>
       </h1>
     )
   }
@@ -69,11 +69,11 @@ export default function LandingPageContent({
 
     return (
       <>
-        <span className="testimonial-span">{testimonialTitle[0]}</span>{" "}
-        <span className="jrny-span">{testimonialTitle[1]}</span>{" "}
+        <span className="testimonial-span">{testimonialTitle?.[0]}</span>{" "}
+        <span className="jrny-span">{testimonialTitle?.[1]}</span>{" "}
         <span className="testimonial-span">
           {" "}
-          {testimonialTitle[2]}
+          {testimonialTitle?.[2]}
         </span>
       </>
     )
@@ -93,7 +93,7 @@ export default function LandingPageContent({
               <br />
               <span className="landing-page-matter-text">
                 {
-                  heading2.split("").map((char: any, i: any) => (
+                  heading2?.split("")?.map((char: any, i: any) => (
                     <span key={i} className="landing-char-span">{char}</span>
                   ))
                 }
@@ -234,7 +234,7 @@ export default function LandingPageContent({
               </div>
 
               <div className="portfolio-tiles-landing">
-                <PortfolioMiddleList portfolio={content?.Portfolio?.portfolios} />
+                <PortfolioMiddleList portfolio={content?.Portfolio?.portfolios} counts={6} />
                 <div className="see-more-container">
                   <Link href={`/${content?.Portfolio?.CTA_Link}`}>
                     <Button classList="see-more">{content?.Portfolio?.CTA_Text}</Button>
@@ -280,9 +280,9 @@ export const RightChoice = ({ content }: any) => {
 
     return (
       <h1 className="right-choice-h1">
-        {title[0]}
-        <span className="jrny-span">{title[1]}</span>
-        {title[2]}
+        {title?.[0]}
+        <span className="jrny-span">{title?.[1]}</span>
+        {title?.[2]}
       </h1>
     )
   }

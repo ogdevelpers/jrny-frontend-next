@@ -10,7 +10,7 @@ const Blog: any = [];
 
 
 const HighlightedSentence = ({ text }:{text:string}) => {
-  const words = text?.trim().split(' ');
+  const words = text?.trim()?.split(' ');
   const lastTwo = words?.slice(-2).join(' ');
   const rest = words?.slice(0, -2).join(' ');
 

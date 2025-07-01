@@ -12,7 +12,7 @@ const MobileNavBar = ( {navBar}: any ) => {
   const [mobileMenuOpen, setMobileMenuOpen]= useState(false);
 
   useEffect(() => {
-    const mainRoute = "/" + (location.split("/")[1] || "");
+    const mainRoute = "/" + (location?.split("/")[1] || "");
     setActive(mainRoute === "//" ? "/" : mainRoute);
     setMobileMenuOpen(false);
   }, [location, setActive]);

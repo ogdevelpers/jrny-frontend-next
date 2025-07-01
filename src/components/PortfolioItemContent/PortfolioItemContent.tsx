@@ -50,20 +50,20 @@ const VideoPlayer = ({ videoUrl }: { videoUrl: string }) => {
 };
 
 const renderTitle = (title: string) => {
-    const key = title.split(/<([^>]+)>/);
+    const key = title?.split(/<([^>]+)>/);
 
     return (
         <div className="project-name">
-            {key[0]} <span className='jrny-span'>{key[1]}</span>
+            {key?.[0]} <span className='jrny-span'>{key?.[1]}</span>
         </div>
     )
 }
 
 const renderSubTitle = (title: string) => {
-    const key = title.split(/<([^>]+)>/);
+    const key = title?.split(/<([^>]+)>/);
     return (
         <div className="project-second-header">
-            {key[0]} <span className='jrny-span'>{key[1]}</span>
+            {key?.[0]} <span className='jrny-span'>{key?.[1]}</span>
         </div>
     )
 }

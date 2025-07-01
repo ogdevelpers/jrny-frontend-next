@@ -9,11 +9,11 @@ import PortfolioList from "./PortfolioList";
 import getPortfolioSidebarTabs from "@/utils/portfolioSidebarTabs.util";
 
 const renderTitle = (title:string ) =>{
-  const key = title.split(/<([^>]+)>/);
+  const key = title?.split(/<([^>]+)>/);
 
   return (
     <span>
-      {key[0]} <span className='jrny-span'>{key[1]}</span>
+      {key?.[0]} <span className='jrny-span'>{key?.[1]}</span>
     </span>
   )
 }
@@ -22,11 +22,11 @@ export const PortfolioContent = ({ content, contactUs }: any) => {
   const portfolioTabArray = getPortfolioSidebarTabs(content?.portfolios);
 
   const ourPortfolioTitle = (title: string) => {
-    const titleData = title.split(/<([^>]+)>/);
+    const titleData = title?.split(/<([^>]+)>/);
 
     return (
         <span className="our-projects-span">
-                {titleData[0]} <span className="jrny-span-text">{titleData[1]}</span>
+                {titleData?.[0]} <span className="jrny-span-text">{titleData?.[1]}</span>
           </span>
     )
   }
@@ -88,10 +88,10 @@ const PortfolioTile = ({ videoLink, thumbnail, tileTitle, id }: PortfolioTilePro
 }
 
 
-export const PortfolioMiddleList = ({ portfolio }: any) => {
+export const PortfolioMiddleList = ({ portfolio, counts }: any) => {
 
 
-  const [visibleCount, setVisibleCount] = useState(6); // Show 6 tiles initially
+  const [visibleCount, setVisibleCount] = useState(counts); // Show 6 tiles initially
 
 
   return (

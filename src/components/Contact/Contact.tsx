@@ -83,13 +83,13 @@ export const ContactHeading = ({ contentData }: ContactHeadingProps) => {
   }
 
   // Safely parse HTML-like tags
-  const titleParts = title.split(/<([^>]+)>/);
+  const titleParts = title?.split(/<([^>]+)>/);
   
   return (
     <div className="contact-us-heading">
-      {titleParts[0]}
-      {titleParts[1] && <span className="jrny-span">{titleParts[1]}</span>}
-      {titleParts[2]}
+      {titleParts?.[0]}
+      {titleParts?.[1] && <span className="jrny-span">{titleParts?.[1]}</span>}
+      {titleParts?.[2]}
     </div>
   );
 };
@@ -255,8 +255,8 @@ export const SocialDivs = ({ contentData }: SocialDivsProps) => {
       
       <div className="social-div-container">
         <div className="social-heading">Phone</div>
-        {phoneNumbers.length > 0 ? (
-          phoneNumbers.map((phone: string, i: number) => (
+        {phoneNumbers?.length > 0 ? (
+          phoneNumbers?.map((phone: string, i: number) => (
             <div key={i} className="social-example">
               {phone.trim()}
             </div>

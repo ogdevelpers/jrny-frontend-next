@@ -11,7 +11,7 @@ export const NavBar = ({navBar}: any) => {
   const [active, setActive] = useState(""); 
 
   useEffect(() => {
-    const mainRoute = "/" + (location.split("/")[1] || "");
+    const mainRoute = "/" + (location?.split("/")[1] || "");
     setActive(mainRoute === "//" ? "/" : mainRoute); 
   }, [location]);
 

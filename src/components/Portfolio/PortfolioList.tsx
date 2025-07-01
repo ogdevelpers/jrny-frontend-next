@@ -41,7 +41,7 @@ const PortfolioList = ({ portfolio, sidebarTabs }: { portfolio: any, sidebarTabs
           </ul>
         </div>
       </>
-      <PortfolioMiddleList portfolio={portfolioFiltered} />
+      <PortfolioMiddleList portfolio={portfolioFiltered} counts={portfolio.length} />
 
     </>
   )
