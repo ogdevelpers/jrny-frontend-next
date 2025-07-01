@@ -11,13 +11,15 @@ export const metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   let headerData = null;
+  let socialData = null; 
   const populateCommon = `populate=*`;
   try {
-      const [headerRespData
-      ] = await Promise.all([
+      const [headerRespData, socialRespData] = await Promise.all([
         fetchFromStrapi(`header?${populateCommon}`),
+        fetchFromStrapi(`socials?${populateCommon}`)
       ]);
       headerData = headerRespData.data;
+      socialData = socialRespData.data;
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -33,7 +35,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               {children}
               <ScrollToTop />
             </div>
-            <ChatUs />
+            <ChatUs social={socialData} />
           </div>
         {/* </SmoothWrapper> */}
       </body>
