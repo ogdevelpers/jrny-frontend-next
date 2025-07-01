@@ -63,10 +63,10 @@ export default async function BlogItem({ params }: {params: Promise<{ slug: stri
     shortDescription: item.shortDescription,
     description: item.description,
     thumbnailUrl: item.thumbnail?.[0]?.formats?.thumbnail?.url
-      ? `${process.env.STRAPI_URL}${item.thumbnail[0].formats?.thumbnail?.url}`
+      ? `${item.thumbnail[0].formats?.thumbnail?.url}`
       : null,
     bgImageUrl: item.bgImage?.url
-      ? `${process.env.STRAPI_URL}${item.bgImage.url}`
+      ? `${item.bgImage.url}`
       : null,
     categories: item.categoriesses?.map((cat: any) => cat.name) || [],
     slug: item.slug
@@ -79,10 +79,10 @@ const transformBlogs = (data: any) => {
     shortDescription: item.shortDescription,
     description: item.description,
     thumbnailUrl: item.thumbnail?.[0]?.formats?.thumbnail?.url
-      ? `${process.env.STRAPI_URL}${item.thumbnail[0].formats?.thumbnail?.url}`
+      ? `${item.thumbnail[0].formats?.thumbnail?.url}`
       : null,
     bgImageUrl: item.bgImage?.url
-      ? `${process.env.STRAPI_URL}${item.bgImage.url}`
+      ? `${item.bgImage.url}`
       : null,
     categories: item.categoriesses?.map((cat: any) => cat.name) || [],
     slug: item.slug
