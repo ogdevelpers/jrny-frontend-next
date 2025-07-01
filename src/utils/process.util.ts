@@ -1,4 +1,4 @@
-export const getThumbnailUrl = (image: any) => process.env.STRAPI_URL + image?.formats?.thumbnail?.url || null;
+export const getThumbnailUrl = (image: any) => image?.formats?.thumbnail?.url || null;
 
 export const getLeftImages = (images: any) =>
     images?.map((img: any) => ({
