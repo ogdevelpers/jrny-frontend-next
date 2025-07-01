@@ -27,14 +27,14 @@ export function parseHtmlContent(htmlString: string): ParsedHtmlContent {
   // 2. Extract all image sources
   const imageElements = root.querySelectorAll('img');
   const images = imageElements
-    .map(img => img.getAttribute('src'))
-    .filter((src): src is string => !!src); // Filter out null/undefined src attributes
+    .map((img: any) => img.getAttribute('src'))
+    .filter((src: any): src is string => !!src); // Filter out null/undefined src attributes
 
   // 3. Extract all video sources
   const videoElements = root.querySelectorAll('video');
   const videos = videoElements
-    .map(video => video.getAttribute('src'))
-    .filter((src): src is string => !!src);
+    .map((video:any) => video.getAttribute('src'))
+    .filter((src:any): src is string => !!src);
 
   // 4. Construct and return the final object
   return {

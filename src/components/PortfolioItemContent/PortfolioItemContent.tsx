@@ -79,12 +79,11 @@ export const PortfolioItemContent = ({ portfolioDetailData }: any) => {
     const { description,images,video,html } = parseHtmlContent(portfolioDetailData?.descriptionGlobal || '');
 
     // Demo array for images - replace with actual portfolio images array
-    const portfolioImages = portfolioDetailData?.Project_Images;
+    // const portfolioImages = portfolioDetailData?.Project_Images;
 
     // Show only first 6 images initially, or all if showMore is true
     const visibleImages = showMore ? images : images.slice(0, 6);
     const hasMoreImages = images.length > 6;
- 
 
 
     return (
@@ -93,7 +92,7 @@ export const PortfolioItemContent = ({ portfolioDetailData }: any) => {
                 <PortfolioItemHeader portfolioDetailData={portfolioDetailData} />
                 {renderTitle(portfolioDetailData?.Project_Name)}
                 <div className="project-description">
-                    {description}
+                    {portfolioDetailData?.Project_Description}
                 </div>
                 <div className="portfolio-item-tag-container">
                     {
@@ -111,6 +110,13 @@ export const PortfolioItemContent = ({ portfolioDetailData }: any) => {
                     <VideoPlayer videoUrl={portfolioDetailData?.Project_Video_Url} />
                 </div>
             )}
+
+            <div className="project-second-box">
+               {renderSubTitle(portfolioDetailData?.Project_Sub_Heading)}
+                <div className="project-second-description">
+                    {description}
+                </div>
+            </div>
  
 
             <div className={'portfolio-item-images-container'}>
@@ -118,7 +124,7 @@ export const PortfolioItemContent = ({ portfolioDetailData }: any) => {
                     return (
                         <PortfolioItemImage
                             key={index}
-                            itemImageSrc={item.thumbnail}
+                            itemImageSrc={item}
                         />
                     )
                 })}
@@ -130,7 +136,7 @@ export const PortfolioItemContent = ({ portfolioDetailData }: any) => {
                         onClick={toggleShowMore}
                         className="portfolio-item-show-more-button"
                     >
-                        {showMore ? 'Show Less' : `Show More (${portfolioImages.length - 6} more)`}
+                        {showMore ? 'Show Less' : `Show More (${images.length - 6} more)`}
                     </button>
                 </div>
             )}
