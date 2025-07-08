@@ -160,8 +160,8 @@ export default function LandingPageContent({
               </div>
 
               {/* Right Paragraph + Button Block */}
-              <div className="showreel-container" style={{ flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-end', gap: '1.5rem' }}>
-                <div className="about-us-landing-paragraph abt-landing">
+              <div className="showreel-container" style={{ flexDirection: 'column', alignItems: 'flex-start', paddingTop: '50px', gap: '1.5rem' }}>
+                <div style={{fontSize: "20px"}} className="about-us-landing-paragraph abt-landing">
                   {content?.About?.description}
                 </div>
 
@@ -189,11 +189,11 @@ export default function LandingPageContent({
               <div className="cards-section">
                 <div className="cards-section-grid-container">
                   {content?.Service?.services?.map((service: any, index: number) => (
-                    <div className="profile-card" key={index}>
+                    <div className="profile-card hover-box hover-magnetic hover-lift-1 hover-neon" key={index}>
                       <img src="services.jpg" alt={`Service ${index + 1}`} />
                       <div className="profile-caption">
                         <div className="heading">{service.Title}</div>
-                        <div className="description">
+                        {/* <div className="description">
                           {service?.ShortDescriptionPoints?.map((desc: any, i: number) => (
                             <div
                               className={`description-${i + 1}`}
@@ -202,7 +202,7 @@ export default function LandingPageContent({
                               {desc}
                             </div>
                           ))}
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   ))}

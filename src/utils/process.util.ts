@@ -12,7 +12,7 @@ export const extractContent = (data: any) => {
       Title: data?.Hero?.Title || '',
       CTALink: data?.Hero?.CTALink || '',
       CTAText: data?.Hero?.CTAText || '',
-      ShowReelVideoLink: data?.Hero?.ShowReelVideoLink || '',
+      ShowReelVideoLink: data?.Hero?.ShowReelVideoLink?.url || '',
     //   Background_Image_Right_URL: getImageUrl(data?.Hero?.Background_Image_Right),
       Background_Image_Right: getLeftImages(data?.Hero?.Background_Image_Left),
       Background_Image_Left: getLeftImages(data?.Hero?.Background_Image_Left)

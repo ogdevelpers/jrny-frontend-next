@@ -599,7 +599,7 @@
 }
 
 .landing-portfolio-paragraph {
-  font-size: 16px;
+  font-size: 20px;
   /* width: 50%; */
   line-height: 1.6rem;
   text-align: center;
@@ -688,7 +688,6 @@
 }
 
 .right-choice-p {
-
   font-family: 'Helvetica Neue';
   font-weight: 400;
   font-size: 24px;
@@ -701,6 +700,9 @@
   margin-bottom: 50px;   
   line-height: 1.8rem; 
   text-align: center;
+  background-image: linear-gradient(92.49deg, #7C7C7C 0%, #FFFFFF 47.41%, #7C7C7C 94.82%);
+  background-color: black;
+  color: transparent; /* Makes the text itself transparent */ 
 
 }
 
@@ -1008,7 +1010,7 @@
   .landing-portfolio-paragraph {
     font-family: "Helvetica Neue";
     font-weight: 400;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 20px;
     letter-spacing: 0%;
     text-align: center;
@@ -1069,6 +1071,9 @@
     max-width: 100%;
     font-size: 1.5rem;
     line-height: 1.36rem;
+    background-image: linear-gradient(92.49deg, #7C7C7C 0%, #FFFFFF 47.41%, #7C7C7C 94.82%);
+  background-color: black;
+  color: transparent; /* Makes the text itself transparent */ 
   }
 
   .features {
