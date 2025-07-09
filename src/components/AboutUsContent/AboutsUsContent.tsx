@@ -127,7 +127,7 @@ const PersonTile = ({ person }: { person: any }) => {
 
     return (
         <>
-            <div className="person-tile">
+            <div className="person-tile hover-box hover-magnetic hover-lift-1 hover-neon">
                 <div className="person-image-div">
 
                 <img
