@@ -27,6 +27,7 @@ export default async function LandingPage() {
     'Hero.Background_Image_Right',
     'Hero.ShowReelVideoLink',
     'Service.services',
+    'Service.services.Thumbnail',
     'Form.services',
     'Form.locations',
     'Partner.brands',

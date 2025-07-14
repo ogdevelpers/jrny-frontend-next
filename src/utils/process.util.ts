@@ -1,9 +1,10 @@
 export const getThumbnailUrl = (image: any) => image?.formats?.thumbnail?.url || null;
+export const getSmallThumbnailUrl = (image: any) => image?.formats?.medium?.url || null;
 
 export const getLeftImages = (images: any) =>
     images?.map((img: any) => ({
       name: img?.name,
-      thumbnail: getThumbnailUrl(img)
+      thumbnail: getSmallThumbnailUrl(img)
     })) || [];
 
 export const extractContent = (data: any) => {
@@ -34,7 +35,8 @@ export const extractContent = (data: any) => {
         id: service?.id,
         Title: service?.Title,
         ShortDescriptionPoints: service?.ShortDescriptionPoints?.split(',') || [],
-        slug: service?.slug
+        slug: service?.slug,
+        thumbnail: getSmallThumbnailUrl(service.Thumbnail)
       })),
       description: data?.Service?.Description
     },
@@ -100,7 +102,7 @@ export const extractPortfolioContent = (data: any) => {
       Project_Heading: element.Project_Heading,
       Project_Name: element.Project_Name,
       key: element.key,
-      thumbnil: getThumbnailUrl(element.thumbnail),
+      thumbnil: getSmallThumbnailUrl(element.thumbnail),
       categories: element?.categories.map((element: any) => (
         {
           name: element.Name

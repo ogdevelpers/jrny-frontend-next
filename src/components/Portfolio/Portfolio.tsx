@@ -76,8 +76,7 @@ const PortfolioTile = ({ videoLink, thumbnail, tileTitle, id }: PortfolioTilePro
     <div className="portfolio-tile-box hover-box hover-magnetic hover-lift-1 hover-neon">
       <div className="tile-thumbnail">
         <Link href={`/portfolio/${id}`} className='portfolio-link'>
-          {/* <img src={thumbnail ?? '/landing-video-card.png'} alt="" /> */}
-          <img src={'/landing-video-card.png'} alt="" />
+          <img src={thumbnail ?? '/landing-video-card.png'} alt="" />
         </Link>
       </div>
       <div className="tile-title">
@@ -93,7 +92,6 @@ export const PortfolioMiddleList = ({ portfolio, counts }: any) => {
 
   const [visibleCount, setVisibleCount] = useState(counts); // Show 6 tiles initially
 
-
   return (
     <div className="portfolio-middle-list">
       <div className="portfolio-tile-container">
@@ -102,7 +100,7 @@ export const PortfolioMiddleList = ({ portfolio, counts }: any) => {
             <PortfolioTile
               tileTitle={element.Project_Name}
               videoLink={element.Project_Video_Url}
-              thumbnail={element.portfolioImage}
+              thumbnail={element.thumbnil}
               id={element.key}
             />
           </div>

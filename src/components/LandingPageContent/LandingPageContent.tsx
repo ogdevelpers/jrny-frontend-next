@@ -190,7 +190,7 @@ export default function LandingPageContent({
                 <div className="cards-section-grid-container">
                   {content?.Service?.services?.map((service: any, index: number) => (
                     <div className="profile-card hover-box hover-magnetic hover-lift-1 hover-neon" key={index}>
-                      <img src="services.jpg" alt={`Service ${index + 1}`} />
+                      <img src={service.thumbnail} alt={`Service ${index + 1}`} />
                       <div className="profile-caption">
                         <div className="heading">{service.Title}</div>
                         {/* <div className="description">
