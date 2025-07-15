@@ -12,6 +12,7 @@ export default async function AboutUs() {
     'about_us_texts',
     'ShowReelPlayButton',
     'teams',
+    'teams.userImage'
 	];
 
   const contactUsPopulate = [

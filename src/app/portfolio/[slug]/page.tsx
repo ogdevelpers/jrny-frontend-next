@@ -19,7 +19,6 @@ export default async function PortfolioDetailPage({ params }: {params: Promise<{
         const populatePortfolios = [
             'thumbnail',
             'categories',
-            'Project_Images'
             ];
 
         const populateCommon = `populate=*`;

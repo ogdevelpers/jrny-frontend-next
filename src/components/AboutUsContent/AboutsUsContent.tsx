@@ -4,9 +4,9 @@ import ShowReel from '@/components/ShowReel/ShowReel';
 import Footer from '@/components/shared/footer/Footer';
 import useIsMobile from '@/hooks/useIsMobile';
 import TagSlider from '@/components/TagSlider/TagSlider';
-import { extractContentByKey, getRoute } from '@/utils/common.util';
 import Link from 'next/link';
 import '../../css/about.css';
+import { getSmallThumbnailUrl } from '@/utils/process.util';
 
 
 interface AboutUsContentProps {
@@ -131,7 +131,7 @@ const PersonTile = ({ person }: { person: any }) => {
                 <div className="person-image-div">
 
                 <img
-                    src={person.userImage}
+                    src={getSmallThumbnailUrl(person?.userImage)}
                     alt={person.name}
                     className="person-image"
                     />
