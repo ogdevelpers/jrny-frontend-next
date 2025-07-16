@@ -31,7 +31,8 @@ export default async function LandingPage() {
     'Form.services',
     'Form.locations',
     'Partner.brands',
-    'Portfolio.portfolios',
+    'Portfolio',
+    'Portfolio.portfolios.thumbnail',
     'Why_Jrny.jrnies',
     'Testimonial.testimonials',
     'About'

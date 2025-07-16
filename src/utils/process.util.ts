@@ -64,7 +64,19 @@ export const extractContent = (data: any) => {
       description: data?.Portfolio?.description || '',
       CTA_Link: data?.Portfolio?.CTA_Link || '',
       CTA_Text: data?.Portfolio?.CTA_Text || '',
-      portfolios: data?.Portfolio?.portfolios || []
+      portfolios: (data?.Portfolio?.portfolios || [])?.map((element: any) => ({
+      id: element.id,
+      CTA_Text: element.CTA_Text,
+      Location: element.Location,
+      Project_Name: element.Project_Name,
+      key: element.key,
+      thumbnail: getSmallThumbnailUrl(element.thumbnail),
+      categories: element?.Portfolio?.categories?.map((element: any) => (
+        {
+          name: element.Name
+        }
+      ))
+    }))
     },
 
     Why_Jrny: {
@@ -102,7 +114,7 @@ export const extractPortfolioContent = (data: any) => {
       Project_Heading: element.Project_Heading,
       Project_Name: element.Project_Name,
       key: element.key,
-      thumbnil: getSmallThumbnailUrl(element.thumbnail),
+      thumbnail: getSmallThumbnailUrl(element.thumbnail),
       categories: element?.categories.map((element: any) => (
         {
           name: element.Name

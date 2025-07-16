@@ -100,7 +100,7 @@ export const PortfolioMiddleList = ({ portfolio, counts }: any) => {
             <PortfolioTile
               tileTitle={element.Project_Name}
               videoLink={element.Project_Video_Url}
-              thumbnail={element.thumbnil}
+              thumbnail={element.thumbnail}
               id={element.key}
             />
           </div>
