@@ -149,7 +149,6 @@ export const ContactForm = () => {
     setStatus('Sending...');
 
     try {
-      console.log({app:process.env.NEXT_PUBLIC_APP_URL}, process.env.APP_URL)
       await axios.post(`api/sendEmail`, formData); 
       setStatus('Message sent successfully!');
       setFormData({ name: '', email: '', message: '' });
