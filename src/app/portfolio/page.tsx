@@ -32,8 +32,7 @@ export default async function Portfolio({ searchParams }: {searchParams: Promise
   const urlParams = new URLSearchParams();
 	populate.forEach((value, index) => {
 		urlParams.append(`populate[${index}]`, value);
-	});
-
+	}); 
     try {
         const [
             contentRes,
@@ -50,7 +49,6 @@ export default async function Portfolio({ searchParams }: {searchParams: Promise
     }
 
     const extractedData = extractPortfolioContent(contentData);
-
     let filteredPortfolios = extractedData?.portfolios;
 
     if (location) {

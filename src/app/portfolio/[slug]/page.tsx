@@ -3,27 +3,38 @@ import PortfolioList from '@/components/Portfolio/PortfolioList';
 import '../../../css/portfolio-item.css';
 import { PortfolioItemContent } from "@/components/PortfolioItemContent/PortfolioItemContent";
 import Footer from "@/components/shared/footer/Footer";
-import { fetchFromStrapi } from "@/lib/strapi"; 
+import { fetchFromStrapi } from "@/lib/strapi";
 import getPortfolioSidebarTabs from '@/utils/portfolioSidebarTabs.util';
-import { extractPortfolioDetailData } from '@/utils/process.util';
-export default async function PortfolioDetailPage({ params }: {params: Promise<{ slug: string }> }) {
+import { extractPortfolioContent, extractPortfolioDetailData } from '@/utils/process.util';
+export default async function PortfolioDetailPage({ params }: { params: Promise<{ slug: string }> }) {
 
     const { slug } = await params;
+    const populate = [
+	'brand_logos',
+    'portfolios',
+    'portfolios.thumbnail',
+    'portfolios.categories'
+	];
 
-        let portfolioDetailData = null,
+    let portfolioDetailData = null,
         portfolioData = null,
+        contentData = null,
         sidebarTabs: string[] = [];
 
-        let contactUsData = null;
+    let contactUsData = null;
 
-        const populatePortfolios = [
-            'thumbnail',
-            'categories',
-            ];
+    const populatePortfolios = [
+        'thumbnail',
+        'categories',
+    ];
 
-        const populateCommon = `populate=*`;
+    const populateCommon = `populate=*`;
+    const urlParams = new URLSearchParams();
+	populate.forEach((value, index) => {
+		urlParams.append(`populate[${index}]`, value);
+	});
 
-        const contactUsPopulate = [
+    const contactUsPopulate = [
         'Form',
         'Form.locations',
         'Form.services',
@@ -37,45 +48,49 @@ export default async function PortfolioDetailPage({ params }: {params: Promise<{
     const urlParamsPortfolios = new URLSearchParams();
     populatePortfolios.forEach((value, index) => {
         urlParamsPortfolios.append(`populate[${index}]`, value);
-    })
+    }) 
+
+
+    try {
+        const [
+            contentRes,
+            portfolioDetailRes,
+            contactUsResp,
+        ] = await Promise.all([
+            fetchFromStrapi(`portfolio-page?${urlParams.toString()}`),
+            fetchFromStrapi(`portfolios?${urlParamsPortfolios.toString()}&filters[key][$eq]=${slug}`),
+            fetchFromStrapi(`contact?${urlParamsContactUs.toString()}`),
+        ]);
+        contentData = contentRes.data;
+        portfolioDetailData = portfolioDetailRes.data;
+        contactUsData = contactUsResp.data;
+
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+
+    const extractListData = extractPortfolioContent(contentData);
+    sidebarTabs = getPortfolioSidebarTabs(extractListData?.portfolios);
+    portfolioData = extractListData?.portfolios;
     
-        try {
-            const [
-                portfolioRes,
-                portfolioDetailRes,
-                contactUsResp,
-            ] = await Promise.all([
-                fetchFromStrapi('portfolios?populate=categories'),
-                fetchFromStrapi(`portfolios?${urlParamsPortfolios.toString()}&filters[key][$eq]=${slug}`),
-                fetchFromStrapi(`contact?${urlParamsContactUs.toString()}`),
-            ]);
-            portfolioData = portfolioRes.data;
-            portfolioDetailData = portfolioDetailRes.data;
-            sidebarTabs = getPortfolioSidebarTabs(portfolioData);
-            contactUsData = contactUsResp.data;
 
-    
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
+    // This is left untouched
+    const extractedData = extractPortfolioDetailData(portfolioDetailData[0]);
+    return (
+        <>
+            <div className="portfolio-item-container">
+                <div className="portfolio-item-hero-container">
+                    <PortfolioItemContent portfolioDetailData={extractedData} />
+                </div>
 
-        const extractedData = extractPortfolioDetailData(portfolioDetailData[0]);
-  
-  return (
-    <>
-      <div className="portfolio-item-container">
-        <div className="portfolio-item-hero-container">
-            <PortfolioItemContent portfolioDetailData={extractedData}/>
-        </div>
-
-        <div className="portfolio-item-middle-list">
-            <span className="might-like">Project <span className="jrny-span"> you might Like!  </span></span>
-        <PortfolioList portfolio={portfolioData} sidebarTabs={sidebarTabs}/>
-        </div>
-        <div className="portfolio-item-footer">
-      <Footer content={contactUsData} />
-        </div>
-    </div>   
-    </>
-  );
+                <div className="portfolio-item-middle-list">
+                    <span className="might-like">Project <span className="jrny-span"> you might Like!  </span></span>
+                    <PortfolioList portfolio={portfolioData} sidebarTabs={sidebarTabs} />
+                </div>
+                <div className="portfolio-item-footer">
+                    <Footer content={contactUsData} />
+                </div>
+            </div>
+        </>
+    );
 }
