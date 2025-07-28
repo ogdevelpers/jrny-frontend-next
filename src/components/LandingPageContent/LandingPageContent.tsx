@@ -147,7 +147,7 @@ export default function LandingPageContent({
           ) : (
             <section className="svg-content">
               <div className="content-svg">
-                < LineSvg />
+                {/* < LineSvg /> */}
               </div>
             </section>
           )}
