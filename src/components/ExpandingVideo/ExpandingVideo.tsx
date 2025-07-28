@@ -155,27 +155,27 @@ export default function ExpandingVideo({heroData}: any) {
     const rightCardsMoveY = viewportHeight * 0.20; // 20vh in pixels
     
     // Card movements using pixel values
-    tl.fromTo('.left-cards',
-      {
-        y: 0,
-        xPercent: 0
-      },
-      {
-        y: leftCardsMoveY,
-        xPercent: -105,
-      }, 0
-    );
+    // tl.fromTo('.left-cards',
+    //   {
+    //     y: 0,
+    //     xPercent: 0
+    //   },
+    //   {
+    //     y: leftCardsMoveY,
+    //     xPercent: -105,
+    //   }, 0
+    // );
 
-    tl.fromTo('.right-cards',
-      {
-        y: 0,
-        xPercent: 0
-      },
-      {
-        y: rightCardsMoveY,
-        xPercent: 110,
-      }, 0
-    );
+    // tl.fromTo('.right-cards',
+    //   {
+    //     y: 0,
+    //     xPercent: 0
+    //   },
+    //   {
+    //     y: rightCardsMoveY,
+    //     xPercent: 110,
+    //   }, 0
+    // );
 
     return () => {
       ScrollTrigger.getAll().forEach(st => st.kill());
