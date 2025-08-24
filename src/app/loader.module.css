@@ -225,7 +225,7 @@ background: linear-gradient(145deg, #3E434A 0%, #2A313B 50%, #21262B 100%);
 
 @media (max-width: 480px) {
   .textContent {
-    font-size: 35vw;
+    font-size: 30vw;
   }
   .progressBarContainer {
     width: 90%; /* Adjusted for mobile */

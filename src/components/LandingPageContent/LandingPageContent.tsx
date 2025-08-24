@@ -90,7 +90,7 @@ export default function LandingPageContent({
               <span className="landing-title-main">
                 {heading?.[0]}
               </span>
-              <br />
+              {/* <br /> */}
               <span className="landing-page-matter-text">
                 {
                   heading2?.split("")?.map((char: any, i: any) => (
@@ -141,7 +141,7 @@ export default function LandingPageContent({
           {isMobile ? (
             <section className="svg-content-mobile">
               <div className="content-svg-mobile">
-                <LineSvgMobile />
+                {/* <LineSvgMobile /> */}
               </div>
             </section>
           ) : (
