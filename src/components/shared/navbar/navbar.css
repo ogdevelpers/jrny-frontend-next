@@ -27,6 +27,11 @@
     width:10svw;
   }
 }
+@media(max-width:572px){
+  .logo{
+    width:20svw;
+  }
+}
 
 .logo img {
   width: 100%;
@@ -78,7 +83,7 @@
   justify-content: space-between;
   align-items: center;
   z-index: 1001;
-  padding: 1rem;
+  /* padding: 1rem; */
   width: 100%; /* Take full width of parent */
 }
 

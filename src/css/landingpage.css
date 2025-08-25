@@ -858,10 +858,6 @@
     line-height: 3rem;
   }
 
-  .landing-title br {
-    height: 10px;
-  }
-
   .landing-title-main {
     font-size: 2rem;
     max-width: 90%;
@@ -1115,6 +1111,10 @@
 
 /* Mostly for LINESVGMOBILE */
 @media (max-width: 500px) { 
+
+    .landing-title-main { 
+      padding-bottom: 10px;
+  }
 
   .landing-svg-container {
     height: 3800px;

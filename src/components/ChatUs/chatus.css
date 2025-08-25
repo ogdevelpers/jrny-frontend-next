@@ -1,7 +1,7 @@
 .chat-with-us-container {
   position: fixed;
   right: 5%;
-  bottom: 80px;
+  bottom: 30px;
   z-index: 999;
 }
 

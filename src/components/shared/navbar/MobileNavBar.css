@@ -7,7 +7,7 @@
   justify-content: flex-end; /* Align burger button to the right */
   align-items: center;
   width: 100%;
-  padding: 1rem; /* Adjust padding as needed for your mobile header */
+  /* padding: 1rem; Adjust padding as needed for your mobile header */
   box-sizing: border-box; /* Include padding in width */
   z-index: 100001; /* Ensure this wrapper is above other content but below sidebar */
 }
@@ -23,6 +23,35 @@
 }
 
 .navbar-burger-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* --- X CLOSE BUTTON --- */
+.mobile-close-button {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 10002; /* Above everything else in the sidebar */
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+}
+
+.mobile-close-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FF5B00;
+  transform: scale(1.1);
+}
+
+.mobile-close-button svg {
   width: 24px;
   height: 24px;
 }
