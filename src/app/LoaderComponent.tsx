@@ -10,6 +10,23 @@ const LoaderWrapper = ({ children }: { children: ReactNode }) => {
   const [lettersEntering, setLettersEntering] = useState(false); // New state for letters entering
 
   useEffect(() => {
+    // Check if this is not the first load within the last hour
+    const firstLoadData = localStorage.getItem("first-load");
+    if (firstLoadData) {
+      const { timestamp } = JSON.parse(firstLoadData);
+      const now = new Date().getTime();
+      const oneHour = 60 * 60 * 1000; // 1 hour in milliseconds
+      
+      // If less than 1 hour has passed, don't show the loader
+      if (now - timestamp < oneHour) {
+        setIsLoading(false);
+        return;
+      }
+    }
+    
+    // Set first-load in localStorage with current timestamp
+    localStorage.setItem("first-load", JSON.stringify({ timestamp: new Date().getTime() }));
+
     // The sweepIn animation for .whiteBar starts immediately via CSS.
 
     // Show text content (JRNY) after the sweep-in animation of the white bar is complete
