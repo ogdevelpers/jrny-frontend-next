@@ -214,7 +214,7 @@ export const ContactForm = () => {
         >
           <div className="button-content-animated">
             <span className="send-mail-text">
-              {isSubmitting ? 'Sending...' : 'Send Mail'}
+              {isSubmitting ? 'Sending...' : 'Send'}
             </span>
             <img src="/arrow-right.png" alt="Send arrow" />
           </div>
