@@ -7,6 +7,7 @@ import Textarea from "../TextArea/TextArea";
 import axios from 'axios';
 import "./contact.css";
 import { useRouter } from 'next/navigation';
+import Link from "next/link";
 
 // Type definitions
 interface ContentData {
@@ -264,6 +265,10 @@ export const SocialDivs = ({ contentData }: SocialDivsProps) => {
         ) : (
           <div className="social-example">Not available</div>
         )}
+      </div>
+
+      <div className="social-div-container">
+        <Link href="/solutions"><div className="social-heading">Other Solutions</div></Link>
       </div>
       
       <div className="social-div-container">
