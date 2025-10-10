@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch only SEO data for metadata
     const homeRespData = await fetchFromStrapi('home?populate[0]=seo');
     const seoData = homeRespData?.data?.seo;
-
+ 
     if (!seoData) {
       throw new Error('No SEO data found');
     }
@@ -91,14 +91,6 @@ export async function generateMetadata(): Promise<Metadata> {
     };
   }
 }
-
-
-
-
-
-
-
-
 
 export default async function LandingPage() { 
   let homeData = null;
