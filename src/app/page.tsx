@@ -36,7 +36,7 @@ export async function generateMetadata(): Promise<Metadata> {
     }
 
     return {
-      title: seoData.metaTitle || 'Corporate & Experiential Event Management Agency in India',
+      title: seoData.metaTitle || 'Corporate & Experiential Management',
       description: seoData.metaDescription || 'JRNY is a leading corporate event management company in India.',
       keywords: keywordsArray,
       robots: {
