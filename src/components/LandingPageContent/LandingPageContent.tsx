@@ -86,7 +86,7 @@ export default function LandingPageContent({
         <div className="hero-container">
           <div className="landing-text-container">
             <h1 className="landing-title">
-
+              
               <span className="landing-title-main">
                 {heading?.[0]}
               </span>
