@@ -6,9 +6,9 @@ import { Metadata } from "next";
 export async function generateMetadata(): Promise<Metadata> {
   try {
     // Fetch only SEO data for metadata
-    const homeRespData = await fetchFromStrapi("solutions?populate[0]=seo");
-    const seoData = homeRespData?.data?.seo;
-
+    const homeRespData = await fetchFromStrapi("solution-page?populate[0]=seo");
+    const seoData = homeRespData?.data?.[0]?.seo;
+    console.log({ homeRespData });
     if (!seoData) {
       throw new Error("No SEO data found");
     }
@@ -120,7 +120,6 @@ export default async function SolutionsPage() {
     ]);
     contentData = contentRes.data;
     contactUsData = contactUsResp.data;
-    console.log({ contentData });
   } catch (error) {
     console.error("Error fetching data:", error);
   }

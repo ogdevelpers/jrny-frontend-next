@@ -13,9 +13,9 @@ export async function generateMetadata({
     const { slug } = await params;
     // Fetch only SEO data for metadata
     const homeRespData = await fetchFromStrapi(
-      `solutions?filters[slug][$eq]=${slug}=?populate[0]=seo`,
+      `solutions?filters[slug][$eq]=${slug}&populate[0]=seo`,
     );
-    const seoData = homeRespData?.data?.seo;
+    const seoData = homeRespData?.data?.[0]?.seo;
 
     if (!seoData) {
       throw new Error("No SEO data found");
