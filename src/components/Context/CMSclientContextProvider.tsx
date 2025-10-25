@@ -17,7 +17,6 @@ export function CMSclientContextProvider({
   content: any;
   children: React.ReactNode;
 }) {
-  console.log({ content });
   return (
     <CMSClientContext.Provider value={{ content }}>
       {children}
@@ -33,6 +32,5 @@ export function useCMSclientContext() {
       "useCMSclientContext must be used within a CMSclientContextProvider",
     );
   }
-  console.log({ context }, "IDEA");
   return context;
 }

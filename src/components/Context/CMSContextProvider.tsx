@@ -10,7 +10,6 @@ export default async function CMSContextProvider({
   try {
     const solutionsContentResp = await fetchFromStrapi("solutions?populate=*");
     solutionContent = solutionsContentResp.data;
-    console.log({ solutionContent });
   } catch (error) {
     console.error(error);
   }
