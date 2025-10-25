@@ -1,12 +1,12 @@
-"use client";
+'use client';
 import { useState, useCallback } from "react";
 import useIsMobile from "../../hooks/useIsMobile";
 import Button from "../Button/Button";
 import Input from "../FormInput/FormInput";
 import Textarea from "../TextArea/TextArea";
-import axios from "axios";
+import axios from 'axios';
 import "./contact.css";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 import Link from "next/link";
 
 // Type definitions
@@ -22,7 +22,6 @@ interface ContentData {
 
 interface ContactProps {
   contents: ContentData;
-  solution: any;
 }
 
 interface FormData {
@@ -37,17 +36,16 @@ interface ContactHeadingProps {
 
 interface SocialDivsProps {
   contentData: ContentData;
-  solution: any;
 }
 
-export default function Contact({ contents, solution }: ContactProps) {
+export default function Contact({ contents }: ContactProps) {
   const isMobile = useIsMobile(1000);
 
   if (isMobile) {
     return (
       <div className="contact-us-container">
         <div className="social-container-mobile">
-          <SocialDivs contentData={contents} solution={solution} />
+          <SocialDivs contentData={contents} />
         </div>
         <div className="contact-mobile-line">
           <img src="/landing_line.png" alt="Decorative line" />
@@ -71,7 +69,7 @@ export default function Contact({ contents, solution }: ContactProps) {
       <div className="contact-us-box">
         <ContactForm />
         <div className="socials-container">
-          <SocialDivs contentData={contents} solution={solution} />
+          <SocialDivs contentData={contents} />
         </div>
       </div>
     </div>
@@ -80,14 +78,14 @@ export default function Contact({ contents, solution }: ContactProps) {
 
 export const ContactHeading = ({ contentData }: ContactHeadingProps) => {
   const title = contentData?.Form?.title;
-
+  
   if (!title) {
     return <div className="contact-us-heading">Contact Us</div>;
   }
 
   // Safely parse HTML-like tags
   const titleParts = title?.split(/<([^>]+)>/);
-
+  
   return (
     <div className="contact-us-heading">
       {titleParts?.[0]}
@@ -99,50 +97,47 @@ export const ContactHeading = ({ contentData }: ContactHeadingProps) => {
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    message: "",
+    name: '',
+    email: '',
+    message: '',
   });
-  const [status, setStatus] = useState<string>("");
+  const [status, setStatus] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const handleChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      const { name, value } = e.target;
-      setFormData((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-
-      // Clear status when user starts typing
-      if (status) {
-        setStatus("");
-      }
-    },
-    [status],
-  );
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    
+    // Clear status when user starts typing
+    if (status) {
+      setStatus('');
+    }
+  }, [status]);
 
   const validateForm = (): boolean => {
     if (!formData.name.trim()) {
-      setStatus("Please enter your name");
+      setStatus('Please enter your name');
       return false;
     }
     if (!formData.email.trim()) {
-      setStatus("Please enter your email");
+      setStatus('Please enter your email');
       return false;
     }
     if (!formData.message.trim()) {
-      setStatus("Please enter your message");
+      setStatus('Please enter your message');
       return false;
     }
-
+    
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      setStatus("Please enter a valid email address");
+      setStatus('Please enter a valid email address');
       return false;
     }
-
+    
     return true;
   };
 
@@ -152,15 +147,15 @@ export const ContactForm = () => {
     }
 
     setIsSubmitting(true);
-    setStatus("Sending...");
+    setStatus('Sending...');
 
     try {
-      await axios.post(`api/sendEmail`, formData);
-      setStatus("Message sent successfully!");
-      setFormData({ name: "", email: "", message: "" });
+      await axios.post(`api/sendEmail`, formData); 
+      setStatus('Message sent successfully!');
+      setFormData({ name: '', email: '', message: '' });
     } catch (error) {
-      console.error("Error sending message:", error);
-      setStatus("Failed to send message. Please try again.");
+      console.error('Error sending message:', error);
+      setStatus('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -176,7 +171,7 @@ export const ContactForm = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            classList="footer-input"
+            classList="footer-input" 
           />
         </div>
         <div className="footer-input-div">
@@ -186,7 +181,7 @@ export const ContactForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            classList="footer-input"
+            classList="footer-input" 
           />
         </div>
       </div>
@@ -196,16 +191,16 @@ export const ContactForm = () => {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          classList="footer-input form-textarea"
+          classList="footer-input form-textarea" 
         />
       </div>
 
       {status && (
-        <p
-          style={{
-            color: status.includes("success") ? "green" : "red",
-            margin: "10px 0",
-            fontSize: "14px",
+        <p 
+          style={{ 
+            color: status.includes('success') ? 'green' : 'red',
+            margin: '10px 0',
+            fontSize: '14px'
           }}
         >
           {status}
@@ -213,14 +208,14 @@ export const ContactForm = () => {
       )}
 
       <div className="contact-button-container">
-        <Button
-          classList="button-white-theme"
+        <Button 
+          classList="button-white-theme" 
           onClick={handleSubmit}
           disabled={isSubmitting}
         >
           <div className="button-content-animated">
             <span className="send-mail-text">
-              {isSubmitting ? "Sending..." : "Send"}
+              {isSubmitting ? 'Sending...' : 'Send'}
             </span>
             <img src="/arrow-right.png" alt="Send arrow" />
           </div>
@@ -241,24 +236,24 @@ export const SocialIcons = () => {
   );
 };
 
-export const SocialDivs = ({ contentData, solution }: SocialDivsProps) => {
+export const SocialDivs = ({ contentData }: SocialDivsProps) => {
   const isMobile = useIsMobile();
-  const phoneNumbers = contentData?.Form?.PhoneNumber?.split(",") || [];
+  const phoneNumbers = contentData?.Form?.PhoneNumber?.split(',') || [];
   const router = useRouter();
 
   const handleClick = (location: string) => {
     router.push(`/portfolio?location=${location?.toLocaleLowerCase()}`);
-  };
+  }
 
   return (
     <div className={isMobile ? "social-divs-mobile" : "social-divs"}>
       <div className="social-div-container">
         <div className="social-heading">Email</div>
         <div className="social-example">
-          {contentData?.Form?.Email || "Not available"}
+          {contentData?.Form?.Email || 'Not available'}
         </div>
       </div>
-
+      
       <div className="social-div-container">
         <div className="social-heading">Phone</div>
         {phoneNumbers?.length > 0 ? (
@@ -273,37 +268,25 @@ export const SocialDivs = ({ contentData, solution }: SocialDivsProps) => {
       </div>
 
       <div className="social-div-container">
-        <Link href="/solutions">
-          <div className="social-heading">Other Solutions</div>
-        </Link>
-        <div className="social-example">
-          {solution &&
-            contentData.Form.services.map((service: any, i: number) => (
-              <span
-                key={i}
-                onClick={() => router.push(`solutions/${service.slug}`)}
-                style={{ cursor: "pointer" }}
-              >
-                {service.Title}
-              </span>
-            ))}
-        </div>
+        <Link href="/solutions"><div className="social-heading">Other Solutions</div></Link>
       </div>
-
+      
       <div className="social-div-container">
         <div className="social-heading">Location</div>
         <div className="social-example">
-          {contentData?.Form?.locations?.length
-            ? contentData.Form.locations.map((location, i: number) => (
-                <span key={i} onClick={() => handleClick(location.Name)}>
-                  {location.Name}
-                  {i < (contentData?.Form?.locations?.length ?? 0) - 1 && ", "}
-                </span>
-              ))
-            : "Not available"}
+          {contentData?.Form?.locations?.length ? (
+            contentData.Form.locations.map((location, i: number) => (
+              <span key={i} onClick={() => handleClick(location.Name)}>
+                {location.Name}
+                {i < (contentData?.Form?.locations?.length?? 0) - 1 && ', '}
+              </span>
+            ))
+          ) : (
+            'Not available'
+          )}
         </div>
       </div>
-
+      
       <div className="social-div-container">
         <div className="social-heading">Services</div>
         {contentData?.Form?.services?.length ? (
