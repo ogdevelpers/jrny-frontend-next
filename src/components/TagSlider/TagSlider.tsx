@@ -1,44 +1,45 @@
 // TagSlider.tsx
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import { useRef    } from 'react';
-import Tags from '../Tags/Tags';
-import './tagSlider.css';
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { useRef } from "react";
+import Tags from "../Tags/Tags";
+import "./tagSlider.css";
 
-const TagSlider = ({tag}: any) => {
+const TagSlider = ({ tag }: any) => {
   const tagSliderRef = useRef<HTMLDivElement>(null);
   const tagContainerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    const slider = tagSliderRef.current;
-    const tagContainer = tagContainerRef.current;
-    if (!slider || !tagContainer) return;
+  useGSAP(
+    () => {
+      const slider = tagSliderRef.current;
+      const tagContainer = tagContainerRef.current;
+      if (!slider || !tagContainer) return;
 
-    // Calculate the actual width using getBoundingClientRect() for more accuracy
-    const containerWidth = tagContainer.getBoundingClientRect().width;
-    
-    // Ensure we have a valid width before animating
-    if (containerWidth <= 0) return;
+      // Calculate the actual width using getBoundingClientRect() for more accuracy
+      const containerWidth = tagContainer.getBoundingClientRect().width;
 
-    // console.log("Container width:", containerWidth); // Debug width value
+      // Ensure we have a valid width before animating
+      if (containerWidth <= 0) return;
 
-    // Create the animation
-    const animation = gsap.to(slider, {
-      x: `-${containerWidth}px`, // Use exact pixel value
-      duration: 40,
-      ease: 'linear',
-      repeat: -1, 
-    });
+      // Create the animation
+      const animation = gsap.to(slider, {
+        x: `-${containerWidth}px`, // Use exact pixel value
+        duration: 40,
+        ease: "linear",
+        repeat: -1,
+      });
 
-    // Return cleanup function
-    return () => {
-      animation.kill(); // Clean up animation on unmount
-    };
-  }, {
-    scope: wrapperRef,
-    dependencies: [] // Only run once on mount
-  });
+      // Return cleanup function
+      return () => {
+        animation.kill(); // Clean up animation on unmount
+      };
+    },
+    {
+      scope: wrapperRef,
+      dependencies: [], // Only run once on mount
+    },
+  );
 
   return (
     <div className="tag-slider-wrapper" ref={wrapperRef}>
@@ -49,7 +50,7 @@ const TagSlider = ({tag}: any) => {
             <Tags tagTitle={tag.tagTitle} key={index} />
           ))}
         </div>
-        
+
         {/* Duplicate sets for seamless looping */}
         <div className="tag-container">
           {tag?.map((tag: any, index: number) => (
