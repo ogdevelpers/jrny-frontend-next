@@ -4,6 +4,7 @@ import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import Header from "@/components/Header/Header";
 import { fetchFromStrapi } from "@/lib/strapi";
 import CMSContextProvider from "@/components/Context/CMSContextProvider";
+import Script from "next/script";
 
 export const metadata = {
   title: "JRNY",
@@ -30,6 +31,20 @@ export default async function RootLayout({
   }
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-JSZ3Q3FG1E"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-JSZ3Q3FG1E');
+          `}
+        </Script>
+      </head>
       <body>
         {/* <SmoothWrapper> */}
         <div className="pinMe" id="smooth-wrapper">
