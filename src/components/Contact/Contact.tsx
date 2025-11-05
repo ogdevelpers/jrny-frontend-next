@@ -303,19 +303,6 @@ export const SocialDivs = ({ contentData }: SocialDivsProps) => {
             : "Not available"}
         </div>
       </div>
-
-      <div className="social-div-container">
-        <div className="social-heading">Services</div>
-        {contentData?.Form?.services?.length ? (
-          contentData.Form.services.map((service, i: number) => (
-            <div key={i} className="social-example">
-              {service?.Title}
-            </div>
-          ))
-        ) : (
-          <div className="social-example">Not available</div>
-        )}
-      </div>
     </div>
   );
 };

@@ -1,18 +1,17 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from "react";
-import "./navbar.css"; 
+import "./navbar.css";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { routes } from "@/lib/constants";
 
-export const NavBar = ({navBar}: any) => {
+export const NavBar = ({ navBar }: any) => {
   const location = usePathname();
-  const [active, setActive] = useState(""); 
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const mainRoute = "/" + (location?.split("/")[1] || "");
-    setActive(mainRoute === "//" ? "/" : mainRoute); 
+    setActive(mainRoute === "//" ? "/" : mainRoute);
   }, [location]);
 
   return (
@@ -31,6 +30,7 @@ const NavBarUl = ({
   setActive: React.Dispatch<React.SetStateAction<string>>;
   navBarData: any;
 }) => {
+  console.log({ navBarData });
   return (
     <ul className="navbar-list">
       {navBarData?.map((route: any) => {
@@ -42,9 +42,7 @@ const NavBarUl = ({
               className={isActive ? "navbar-active" : ""}
               onClick={() => setActive(route.url)}
             >
-              <span className="navbar-text">
-                {route.title}
-              </span>
+              <span className="navbar-text">{route.title}</span>
             </Link>
           </li>
         );
