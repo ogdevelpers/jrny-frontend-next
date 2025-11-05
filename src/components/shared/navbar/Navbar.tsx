@@ -30,7 +30,6 @@ const NavBarUl = ({
   setActive: React.Dispatch<React.SetStateAction<string>>;
   navBarData: any;
 }) => {
-  console.log({ navBarData });
   return (
     <ul className="navbar-list">
       {navBarData?.map((route: any) => {

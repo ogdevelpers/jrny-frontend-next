@@ -255,7 +255,9 @@ export const SocialDivs = ({ contentData }: SocialDivsProps) => {
       <div className="social-div-container">
         <div className="social-heading">Email</div>
         <div className="social-example">
-          {contentData?.Form?.Email || "Not available"}
+          <a href={`mailto:${contentData?.Form?.Email || "info@jrnyxp.com"}`}>
+            {contentData?.Form?.Email || "info@jrnyxp.com"}
+          </a>
         </div>
       </div>
 
