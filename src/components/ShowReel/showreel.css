@@ -10,16 +10,16 @@
   margin: 0 auto; /* Center the container */
 }
 
-.video-card { 
+.video-card {
   width: 100%;
   height: 100%;
   padding: 0.7rem;
   display: flex;
   flex-direction: column;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   position: relative;
   backdrop-filter: blur(14.589743614196777px);
-  border-bottom-right-radius: 29.18px; 
+  border-bottom-right-radius: 29.18px;
   box-sizing: border-box;
 }
 
@@ -29,6 +29,7 @@
   min-height: 0;
   display: flex;
   justify-content: center;
+  position: relative;
   align-items: center;
   overflow: hidden;
   border-radius: 8px; /* Optional: add some rounding to video */
@@ -39,9 +40,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block; 
+  display: block;
   border-radius: 7.29px;
-
 }
 
 /* Remove the old .landing-video-png class since you're using video element */
@@ -56,7 +56,7 @@
   align-items: center;
   padding: 0.5rem 1rem;
   box-sizing: border-box;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   font-weight: 400;
   font-size: 1rem;
   line-height: 100%;
@@ -68,11 +68,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 55;
 }
 
 .play-reel-button img {
-  width: 24px;
-  height: 24px;
   object-fit: contain;
 }
 
@@ -83,16 +86,16 @@
     max-width: none;
     /* Aspect ratio is maintained automatically */
   }
-  
+
   .video-card {
     padding: 0.5rem;
   }
-  
+
   .video-card-footer {
     font-size: 0.9rem;
     padding: 0.4rem 0.8rem;
   }
-  
+
   .play-reel-button img {
     width: 20px;
     height: 20px;
@@ -103,16 +106,16 @@
   .video-card-container {
     width: 95%;
   }
-  
+
   .video-card {
     padding: 0.4rem;
   }
-  
+
   .video-card-footer {
     font-size: 0.8rem;
     padding: 0.3rem 0.6rem;
   }
-  
+
   .play-reel-button img {
     width: 18px;
     height: 18px;
