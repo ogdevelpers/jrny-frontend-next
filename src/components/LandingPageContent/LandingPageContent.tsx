@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Carasoul from "@/components/Carasoul/Carasoul";
 import ExpandingVideo from "@/components/ExpandingVideo/ExpandingVideo";
@@ -9,25 +9,27 @@ import useIsMobile from "@/hooks/useIsMobile";
 import { getRoute } from "@/utils/common.util";
 import { PortfolioMiddleList } from "../Portfolio/Portfolio";
 import LineSvg from "../LineSvg/LineSvg";
-import '../../css/landingpage.css';
+import "../../css/landingpage.css";
 import Link from "next/link";
 import Button from "../Button/Button";
+import ReelPreview from "../shared/reelpreview/ReelPreview";
 
 interface LandingPageContentProps {
-  content: any
-  footer: any
+  content: any;
+  footer: any;
 }
 
 export default function LandingPageContent({
   content,
   footer,
 }: LandingPageContentProps) {
-
-  const portfolioTrimmed = Array.isArray(content?.Portfolio) ? content?.Portfolio?.slice(0, 6) : [];
+  const portfolioTrimmed = Array.isArray(content?.Portfolio)
+    ? content?.Portfolio?.slice(0, 6)
+    : [];
 
   const isMobile = useIsMobile(1010);
 
-  const heading = content?.Hero?.Title?.split(',');
+  const heading = content?.Hero?.Title?.split(",");
   const heading2 = heading?.[1];
 
   const aboutUsTitle = (title: string) => {
@@ -39,8 +41,8 @@ export default function LandingPageContent({
         <span className="jrny-span">{aboutUsTitle?.[1]}</span>
         {aboutUsTitle?.[2]}
       </span>
-    )
-  }
+    );
+  };
 
   const serviceTitle = (title: string) => {
     const serviceTitle = title?.split(/<([^>]+)>/);
@@ -50,8 +52,8 @@ export default function LandingPageContent({
         {serviceTitle?.[0]}
         <span className="jrny-span">{serviceTitle?.[1]}</span>
       </h1>
-    )
-  }
+    );
+  };
 
   const portfolioTitle = (title: string) => {
     const portfolioTitle = title?.split(/<([^>]+)>/);
@@ -61,8 +63,8 @@ export default function LandingPageContent({
         {portfolioTitle?.[0]}
         <span className="jrny-span">{portfolioTitle?.[1]}</span>
       </h1>
-    )
-  }
+    );
+  };
 
   const testimonialTitle = (title: string) => {
     const testimonialTitle = title?.split(/<([^>]+)>/);
@@ -71,14 +73,10 @@ export default function LandingPageContent({
       <>
         <span className="testimonial-span">{testimonialTitle?.[0]}</span>{" "}
         <span className="jrny-span">{testimonialTitle?.[1]}</span>{" "}
-        <span className="testimonial-span">
-          {" "}
-          {testimonialTitle?.[2]}
-        </span>
+        <span className="testimonial-span"> {testimonialTitle?.[2]}</span>
       </>
-    )
-  }
-
+    );
+  };
 
   return (
     <>
@@ -86,56 +84,47 @@ export default function LandingPageContent({
         <div className="hero-container">
           <div className="landing-text-container">
             <h1 className="landing-title">
-              
-              <span className="landing-title-main">
-                {heading?.[0]}
-              </span>
+              <span className="landing-title-main">{heading?.[0]}</span>
               {/* <br /> */}
               <span className="landing-page-matter-text">
-                {
-                  heading2?.split("")?.map((char: any, i: any) => (
-                    <span key={i} className="landing-char-span">{char}</span>
-                  ))
-                }
+                {heading2?.split("")?.map((char: any, i: any) => (
+                  <span key={i} className="landing-char-span">
+                    {char}
+                  </span>
+                ))}
               </span>
             </h1>
           </div>
 
-          {
-            !isMobile ?
-              (<section className="landing-expanding-video">
-                <ExpandingVideo heroData={content?.Hero} />
-              </section>) :
-              (
-                <section className="landing-video-mobile">
-                  <video
-                    className="landing-video-mobile-tag"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  >
-                    <source src={content?.Hero?.ShowReelVideoLink} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </section>
-              )
-
-          }
+          {!isMobile ? (
+            <section className="landing-expanding-video">
+              <ExpandingVideo heroData={content?.Hero} />
+            </section>
+          ) : (
+            <section className="landing-video-mobile">
+              <video
+                className="landing-video-mobile-tag"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source
+                  src={content?.Hero?.ShowReelVideoLink}
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </section>
+          )}
 
           <div style={{ marginTop: "30px" }}>
-            <Link href={`${getRoute('About Us')}`} className="landing-watch-btn">
-              <Button classList='landing-showreel-button button-white-theme'>
-                <div className="button-content-animated">
-                  {content?.Hero?.CTAText}
-                  <img src="/arrow-right.png" alt="arrow" />
-                </div>
-              </Button>
-            </Link>
+            <ReelPreview
+              bolo={content?.Hero?.CTAText}
+              url={content?.Hero?.ShowReelVideoLink}
+            />
           </div>
-
         </div>
-
 
         <div className="landing-svg-container">
           {isMobile ? (
@@ -147,7 +136,7 @@ export default function LandingPageContent({
           ) : (
             <section className="svg-content">
               <div className="content-svg">
-                < LineSvg />
+                <LineSvg />
               </div>
             </section>
           )}
@@ -160,12 +149,26 @@ export default function LandingPageContent({
               </div>
 
               {/* Right Paragraph + Button Block */}
-              <div className="showreel-container" style={{ flexDirection: 'column', alignItems: 'flex-start', paddingTop: '50px', gap: '1.5rem' }}>
-                <div style={{fontSize: "20px"}} className="about-us-landing-paragraph abt-landing">
+              <div
+                className="showreel-container"
+                style={{
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  paddingTop: "50px",
+                  gap: "1.5rem",
+                }}
+              >
+                <div
+                  style={{ fontSize: "20px" }}
+                  className="about-us-landing-paragraph abt-landing"
+                >
                   {content?.About?.description}
                 </div>
 
-                <Link href={`/${content?.About?.CTA_Link}`} className='about-landing-button'>
+                <Link
+                  href={`/${content?.About?.CTA_Link}`}
+                  className="about-landing-button"
+                >
                   <Button classList="button-white-theme">
                     <div className="button-content-animated">
                       {content?.About?.CTA_Text}
@@ -188,12 +191,19 @@ export default function LandingPageContent({
 
               <div className="cards-section">
                 <div className="cards-section-grid-container">
-                  {content?.Service?.services?.map((service: any, index: number) => (
-                    <div className="profile-card hover-box hover-magnetic hover-lift-1 hover-neon" key={index}>
-                      <img src={service.thumbnail} alt={`Service ${index + 1}`} />
-                      <div className="profile-caption">
-                        <div className="heading">{service.Title}</div>
-                        {/* <div className="description">
+                  {content?.Service?.services?.map(
+                    (service: any, index: number) => (
+                      <div
+                        className="profile-card hover-box hover-magnetic hover-lift-1 hover-neon"
+                        key={index}
+                      >
+                        <img
+                          src={service.thumbnail}
+                          alt={`Service ${index + 1}`}
+                        />
+                        <div className="profile-caption">
+                          <div className="heading">{service.Title}</div>
+                          {/* <div className="description">
                           {service?.ShortDescriptionPoints?.map((desc: any, i: number) => (
                             <div
                               className={`description-${i + 1}`}
@@ -203,16 +213,15 @@ export default function LandingPageContent({
                             </div>
                           ))}
                         </div> */}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ),
+                  )}
                 </div>
               </div>
             </section>
 
-            <div className="testimonial-top">
-              {content?.Partner?.title}
-            </div>
+            <div className="testimonial-top">{content?.Partner?.title}</div>
 
             <div className="partners-slideshow">
               <span className="partnered">{content?.Partner?.subTitle}</span>
@@ -234,10 +243,15 @@ export default function LandingPageContent({
               </div>
 
               <div className="portfolio-tiles-landing">
-                <PortfolioMiddleList portfolio={content?.Portfolio?.portfolios} counts={6} />
+                <PortfolioMiddleList
+                  portfolio={content?.Portfolio?.portfolios}
+                  counts={6}
+                />
                 <div className="see-more-container">
                   <Link href={`/${content?.Portfolio?.CTA_Link}`}>
-                    <Button classList="see-more">{content?.Portfolio?.CTA_Text}</Button>
+                    <Button classList="see-more">
+                      {content?.Portfolio?.CTA_Text}
+                    </Button>
                   </Link>
                 </div>
               </div>
@@ -250,7 +264,9 @@ export default function LandingPageContent({
             <div className="carousol-container">
               <div className="carousol-logo">
                 <img src="/jrny-testimonial-logo.png" />
-                <span className="testimonial-logo-trusted">{content?.Testimonial?.subTitle}</span>
+                <span className="testimonial-logo-trusted">
+                  {content?.Testimonial?.subTitle}
+                </span>
               </div>
               <div className="carousol">
                 <div className="profile-section"></div>
@@ -265,8 +281,7 @@ export default function LandingPageContent({
           <RightChoice content={content?.Why_Jrny} />
         </div>
         <div className="landing-footer">
-
-          <Footer content={footer}/>
+          <Footer content={footer} />
         </div>
       </div>
     </>
@@ -274,7 +289,6 @@ export default function LandingPageContent({
 }
 
 export const RightChoice = ({ content }: any) => {
-
   const rightChoiceTitle = (text: string) => {
     const title = text?.split(/<([^>]+)>/);
 
@@ -284,16 +298,14 @@ export const RightChoice = ({ content }: any) => {
         <span className="jrny-span">{title?.[1]}</span>
         {title?.[2]}
       </h1>
-    )
-  }
+    );
+  };
 
   return (
     <>
       <div className="right-choice-container">
         {rightChoiceTitle(content?.title)}
-        <p className="right-choice-p">
-          {content?.description}
-        </p>
+        <p className="right-choice-p">{content?.description}</p>
 
         <div className="features">
           {content?.jrnies?.map((item: any) => (

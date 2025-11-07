@@ -1,0 +1,44 @@
+.video-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75); /* dark overlay */
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* ensure it stays on top */
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.video-player {
+  width: 80%;
+  max-width: 900px;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  background: #000;
+  cursor: default;
+}
+
+.close-button {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-size: 28px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.close-button:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
