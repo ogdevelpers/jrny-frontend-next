@@ -14,11 +14,10 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width:90%;
+  width: 90%;
   max-width: 90%;
   min-width: 0%;
 }
-
 
 /* class that handles the hero container */
 .portfolio-top-section {
@@ -30,15 +29,15 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  position: relative; 
-  height:100%;
+  position: relative;
+  height: 100%;
 }
 
 .our-projects-p {
   font-size: 18px;
   max-width: 25svw;
   text-align: left;
-  height:100%; 
+  height: 100%;
 }
 
 .portfolio-partner-show {
@@ -46,34 +45,35 @@
   max-width: 740px;
 }
 
-.portfolio-list-container{
-  display:flex; 
-  width:100%;
+.portfolio-list-container {
+  display: flex;
+  width: 100%;
   max-width: 100%;
   flex-direction: column;
-  gap:2rem;
+  gap: 2rem;
 }
 
-.portfolio-list-sidebar-container{
-  max-width:100%;
-  width:100%;   
+.portfolio-list-sidebar-container {
+  max-width: 100%;
+  width: 100%;
 }
 
 .portfolio-list-sidebar {
-  all:unset;
+  all: unset;
   display: flex;
   overflow-x: auto;
   width: fit-content;
-  gap:1rem;
+  gap: 1rem;
   max-width: 100%;
-  height:54px;
-  scrollbar-width: thin;                
+  height: 54px;
+  scrollbar-width: thin;
   scrollbar-color: white transparent;
+  align-items: center;
 }
 
 /* Chrome, Edge, Safari */
 .portfolio-list-sidebar::-webkit-scrollbar {
-  height: 8px;   
+  height: 8px;
 }
 
 .portfolio-list-sidebar::-webkit-scrollbar-track {
@@ -81,218 +81,261 @@
 }
 
 .portfolio-list-sidebar::-webkit-scrollbar-thumb {
-  background-color: white;  /* WHITE THUMB (the draggable part) */
-  border-radius: 4px; 
+  background-color: white; /* WHITE THUMB (the draggable part) */
+  border-radius: 4px;
 }
 
-
-.portfolio-list-sidebar li{
-  list-style: none; 
+.portfolio-list-sidebar li {
+  list-style: none;
 }
 
 .sidebar-list-tab {
-    display: block;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    font-weight: 500;
-    font-size: 0.9rem;
-    line-height: 20px;
-    letter-spacing: 0.01em;
-    color: rgba(255, 255, 255, 0.7);
-    border-radius: 12px;
-    padding: 0.35rem 1.5rem;
-    cursor: pointer;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    white-space: nowrap;
-    
-    /* Modern glass-morphism inspired background */
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    
-    /* Enhanced transitions */
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
-                transform 0.2s ease-out,
-                box-shadow 0.3s ease;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0.35rem 1.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  white-space: nowrap;
+
+  /* Modern glass-morphism inspired background */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* Enhanced transitions */
+  transition:
+    all 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s ease-out,
+    box-shadow 0.3s ease;
 }
 
 /* Refined pseudo-element for ripple effect */
 .sidebar-list-tab::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 70%, transparent 100%);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-                height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s ease;
-    z-index: -1;
-    opacity: 0;
-    will-change: width, height, opacity;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 70%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease;
+  z-index: -1;
+  opacity: 0;
+  will-change: width, height, opacity;
 }
 
 /* Enhanced hover effect */
 .sidebar-list-tab:hover {
-    background: rgba(255, 255, 255, 0.15);
-    color: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transform: translateX(4px) translateY(-1px);
-    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1),
-                0 4px 10px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateX(4px) translateY(-1px);
+  box-shadow:
+    0 8px 25px rgba(255, 255, 255, 0.1),
+    0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Ripple effect on hover */
 .sidebar-list-tab:hover::before {
-    width: 350%;
-    height: 350%;
-    opacity: 1;
+  width: 350%;
+  height: 350%;
+  opacity: 1;
 }
 
 /* Active state with modern white styling */
 .sidebar-list-tab-active {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
-    color: #1a1a1a;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    font-weight: 600;
-    transform: translateX(6px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.15),
-                0 4px 16px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    
-    /* Subtle inner glow */
-    border-left: 3px solid rgba(255, 255, 255, 1);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.85)
+  );
+  color: #1a1a1a;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  font-weight: 600;
+  transform: translateX(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 8px 32px rgba(255, 255, 255, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  /* Subtle inner glow */
+  border-left: 3px solid rgba(255, 255, 255, 1);
 }
 
 /* Active state pseudo-element for shine effect */
 .sidebar-list-tab-active::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
 }
 
 /* Enhanced active hover effect */
 .sidebar-list-tab-active:hover {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9));
-    color: #0a0a0a;
-    transform: translateX(8px) translateY(-2px);
-    box-shadow: 0 12px 40px rgba(255, 255, 255, 0.2),
-                0 6px 20px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 1);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.9)
+  );
+  color: #0a0a0a;
+  transform: translateX(8px) translateY(-2px);
+  box-shadow:
+    0 12px 40px rgba(255, 255, 255, 0.2),
+    0 6px 20px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 /* Shimmer effect on active hover */
 .sidebar-list-tab-active:hover::before {
-    opacity: 1;
-    animation: shimmer 1.5s ease-in-out infinite;
+  opacity: 1;
+  animation: shimmer 1.5s ease-in-out infinite;
 }
 
 /* Additional pseudo-element for active state ripple */
 .sidebar-list-tab-active::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 70%, transparent 100%);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s ease;
-    z-index: -1;
-    opacity: 0;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.2) 70%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease;
+  z-index: -1;
+  opacity: 0;
 }
 
 /* Active state ripple on hover */
 .sidebar-list-tab-active:hover::after {
-    width: 300%;
-    height: 300%;
-    opacity: 1;
+  width: 300%;
+  height: 300%;
+  opacity: 1;
 }
 
 /* Modern shimmer animation */
 @keyframes shimmer {
-    0% {
-        background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transform: translateX(-100%);
-    }
-    50% {
-        background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-        transform: translateX(0%);
-    }
-    100% {
-        background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transform: translateX(100%);
-    }
+  0% {
+    background: linear-gradient(
+      135deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transform: translateX(-100%);
+  }
+  50% {
+    background: linear-gradient(
+      135deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transform: translateX(0%);
+  }
+  100% {
+    background: linear-gradient(
+      135deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transform: translateX(100%);
+  }
 }
 
 /* Focus states for accessibility */
 .sidebar-list-tab:focus,
 .sidebar-list-tab-active:focus {
-    outline: 2px solid rgba(255, 255, 255, 0.6);
-    outline-offset: 2px;
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
 }
 
 /* Smooth transitions for all states */
 .sidebar-list-tab,
 .sidebar-list-tab-active {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Optional: Add subtle animation on load */
 .sidebar-list-tab {
-    animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-      
+
 .portfolio-middle-list {
-  display: flex; 
-  align-items: center; 
-  max-height: 90%; 
-  width:100%;   
-  max-width:1750px;
+  display: flex;
+  align-items: center;
+  max-height: 90%;
+  width: 100%;
+  max-width: 1750px;
 }
 
 .portfolio-tile-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-columns: 1fr 1fr 1fr;
   row-gap: 2rem;
   column-gap: 1rem;
-  min-height: 50%; 
-  max-height:99%;
-  height:90%;
+  min-height: 50%;
+  max-height: 99%;
+  height: 90%;
   flex: 1;
-  padding: 0.4rem 0 ;
+  padding: 0.4rem 0;
 }
 
 .portfolio-tile {
@@ -302,22 +345,22 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;  
+  overflow: hidden;
 }
 
 .portfolio-tile-box {
-  display: flex; 
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   height: 100%; /* Take full height of parent tile */
   width: 100%; /* Take full width of parent tile */
   text-align: left;
   gap: 10px;
-    overflow: hidden; /* Prevent child overflow */
+  overflow: hidden; /* Prevent child overflow */
   box-sizing: border-box; /* Ensure padding doesn't add to total size */
   max-height: 100%; /* Prevent overflow vertically */
   max-width: 100%; /* Prevent overflow horizontally */
-} 
+}
 
 .portfolio-link {
   display: block;
@@ -327,9 +370,9 @@
 
 .tile-thumbnail {
   min-width: 100%;
-  max-width: 100%; 
-  height:80%;
-  max-height:80%;
+  max-width: 100%;
+  height: 80%;
+  max-height: 80%;
   overflow: hidden; /* Hide any overflow */
   display: flex;
   align-items: center; /* Center vertically */
@@ -388,10 +431,10 @@
   background-color: #444;
 }
 
-.our-projects-span{
+.our-projects-span {
   font-family: Armstrong;
   font-weight: 400;
-  font-size:4rem;
+  font-size: 4rem;
   line-height: 100%;
   letter-spacing: 0%;
   color: white;
@@ -400,63 +443,61 @@
 .jrny-span-text {
   font-family: Armstrong;
   font-weight: 400;
-  font-size:4rem;
+  font-size: 4rem;
   line-height: 100%;
   letter-spacing: 0%;
-  color: #FF5B00;
+  color: #ff5b00;
 }
 
-@media(max-width: 1400px){
-  .our-projects-span{
-    font-size:2.2rem;
+@media (max-width: 1400px) {
+  .our-projects-span {
+    font-size: 2.2rem;
   }
 
   .jrny-span-text {
-  font-family: Armstrong;
-  font-weight: 400;
-  font-size:2.2rem;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #FF5B00;
-}
+    font-family: Armstrong;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #ff5b00;
+  }
 }
 
- 
-@media(max-width: 1200px){
-
-  .portfolio-landing-container{
+@media (max-width: 1200px) {
+  .portfolio-landing-container {
     max-width: 100%;
     min-width: 100%;
-    width:100%;
+    width: 100%;
   }
 
-  .portfolio-top-section{
-    width:100%;
+  .portfolio-top-section {
+    width: 100%;
     max-width: 100%;
     flex-direction: column;
     justify-content: flex-start;
-    gap:2rem;
+    gap: 2rem;
     align-items: center;
-    margin-top:1rem;
+    margin-top: 1rem;
   }
 
-  .our-projects-heading{
+  .our-projects-heading {
     text-align: center;
   }
 
-  .our-projects-heading span{
+  .our-projects-heading span {
     font-size: 2.5rem;
     text-align: center;
-    width:100%;
+    width: 100%;
   }
 
-  .our-projects-p{
+  .our-projects-p {
     width: 100%;
     max-width: 100%;
     text-align: center;
   }
 
-  .portfolio-our-projects{
+  .portfolio-our-projects {
     width: 100%;
     max-width: 100%;
   }
@@ -465,75 +506,74 @@
     height: 250px;
     max-width: 100%;
   }
- 
-  .portfolio-list-sidebar{
-    margin-left:5rem;
+
+  .portfolio-list-sidebar {
+    margin-left: 5rem;
   }
 
   .portfolio-tile-container {
     grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 10px; 
-    margin:0 auto;
+    row-gap: 10px;
+    margin: 0 auto;
   }
 
   .portfolio-middle-list {
-    padding:0;
-    width:95%;
-    margin:0 auto ;
-    height:70%;
-    max-height: 70%; 
+    padding: 0;
+    width: 95%;
+    margin: 0 auto;
+    height: 70%;
+    max-height: 70%;
     align-items: center;
   }
 
-.tile-title {
-  height: auto;               /* Remove fixed height */
-  max-height: none;           /* Remove any height restriction */
-  font-size: 1rem;
-  
-  white-space: nowrap;        /* Prevent text from wrapping to next line */
-  overflow: hidden;           /* Hide any overflow text */
-  text-overflow: ellipsis;    /* Show "..." if text is too long */
-}
+  .tile-title {
+    height: auto; /* Remove fixed height */
+    max-height: none; /* Remove any height restriction */
+    font-size: 1rem;
+
+    white-space: nowrap; /* Prevent text from wrapping to next line */
+    overflow: hidden; /* Hide any overflow text */
+    text-overflow: ellipsis; /* Show "..." if text is too long */
+  }
 
   .portfolio-container {
     padding-left: 0; /* Remove left padding on mobile */
   }
 }
 
-@media(max-width: 800px){
-  .portfolio-partner-show{
-    height:fit-content;
+@media (max-width: 800px) {
+  .portfolio-partner-show {
+    height: fit-content;
   }
 
-  .portfolio-list-sidebar{
+  .portfolio-list-sidebar {
     margin: 0 auto;
   }
 
   .portfolio-tile-container {
-    grid-template-columns: 1fr 1fr ;
-    row-gap: 20px; 
-    margin:0 auto;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 20px;
+    margin: 0 auto;
   }
 
-  .portfolio-tile-box{
-    gap:2px;
+  .portfolio-tile-box {
+    gap: 2px;
   }
-  
 
   .tile-thumbnail {
-    height:85%;
-    max-height:85%;
+    height: 85%;
+    max-height: 85%;
   }
 
-  .portfolio-link img{
+  .portfolio-link img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
   }
 
-  .tile-title{
-    font-size:0.8rem;
-    overflow-y:scroll;
+  .tile-title {
+    font-size: 0.8rem;
+    overflow-y: scroll;
   }
 }
