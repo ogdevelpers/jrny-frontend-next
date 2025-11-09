@@ -3,6 +3,7 @@ import OtherSolutions from "@/components/OtherSolutions/OtherSolutions";
 import { fetchFromStrapi } from "@/lib/strapi";
 
 import { Metadata } from "next";
+import { buildCanonicalUrl } from "@/utils/url.util";
 export async function generateMetadata(): Promise<Metadata> {
   try {
     // Fetch only SEO data for metadata
@@ -30,6 +31,8 @@ export async function generateMetadata(): Promise<Metadata> {
       }
     }
 
+    const canonicalUrl = buildCanonicalUrl("/solutions");
+
     return {
       title:
         seoData.metaTitle ||
@@ -43,12 +46,12 @@ export async function generateMetadata(): Promise<Metadata> {
         follow: robotsFollow,
       },
       alternates: {
-        canonical: seoData.canonicalURL || "https://jrnyxp.com/",
+        canonical: canonicalUrl,
       },
       openGraph: {
         title: seoData.metaTitle,
         description: seoData.metaDescription,
-        url: seoData.canonicalURL || "https://jrnyxp.com/",
+        url: canonicalUrl,
         siteName: "JRNY",
         images: [
           {
@@ -86,7 +89,7 @@ export async function generateMetadata(): Promise<Metadata> {
         follow: true,
       },
       alternates: {
-        canonical: "https://jrnyxp.com/",
+        canonical: buildCanonicalUrl("/solutions"),
       },
     };
   }

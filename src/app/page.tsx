@@ -3,6 +3,7 @@ import LandingPageContent from "@/components/LandingPageContent/LandingPageConte
 import { fetchFromStrapi } from "@/lib/strapi";
 import LoaderWrapper from "./LoaderComponent";
 import { extractContent } from "@/utils/process.util";
+import { buildCanonicalUrl } from "@/utils/url.util";
 import { Metadata } from "next";
 
 
@@ -35,6 +36,8 @@ export async function generateMetadata(): Promise<Metadata> {
       }
     }
 
+    const canonicalUrl = buildCanonicalUrl("/");
+
     return {
       title: seoData.metaTitle || 'Corporate & Experiential Management',
       description: seoData.metaDescription || 'JRNY is a leading corporate event management company in India.',
@@ -44,12 +47,12 @@ export async function generateMetadata(): Promise<Metadata> {
         follow: robotsFollow,
       },
       alternates: {
-        canonical: seoData.canonicalURL || 'https://jrnyxp.com/',
+        canonical: canonicalUrl,
       },
       openGraph: {
         title: seoData.metaTitle,
         description: seoData.metaDescription,
-        url: seoData.canonicalURL || 'https://jrnyxp.com/',
+        url: canonicalUrl,
         siteName: 'JRNY',
         images: [
           {
@@ -86,7 +89,7 @@ export async function generateMetadata(): Promise<Metadata> {
         follow: true,
       },
       alternates: {
-        canonical: 'https://jrnyxp.com/',
+        canonical: buildCanonicalUrl("/"),
       },
     };
   }

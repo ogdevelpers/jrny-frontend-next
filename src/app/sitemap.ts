@@ -1,33 +1,85 @@
 import type { MetadataRoute } from "next";
-import { routes } from "../lib/constants";
+import { buildCanonicalUrl } from "@/utils/url.util";
+import { fetchFromStrapi } from "@/lib/strapi";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+type StrapiEntry = {
+  slug?: string;
+  key?: string;
+  updatedAt?: string;
+};
 
-const solutionSlugs: string[] = [
-  "award-functions-coordination",
-  "MICE-event-planning",
-  "brand-activation-events",
-  "premium-event-management-company",
+const toDate = (value?: string) => (value ? new Date(value) : new Date());
+
+const STATIC_PATHS: Array<{ path: string; priority: number }> = [
+  { path: "/", priority: 1 },
+  { path: "/about-us", priority: 0.8 },
+  { path: "/portfolio", priority: 0.8 },
+  { path: "/contact-us", priority: 0.7 },
+  { path: "/blog", priority: 0.7 },
+  { path: "/solutions", priority: 0.7 },
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-
-  const staticPages = routes.map((route) => ({
-    url: new URL(route.path, baseUrl).toString(),
-    lastModified: now,
-    changeFrequency: "weekly" as const,
-    priority: route.path === "/" ? 1 : 0.7,
-  }));
-
-  const solutionPages = solutionSlugs.map((slug) => ({
-    url: new URL(`/solutions/${slug}`, baseUrl).toString(),
-    lastModified: now,
-    changeFrequency: "weekly" as const,
-    priority: 0.6,
-  }));
-
-  return [...staticPages, ...solutionPages];
+async function getEntries(endpoint: string) {
+  try {
+    const response = await fetchFromStrapi(
+      `${endpoint}?fields[0]=slug&fields[1]=key&fields[2]=updatedAt&pagination[pageSize]=100`,
+    );
+    return (response?.data as StrapiEntry[]) ?? [];
+  } catch (error) {
+    console.error(`Error fetching ${endpoint} for sitemap:`, error);
+    return [];
+  }
 }
 
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const now = new Date();
 
+  const staticPages: MetadataRoute.Sitemap = STATIC_PATHS.map(
+    ({ path, priority }) => ({
+      url: buildCanonicalUrl(path),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority,
+    }),
+  );
+
+  const [blogEntries, solutionEntries, portfolioEntries] = await Promise.all([
+    getEntries("blogs"),
+    getEntries("solutions"),
+    getEntries("portfolios"),
+  ]);
+
+  const blogPages: MetadataRoute.Sitemap = blogEntries
+    .filter((entry) => entry.slug)
+    .map((entry) => ({
+      url: buildCanonicalUrl(`/blog/${entry.slug}`),
+      lastModified: toDate(entry.updatedAt),
+      changeFrequency: "weekly",
+      priority: 0.6,
+    }));
+
+  const solutionPages: MetadataRoute.Sitemap = solutionEntries
+    .filter((entry) => entry.slug)
+    .map((entry) => ({
+      url: buildCanonicalUrl(`/solutions/${entry.slug}`),
+      lastModified: toDate(entry.updatedAt),
+      changeFrequency: "weekly",
+      priority: 0.6,
+    }));
+
+  const portfolioPages: MetadataRoute.Sitemap = portfolioEntries
+    .filter((entry) => entry.key)
+    .map((entry) => ({
+      url: buildCanonicalUrl(`/portfolio/${entry.key}`),
+      lastModified: toDate(entry.updatedAt),
+      changeFrequency: "weekly",
+      priority: 0.6,
+    }));
+
+  return [
+    ...staticPages,
+    ...blogPages,
+    ...solutionPages,
+    ...portfolioPages,
+  ];
+}

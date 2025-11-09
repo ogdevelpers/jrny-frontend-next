@@ -5,6 +5,7 @@ import { fetchFromStrapi } from "@/lib/strapi";
 import ContactUs from "@/components/Contact/Contact-Us";
 
 import { Metadata } from "next";
+import { buildCanonicalUrl } from "@/utils/url.util";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
@@ -34,6 +35,8 @@ export async function generateMetadata(): Promise<Metadata> {
       }
     }
 
+    const canonicalUrl = buildCanonicalUrl("/contact-us");
+
     return {
       title:
         seoData.metaTitle ||
@@ -47,12 +50,12 @@ export async function generateMetadata(): Promise<Metadata> {
         follow: robotsFollow,
       },
       alternates: {
-        canonical: seoData.canonicalURL || "https://jrnyxp.com/",
+        canonical: canonicalUrl,
       },
       openGraph: {
         title: seoData.metaTitle,
         description: seoData.metaDescription,
-        url: seoData.canonicalURL || "https://jrnyxp.com/",
+        url: canonicalUrl,
         siteName: "JRNY",
         images: [
           {
@@ -90,7 +93,7 @@ export async function generateMetadata(): Promise<Metadata> {
         follow: true,
       },
       alternates: {
-        canonical: "https://jrnyxp.com/",
+        canonical: buildCanonicalUrl("/contact-us"),
       },
     };
   }

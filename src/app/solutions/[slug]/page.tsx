@@ -3,14 +3,16 @@ import Footer from "@/components/shared/footer/Footer";
 import { fetchFromStrapi } from "@/lib/strapi";
 import "../../../css/solutions-item.css";
 import { Metadata } from "next";
+import { buildCanonicalUrl } from "@/utils/url.util";
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
+  const { slug } = await params;
+
   try {
-    const { slug } = await params;
     // Fetch only SEO data for metadata
     const homeRespData = await fetchFromStrapi(
       `solutions?filters[slug][$eq]=${slug}&populate[0]=seo`,
@@ -39,6 +41,8 @@ export async function generateMetadata({
       }
     }
 
+    const canonicalUrl = buildCanonicalUrl(`/solutions/${slug}`);
+
     return {
       title:
         seoData.metaTitle ||
@@ -52,12 +56,12 @@ export async function generateMetadata({
         follow: robotsFollow,
       },
       alternates: {
-        canonical: seoData.canonicalURL || "https://jrnyxp.com/",
+        canonical: canonicalUrl,
       },
       openGraph: {
         title: seoData.metaTitle,
         description: seoData.metaDescription,
-        url: seoData.canonicalURL || "https://jrnyxp.com/",
+        url: canonicalUrl,
         siteName: "JRNY",
         images: [
           {
@@ -95,7 +99,7 @@ export async function generateMetadata({
         follow: true,
       },
       alternates: {
-        canonical: "https://jrnyxp.com/",
+        canonical: buildCanonicalUrl(`/solutions/${slug}`),
       },
     };
   }

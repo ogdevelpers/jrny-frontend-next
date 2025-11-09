@@ -4,6 +4,7 @@ import Footer from "@/components/shared/footer/Footer";
 import { fetchFromStrapi } from "@/lib/strapi";
 import "../../css/blog.css";
 import { Metadata } from "next";
+import { buildCanonicalUrl } from "@/utils/url.util";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
@@ -33,6 +34,8 @@ export async function generateMetadata(): Promise<Metadata> {
       }
     }
 
+    const canonicalUrl = buildCanonicalUrl("/blog");
+
     return {
       title: seoData.metaTitle || 'Corporate & Experiential Event Management Agency in India',
       description: seoData.metaDescription || 'JRNY is a leading corporate event management company in India.',
@@ -42,12 +45,12 @@ export async function generateMetadata(): Promise<Metadata> {
         follow: robotsFollow,
       },
       alternates: {
-        canonical: seoData.canonicalURL || 'https://jrnyxp.com/',
+        canonical: canonicalUrl,
       },
       openGraph: {
         title: seoData.metaTitle,
         description: seoData.metaDescription,
-        url: seoData.canonicalURL || 'https://jrnyxp.com/',
+        url: canonicalUrl,
         siteName: 'JRNY',
         images: [
           {
@@ -84,7 +87,7 @@ export async function generateMetadata(): Promise<Metadata> {
         follow: true,
       },
       alternates: {
-        canonical: 'https://jrnyxp.com/',
+        canonical: buildCanonicalUrl("/blog"),
       },
     };
   }

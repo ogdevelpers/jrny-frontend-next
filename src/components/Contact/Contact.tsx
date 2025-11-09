@@ -264,11 +264,18 @@ export const SocialDivs = ({ contentData }: SocialDivsProps) => {
       <div className="social-div-container">
         <div className="social-heading">Phone</div>
         {phoneNumbers?.length > 0 ? (
-          phoneNumbers?.map((phone: string, i: number) => (
-            <div key={i} className="social-example">
-              {phone.trim()}
-            </div>
-          ))
+          phoneNumbers?.map((phone: string, i: number) => {
+            const trimmedPhone = phone.trim();
+            const telHref = trimmedPhone.replace(/[^\d+]/g, "");
+
+            return (
+              <div key={i} className="social-example">
+                <a href={`tel:${telHref}`} aria-label={`Call ${trimmedPhone}`}>
+                  {trimmedPhone}
+                </a>
+              </div>
+            );
+          })
         ) : (
           <div className="social-example">Not available</div>
         )}
@@ -297,7 +304,11 @@ export const SocialDivs = ({ contentData }: SocialDivsProps) => {
         <div className="social-example">
           {contentData?.Form?.locations?.length
             ? contentData.Form.locations.map((location, i: number) => (
-                <span key={i} onClick={() => handleClick(location.Name)}>
+                <span
+                  key={i}
+                  style={{ cursor: "pointer" }}
+                  onClick={() => handleClick(location.Name)}
+                >
                   {location.Name}
                   {i < (contentData?.Form?.locations?.length ?? 0) - 1 && ", "}
                 </span>
