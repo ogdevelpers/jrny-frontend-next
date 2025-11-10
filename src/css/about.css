@@ -253,7 +253,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 0.4rem 0.3rem 0.5rem 0.1rem;
+  padding: 0.4rem 0.5rem 0.5rem 0.1rem;
 }
 
 .person-credentials {
