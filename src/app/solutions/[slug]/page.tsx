@@ -4,13 +4,15 @@ import { fetchFromStrapi } from "@/lib/strapi";
 import "../../../css/solutions-item.css";
 import { Metadata } from "next";
 import { buildCanonicalUrl } from "@/utils/url.util";
+import FAQAccordion from "@/components/FAQAccordion/FAQAccordion";
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = rawSlug.replace(/^solutions\//, '');
 
   try {
     // Fetch only SEO data for metadata
@@ -110,12 +112,19 @@ export default async function SolutionsDetailPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = rawSlug.replace(/^solutions\//, '');
 
   let solutionDetailData = null;
   let contactUsData = null;
 
   const contactUsPopulate = ["Form", "Form.locations", "Form.services"];
+  const solutionPopulate = ["faq", "faq.items", "seo"];
+  const urlParamsSolution = new URLSearchParams();
+  urlParamsSolution.append("filters[slug][$eq]", slug);
+  solutionPopulate.forEach((value, index) => {
+    urlParamsSolution.append(`populate[${index}]`, value);
+  });
 
   const urlParamsContactUs = new URLSearchParams();
   contactUsPopulate.forEach((value, index) => {
@@ -124,7 +133,7 @@ export default async function SolutionsDetailPage({
 
   try {
     const [solutionDetailRes, contactUsResp] = await Promise.all([
-      fetchFromStrapi(`solutions?filters[slug][$eq]=${slug}&populate=*`),
+      fetchFromStrapi(`solutions?${urlParamsSolution.toString()}`),
       fetchFromStrapi(`contact?${urlParamsContactUs.toString()}`),
     ]);
     solutionDetailData = solutionDetailRes.data;
@@ -134,6 +143,8 @@ export default async function SolutionsDetailPage({
   }
 
   const solutionData = solutionDetailData?.[0];
+
+  console.log('solutionData******', solutionData);
 
   return (
     <>
@@ -154,6 +165,12 @@ export default async function SolutionsDetailPage({
               __html: solutionData?.description || "",
             }}
           ></div>
+          {solutionData?.faq?.items && solutionData.faq.items.length > 0 && (
+            <FAQAccordion 
+              items={solutionData.faq.items} 
+              title={solutionData.faq.title || "Frequently Asked Questions"}
+            />
+          )}
         </div>
         <div className="solutions-item-footer">
           <Footer content={contactUsData} />
