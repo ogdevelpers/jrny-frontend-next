@@ -19,10 +19,15 @@ const STATIC_PATHS: Array<{ path: string; priority: number }> = [
   { path: "/solutions", priority: 0.7 },
 ];
 
-async function getEntries(endpoint: string) {
+async function getEntries(endpoint: string, useKey: boolean = false) {
   try {
+    // Portfolios use 'key', blogs and solutions use 'slug'
+    const fieldParam = useKey 
+      ? 'fields[0]=key&fields[1]=updatedAt'
+      : 'fields[0]=slug&fields[1]=updatedAt';
+    
     const response = await fetchFromStrapi(
-      `${endpoint}?fields[0]=slug&fields[1]=key&fields[2]=updatedAt&pagination[pageSize]=100`,
+      `${endpoint}?${fieldParam}&pagination[pageSize]=100`,
     );
     return (response?.data as StrapiEntry[]) ?? [];
   } catch (error) {
@@ -44,9 +49,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   const [blogEntries, solutionEntries, portfolioEntries] = await Promise.all([
-    getEntries("blogs"),
-    getEntries("solutions"),
-    getEntries("portfolios"),
+    getEntries("blogs", false),
+    getEntries("solutions", false),
+    getEntries("portfolios", true),
   ]);
 
   const blogPages: MetadataRoute.Sitemap = blogEntries
