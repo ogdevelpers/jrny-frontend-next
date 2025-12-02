@@ -144,8 +144,6 @@ export default async function SolutionsDetailPage({
 
   const solutionData = solutionDetailData?.[0];
 
-  console.log('solutionData******', solutionData);
-
   return (
     <>
       <div className="solutions-item-container">

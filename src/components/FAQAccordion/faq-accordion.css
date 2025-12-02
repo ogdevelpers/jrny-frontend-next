@@ -2,6 +2,7 @@
   width: 100%;
   margin-top: 3rem;
   margin-bottom: 2rem;
+  animation: fadeInUp 0.6s ease-out;
 }
 
 .faq-accordion-title {
@@ -11,6 +12,7 @@
   line-height: 44px;
   color: #FFFFFF;
   margin: 0 0 2rem 0;
+  animation: fadeInDown 0.5s ease-out;
 }
 
 .faq-accordion-list {
@@ -22,6 +24,12 @@
 .faq-accordion-item {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.faq-accordion-item:hover {
+  border-bottom-color: rgba(255, 255, 255, 0.4);
 }
 
 .faq-accordion-header {
@@ -34,11 +42,18 @@
   border: none;
   cursor: pointer;
   text-align: left;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 .faq-accordion-header:hover {
-  opacity: 0.8;
+  opacity: 0.9;
+  transform: translateX(4px);
+}
+
+.faq-accordion-header:active {
+  transform: translateX(2px);
+  transition: transform 0.1s ease;
 }
 
 .faq-accordion-question {
@@ -49,6 +64,15 @@
   color: #FFFFFF;
   flex: 1;
   padding-right: 2rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.faq-accordion-header:hover .faq-accordion-question {
+  color: rgba(255, 255, 255, 1);
+}
+
+.faq-accordion-header.open .faq-accordion-question {
+  color: #FFFFFF;
 }
 
 .faq-accordion-icon {
@@ -58,22 +82,44 @@
   line-height: 32px;
   color: #FFFFFF;
   min-width: 30px;
+  height: 30px;
   text-align: center;
-  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.3s ease,
+              opacity 0.3s ease;
+  position: relative;
+}
+
+.faq-accordion-header:hover .faq-accordion-icon {
+  transform: scale(1.1);
+  color: #FF5B00;
 }
 
 .faq-accordion-header.open .faq-accordion-icon {
-  transform: rotate(0deg);
+  transform: scale(1.1);
+  color: #FF5B00;
 }
 
 .faq-accordion-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s ease,
+              transform 0.4s ease;
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
 .faq-accordion-content.open {
   max-height: 1000px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.5s ease 0.1s,
+              transform 0.5s ease 0.1s;
 }
 
 .faq-accordion-answer {
@@ -84,14 +130,59 @@
   color: #FFFFFF;
   padding: 0 0 1.5rem 0;
   opacity: 0.9;
+  animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+.faq-accordion-content.open .faq-accordion-answer {
+  animation: fadeInUp 0.5s ease-out 0.2s both;
 }
 
 .faq-accordion-answer p {
   margin: 0 0 1rem 0;
+  animation: fadeInUp 0.4s ease-out both;
 }
 
 .faq-accordion-answer p:last-child {
   margin-bottom: 0;
+}
+
+.faq-accordion-answer p:nth-child(1) {
+  animation-delay: 0.25s;
+}
+
+.faq-accordion-answer p:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.faq-accordion-answer p:nth-child(3) {
+  animation-delay: 0.35s;
+}
+
+.faq-accordion-answer p:nth-child(n+4) {
+  animation-delay: 0.4s;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 1000px) {
@@ -110,6 +201,7 @@
   .faq-accordion-icon {
     font-size: 24px;
     min-width: 24px;
+    height: 24px;
   }
 
   .faq-accordion-answer {
@@ -123,6 +215,38 @@
 
   .faq-accordion-answer {
     padding: 0 0 1rem 0;
+  }
+
+  .faq-accordion-header:hover {
+    transform: translateX(2px);
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .faq-accordion-container,
+  .faq-accordion-title,
+  .faq-accordion-item,
+  .faq-accordion-header,
+  .faq-accordion-content,
+  .faq-accordion-answer,
+  .faq-accordion-icon,
+  .faq-accordion-answer p {
+    animation: none !important;
+    transition: opacity 0.2s ease, max-height 0.2s ease !important;
+  }
+  
+  .faq-accordion-header:hover,
+  .faq-accordion-header:active {
+    transform: none !important;
+  }
+  
+  .faq-accordion-icon {
+    transform: none !important;
+  }
+  
+  .faq-accordion-header.open .faq-accordion-icon {
+    transform: scale(1.1) !important;
   }
 }
 

@@ -29,7 +29,11 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ items, title }) => {
       {title && <h2 className="faq-accordion-title">{title}</h2>}
       <div className="faq-accordion-list">
         {items.map((item, index) => (
-          <div key={item.id || index} className="faq-accordion-item">
+          <div 
+            key={item.id || index} 
+            className="faq-accordion-item"
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
             <button
               className={`faq-accordion-header ${openIndex === index ? 'open' : ''}`}
               onClick={() => toggleItem(index)}
