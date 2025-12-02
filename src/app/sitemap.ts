@@ -66,7 +66,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const solutionPages: MetadataRoute.Sitemap = solutionEntries
     .filter((entry) => entry.slug)
     .map((entry) => ({
-      url: buildCanonicalUrl(`/solutions/${entry.slug}`),
+      url: buildCanonicalUrl(`/solutions/${entry.slug!.replace(/^solutions\/?/, '')}`),
       lastModified: toDate(entry.updatedAt),
       changeFrequency: "weekly",
       priority: 0.6,

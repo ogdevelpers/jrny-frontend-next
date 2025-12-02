@@ -128,7 +128,7 @@ const OtherSolutions: React.FC<OtherSolutionsProps> = ({
                     ></p>
                     {solution.slug && (
                       <Link
-                        href={`/solutions/${solution.slug}`}
+                        href={`/solutions/${solution.slug.replace(/^solutions\/?/, '')}`}
                         className="solution-link"
                       >
                         Learn more &gt;

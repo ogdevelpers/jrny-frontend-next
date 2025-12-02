@@ -290,7 +290,7 @@ export const SocialDivs = ({ contentData }: SocialDivsProps) => {
             solution.map((item: any, index: number) => (
               <span
                 key={index}
-                onClick={() => router.push(`solutions/${item.slug}`)}
+                onClick={() => router.push(`/solutions/${item.slug?.replace(/^solutions\/?/, '') || ''}`)}
                 style={{ cursor: "pointer" }}
               >
                 {item.title}
