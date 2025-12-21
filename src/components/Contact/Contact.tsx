@@ -285,7 +285,7 @@ export const SocialDivs = ({ contentData }: SocialDivsProps) => {
         <Link href="/solutions">
           <div className="social-heading">Other Solutions</div>
         </Link>
-        <div className="social-example">
+        {/* <div className="social-example">
           {solution &&
             solution.map((item: any, index: number) => (
               <span
@@ -296,7 +296,7 @@ export const SocialDivs = ({ contentData }: SocialDivsProps) => {
                 {item.title}
               </span>
             ))}
-        </div>
+        </div> */}
       </div>
 
       <div className="social-div-container">
